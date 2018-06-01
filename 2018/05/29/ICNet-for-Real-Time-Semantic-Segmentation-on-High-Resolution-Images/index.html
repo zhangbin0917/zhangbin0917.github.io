@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Semantic Segmentation,Real-Time," />
 
 
 
@@ -86,17 +86,28 @@
 
 
 
-<meta name="description" content="I am currently a Master candidate in Wuhan University majoring Photogrammetry and remote sensing">
-<meta name="keywords" content="Remote Sensing, Image Processing, Deep learning">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Zhang Bin&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/index.html">
+<meta name="keywords" content="Semantic Segmentation,Real-Time">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ICNet for Real-Time Semantic Segmentation on High-Resolution Images">
+<meta property="og:url" content="http://yoursite.com/2018/05/29/ICNet-for-Real-Time-Semantic-Segmentation-on-High-Resolution-Images/index.html">
 <meta property="og:site_name" content="Zhang Bin&#39;s Blog">
-<meta property="og:description" content="I am currently a Master candidate in Wuhan University majoring Photogrammetry and remote sensing">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/05/29/ICNet-for-Real-Time-Semantic-Segmentation-on-High-Resolution-Images/ICNet.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/29/ICNet-for-Real-Time-Semantic-Segmentation-on-High-Resolution-Images/00.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/29/ICNet-for-Real-Time-Semantic-Segmentation-on-High-Resolution-Images/01.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/29/ICNet-for-Real-Time-Semantic-Segmentation-on-High-Resolution-Images/02.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/29/ICNet-for-Real-Time-Semantic-Segmentation-on-High-Resolution-Images/03.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/29/ICNet-for-Real-Time-Semantic-Segmentation-on-High-Resolution-Images/ICNet.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/29/ICNet-for-Real-Time-Semantic-Segmentation-on-High-Resolution-Images/04.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/29/ICNet-for-Real-Time-Semantic-Segmentation-on-High-Resolution-Images/05.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/29/ICNet-for-Real-Time-Semantic-Segmentation-on-High-Resolution-Images/06.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/29/ICNet-for-Real-Time-Semantic-Segmentation-on-High-Resolution-Images/07.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/29/ICNet-for-Real-Time-Semantic-Segmentation-on-High-Resolution-Images/08.png">
+<meta property="og:image" content="http://yoursite.com/2018/05/29/ICNet-for-Real-Time-Semantic-Segmentation-on-High-Resolution-Images/09.png">
+<meta property="og:updated_time" content="2018-05-30T07:09:36.041Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Zhang Bin&#39;s Blog">
-<meta name="twitter:description" content="I am currently a Master candidate in Wuhan University majoring Photogrammetry and remote sensing">
+<meta name="twitter:title" content="ICNet for Real-Time Semantic Segmentation on High-Resolution Images">
+<meta name="twitter:image" content="http://yoursite.com/2018/05/29/ICNet-for-Real-Time-Semantic-Segmentation-on-High-Resolution-Images/ICNet.png">
 
 
 
@@ -126,13 +137,13 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/05/29/ICNet-for-Real-Time-Semantic-Segmentation-on-High-Resolution-Images/"/>
 
 
 
 
 
-  <title>Zhang Bin's Blog</title>
+  <title>ICNet for Real-Time Semantic Segmentation on High-Resolution Images | Zhang Bin's Blog</title>
   
 
 
@@ -151,8 +162,7 @@
     
   
 
-  <div class="container sidebar-position-left 
-  page-home">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -279,807 +289,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/01/Stacked-Deconvolutional-Network-for-Semantic-Segmentation/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bin Zhang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/jonathon-reed-190894.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zhang Bin's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/06/01/Stacked-Deconvolutional-Network-for-Semantic-Segmentation/" itemprop="url">Stacked Deconvolutional Network for Semantic Segmentation</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-01T16:22:47+08:00">
-                2018-06-01
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  0
-                </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            
-          
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/31/Gated-Feedback-Reﬁnement-Network-for-Dense-Image-Labeling/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bin Zhang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/jonathon-reed-190894.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zhang Bin's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/31/Gated-Feedback-Reﬁnement-Network-for-Dense-Image-Labeling/" itemprop="url">Gated Feedback Refinement Network for Dense Image Labeling</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-31T22:14:24+08:00">
-                2018-05-31
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Semantic-Segmentation/" itemprop="url" rel="index">
-                    <span itemprop="name">Semantic Segmentation</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  694
-                </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>在本文中作者在encoder-decoder结构的Skip Connection中利用门控机制结合深层特征减少浅层特征得歧义性。<br><img src="/2018/05/31/Gated-Feedback-Reﬁnement-Network-for-Dense-Image-Labeling/00.png" alt="lbxx"><br></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/05/31/Gated-Feedback-Reﬁnement-Network-for-Dense-Image-Labeling/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/30/DeepLab-V3-Rethinking-Atrous-Convolution-for-Semantic-Image-Segmentation/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bin Zhang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/jonathon-reed-190894.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zhang Bin's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/30/DeepLab-V3-Rethinking-Atrous-Convolution-for-Semantic-Image-Segmentation/" itemprop="url">DeepLab V3--Rethinking Atrous Convolution for Semantic Image Segmentation</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-30T20:37:36+08:00">
-                2018-05-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Semantic-Segmentation/" itemprop="url" rel="index">
-                    <span itemprop="name">Semantic Segmentation</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  1,130
-                </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>在DeepLab的第3个版本中，作者主要通过串联或并行Dilation Convolution解决多尺度的问题，并且优化了第2版中提出的Atrous Spatial Pyramid Pooling module，在PASCAL VOC 2012数据集上达到state-of-art的效果。<br><img src="/2018/05/30/DeepLab-V3-Rethinking-Atrous-Convolution-for-Semantic-Image-Segmentation/00.png" alt="lbxx"><br></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/05/30/DeepLab-V3-Rethinking-Atrous-Convolution-for-Semantic-Image-Segmentation/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/30/Dilated-Residual-Networks/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bin Zhang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/jonathon-reed-190894.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zhang Bin's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/30/Dilated-Residual-Networks/" itemprop="url">Dilated Residual Networks</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-30T17:02:01+08:00">
-                2018-05-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Semantic-Segmentation/" itemprop="url" rel="index">
-                    <span itemprop="name">Semantic Segmentation</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  533
-                </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>将Dilation Convolution引入Image Classification任务中，使得在最终的特征图不至于太小而丢失太多的细节。为了由于引入Dilation Convolution带来的网格效应，提出了移除网格效应的方法。除此之外DRN还可以用于object localization和semantic segmentation任务中。<br><img src="/2018/05/30/Dilated-Residual-Networks/00.png" alt="lbxx"></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/05/30/Dilated-Residual-Networks/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
-
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-  
-  
-  
-  <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/05/30/Pixel-Deconvolutional-Networks/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="name" content="Bin Zhang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/jonathon-reed-190894.jpg">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Zhang Bin's Blog">
-    </span>
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/30/Pixel-Deconvolutional-Networks/" itemprop="url">Pixel Deconvolutional Networks</a></h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-calendar-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">Posted on</span>
-              
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-05-30T15:37:56+08:00">
-                2018-05-30
-              </time>
-            
-
-            
-
-            
-          </span>
-
-          
-            <span class="post-category" >
-            
-              <span class="post-meta-divider">|</span>
-            
-              <span class="post-meta-item-icon">
-                <i class="fa fa-folder-o"></i>
-              </span>
-              
-                <span class="post-meta-item-text">In</span>
-              
-              
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Semantic-Segmentation/" itemprop="url" rel="index">
-                    <span itemprop="name">Semantic Segmentation</span>
-                  </a>
-                </span>
-
-                
-                
-              
-            </span>
-          
-
-          
-            
-          
-
-          
-          
-
-          
-
-          
-            <div class="post-wordcount">
-              
-                
-                <span class="post-meta-item-icon">
-                  <i class="fa fa-file-word-o"></i>
-                </span>
-                
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
-                
-                <span title="Words count in article">
-                  508
-                </span>
-              
-
-              
-
-              
-            </div>
-          
-
-          
-
-        </div>
-      </header>
-    
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <p>作者为了解决deconvolution中出现的棋盘格效应，提出了pixel deconvolutional layer(PixelDCL)，来直接建立上采样特征图相邻像素的关系，可以直接替换掉任何deconvolution layer。<br><img src="/2018/05/30/Pixel-Deconvolutional-Networks/04.png" alt="lbxx"><br></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/05/30/Pixel-Deconvolutional-Networks/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
-      
-    </div>
-    
-    
-    
-
-    
-
-    
-
-    
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </div>
-  
-  
-  
-  </article>
-
-
-    
-      
 
   
 
@@ -1109,9 +321,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">
-                
-                <a class="post-title-link" href="/2018/05/29/ICNet-for-Real-Time-Semantic-Segmentation-on-High-Resolution-Images/" itemprop="url">ICNet for Real-Time Semantic Segmentation on High-Resolution Images</a></h1>
+          <h1 class="post-title" itemprop="name headline">ICNet for Real-Time Semantic Segmentation on High-Resolution Images</h1>
         
 
         <div class="post-meta">
@@ -1202,16 +412,65 @@
       
 
       
-        
-          <p><img src="/2018/05/29/ICNet-for-Real-Time-Semantic-Segmentation-on-High-Resolution-Images/ICNet.png" alt="lbxx"></p>
-          <!--noindex-->
-          <div class="post-button text-center">
-            <a class="btn" href="/2018/05/29/ICNet-for-Real-Time-Semantic-Segmentation-on-High-Resolution-Images/#more" rel="contents">
-              Read more &raquo;
-            </a>
-          </div>
-          <!--/noindex-->
-        
+        <p><img src="/2018/05/29/ICNet-for-Real-Time-Semantic-Segmentation-on-High-Resolution-Images/ICNet.png" alt="lbxx"></p>
+<a id="more"></a>
+<p>project：<a href="https://hszhao.github.io/projects/icnet/" target="_blank" rel="noopener">https://hszhao.github.io/projects/icnet/</a></p>
+<p>Paper: <a href="https://arxiv.org/abs/1704.08545" target="_blank" rel="noopener">https://arxiv.org/abs/1704.08545</a></p>
+<p>Code: <a href="https://github.com/hszhao/ICNet" target="_blank" rel="noopener">https://github.com/hszhao/ICNet</a></p>
+<h1 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1.Introduction"></a>1.Introduction</h1><p><strong>当前fast semantic segmentation的状态</strong><br>下图是在Cityscapes数据集上测试速度和mIoU的比较：</p>
+<p><img src="/2018/05/29/ICNet-for-Real-Time-Semantic-Segmentation-on-High-Resolution-Images/00.png" alt="lbxx"></p>
+<p>一方面，可以看到大多数现有方法几乎都不能达到实时的要求。另一方面，虽然SegNet，ENet，SQ速度较快，但是mIoU低于60%。<br>因此作者提出建立一个实用的快速语义分割框架。核心思想是：<em>让低分辨率的图像先通过网络得到粗略的预测图，然后所提出的cascade fusion unit引入中等分辨率和高分辨率的图像逐渐改善预测图</em>。</p>
+<p><strong>主要贡献</strong></p>
+<ol>
+<li>提出了image cascade network (ICNet)，它可以同时有效地利用低分辨率地语义信息和高分辨率的细节。</li>
+<li>所提出的ICNet实现了5倍多的加速，减少了5倍多的内存消耗。</li>
+<li>可以在1024×2048的图像上达到30.3fps的同时实现高质量的结果。</li>
+</ol>
+<h1 id="2-Related-Work"><a href="#2-Related-Work" class="headerlink" title="2. Related Work"></a>2. Related Work</h1><p>分别对High Quality Semantic Segmentation，Fast Semantic Segmentation和Video Segmentation Architectures进行回顾。</p>
+<h1 id="3-Speed-Analysis"><a href="#3-Speed-Analysis" class="headerlink" title="3. Speed Analysis"></a>3. Speed Analysis</h1><h2 id="3-1-Time-Budget"><a href="#3-1-Time-Budget" class="headerlink" title="3.1. Time Budget"></a>3.1. Time Budget</h2><p>在这里作者先回顾了PSPNet的分割性能，然后引入了加速语义分割的直观策略，从它们网络的去缺点中，描述所提出的image cascade框架和cascade feature fusion unit。下图展示了PSPNet50(这里是优化后的，详细的变化在原文第6节)在512×1024和1024×2048分辨率下的运行时间。很显然当图像变大时，运行时间必然增加。<br>同时网络的宽度(或卷积核的数量)也会影响运行时间。如在stage4 和 stage5阶段有相同的空间分辨率，但是在stage5的时间是stage4的4倍多。这是因为在stage5中的卷积核的数量是stage4的两倍。</p>
+<p><img src="/2018/05/29/ICNet-for-Real-Time-Semantic-Segmentation-on-High-Resolution-Images/01.png" alt="lbxx"></p>
+<h2 id="3-2-Intuitive-Speedup"><a href="#3-2-Intuitive-Speedup" class="headerlink" title="3.2. Intuitive Speedup"></a>3.2. Intuitive Speedup</h2><p>这里主要有三点：</p>
+<p>1.输入降采样后的图像<br>具体做法是：输入1/2或1/4的降采样后的图像，得到预测结果后，再上采样到原始大小。<br>这样做的缺点是虽然时间减少了但是预测的结果非常粗糙，丢失了许多小的但是却重要的细节。如下图：<br><img src="/2018/05/29/ICNet-for-Real-Time-Semantic-Segmentation-on-High-Resolution-Images/02.png" alt="lbxx"></p>
+<p>2.除了直接降采样图像外，另一个直接的方法是降采样特征图。在FCN中降采样32倍，DeepLab中降采样了8倍。作者测试PSPNet50降采样8倍，16倍，32倍的结果如下：</p>
+<p><img src="/2018/05/29/ICNet-for-Real-Time-Semantic-Segmentation-on-High-Resolution-Images/03.png" alt="lbxx"></p>
+<p>可以看到小的特征图需要的时间更少，而且即使是最小的特征图仍然需要131ms，达不到实时的要求。</p>
+<p>3.除了以上策略外，另一个自然的方式是模型压缩。<br>作者测试了最近提出的一种压缩方法，发现并没有满足实时的要求。即使只保留1/4的卷积核，所需要的时间还是太长了，与此同时mIuO非常低，不能产生合理的分割图。</p>
+<h1 id="4-Image-Cascade-Network"><a href="#4-Image-Cascade-Network" class="headerlink" title="4. Image Cascade Network"></a>4. Image Cascade Network</h1><h2 id="4-1-主要结构和分支"><a href="#4-1-主要结构和分支" class="headerlink" title="4.1 主要结构和分支"></a>4.1 主要结构和分支</h2><p><img src="/2018/05/29/ICNet-for-Real-Time-Semantic-Segmentation-on-High-Resolution-Images/ICNet.png" alt="lbxx"></p>
+<p>首先将输入图像缩放到原图的1/2和1/4，分别将3个尺度的图像输入网络的3个分支。</p>
+<p>对于低分辨率的图像，即原始图像的1/4大小，通过卷积及池化后缩小了1/8，对应原图的1/32，然后应用dilated convlution来增加感受野，输出为原始图像大小的1/32。</p>
+<p>对于中等分辨率的图像，即原始图像的1/2大小，同样通过几个卷积层和池化层(和上面一个分支共享一部分卷积层来减少参数数量)后缩小了8倍，即原始图像的1/16。为了融合1/32的特征图和1/8的特征图，作者提出了<strong>cascade feature fusion(CFF)</strong>单元来产生1/16的特征图。</p>
+<p>对于高等分辨率的图像，即原始图像，同样通过几个卷积层和池化层后缩小了8倍，得到1/8的特征图。为了融合1/32的特征图和1/8的特征图，作者提出了<strong>cascade feature fusion(CFF)</strong>单元来产生1/16的特征图。由于在中等分辨率时，已经恢复了大多数在低分辨率中丢失的语义信息，因此可以限制处理高分辨率时的卷积层的数量。只使用了3×3的卷积核和stride为2来降采样到原图的1/8。然后使用CFF单元整合由中等分辨率得到的特征图和原始图片得到的特征图。最终得到原始图像的1/8的特征图。</p>
+<p><strong>Cascade Label Guidance</strong><br>为了辅助学习过程，作者提出了Cascade Label Guidance策略：在训练时每个分支上采样2倍后，同时也将ground truth降采样1/16，1/8和1/4(紫线)，这样损失函数就有3项。在测试时将低分辨率和中等分辨率的这一操作丢弃。Cascade Label Guidance策略可以保证训练迭代更容易，梯度优化更平滑。</p>
+<h2 id="4-2-分支分析"><a href="#4-2-分支分析" class="headerlink" title="4.2 分支分析"></a>4.2 分支分析</h2><p>在ICnet中在第二分支有17个卷积层，第三分支只有3个卷积层，而且第一分支和第二分支共享部分计算。最深的网络结构应用在低分辨率图像上，这可以有效的提取大多数语义信息。即使超过50层，测试时运行时间不超过18ms，内存消耗不超过0.6G。因此，所提出的ICNet是一个非常高效和节省内存的结构。</p>
+<h2 id="4-3-和其他Cascade-Structures的不同之处"><a href="#4-3-和其他Cascade-Structures的不同之处" class="headerlink" title="4.3 和其他Cascade Structures的不同之处"></a>4.3 和其他Cascade Structures的不同之处</h2><p>其他Cascade Structures都聚焦于融合单尺度或多尺度的输入的不同层的特征，而ICNet则用低分辨率的图像通过主体语义分割分支，再用高分辨率信息进行优化。</p>
+<h1 id="5-Cascade-Feature-Fusion-and-Final-Model"><a href="#5-Cascade-Feature-Fusion-and-Final-Model" class="headerlink" title="5. Cascade Feature Fusion and Final Model"></a>5. Cascade Feature Fusion and Final Model</h1><p><img src="/2018/05/29/ICNet-for-Real-Time-Semantic-Segmentation-on-High-Resolution-Images/04.png" alt="lbxx"></p>
+<p>为了结合不同分辨率的图像，提出了Cascade Feature Fusion(CCF)单元，输入包含3个部分：两个特征图$F_1$和$F_2$，大小为$H_1\times{W_1\times{C_1}}$和$H_2\times{W_2\times{C_2}}$,和一个ground truth label大小为$H_2\times{W_2\times{1}}$。$F_2$的大小是$F_1$的2倍。首先将$F_1$上采样2倍使得与$F_2$大小相同，然后用$3\times3$的卷积核，dilation 1的dilated convolution对上采样的特征图refine。而对于特征图$F_2$用$1\times1$的卷积使得与特征图$F_1$具有相同的通道数。在dilated convolution和$1\times1$的卷积后都使用了Batch normalization。最后两个特征图相加再通过ReLU激活函数，得到融合的特征图F^{‘}_2。除此之外，还对对上采样的特征图$F_1$添加了辅助分类器，辅助分类器损失的权重设为0.4。</p>
+<h2 id="5-1-The-Loss-Function"><a href="#5-1-The-Loss-Function" class="headerlink" title="5.1 The Loss Function"></a>5.1 The Loss Function</h2><p>最终的损失函数由3部分组成：<br>$$L=\lambda_{1}L_1+\lambda_{2}L_2+\lambda_{3}L_3$$</p>
+<h2 id="5-2-Final-Model-Compression"><a href="#5-2-Final-Model-Compression" class="headerlink" title="5.2 Final Model Compression"></a>5.2 Final Model Compression</h2><p>最后为了进一步减少运行时间，对模型进行压缩。作者采取的是渐进式的方式。以压缩率为1/2为例，并没有直接移除一半的卷积核，而是先保存3/4的卷积核再进行fine-tuning。之后再移除更多的卷积核，再fine-tuning直到达到1/2的压缩率。</p>
+<p>如何选择哪个卷积核要被移除呢？</p>
+<p>作者通过计算卷积核的L1范数，再根据L1范数进行排序，去掉那些较小的卷积核。这种方式不会剧烈的更新所有参数，因此可以较好地减少网络大小。</p>
+<h1 id="6-Experimental-Evaluation"><a href="#6-Experimental-Evaluation" class="headerlink" title="6. Experimental Evaluation"></a>6. Experimental Evaluation</h1><p>实验平台：caffe CUDA7.5 CUDNN V5</p>
+<p>GPU：TitanX</p>
+<p>基础网络：PSPNet</p>
+<p>修改：</p>
+<ol>
+<li><p>在金字塔池化模块时的concat操作变为sum，减少特征维度从4096到2048</p>
+</li>
+<li><p>改变金字塔池化后的卷积操作的卷积核大小由$3\times3$变为$1\times1$</p>
+</li>
+</ol>
+<p>batch size：16</p>
+<p>base learning rate：0.01</p>
+<p>learning policy：poly</p>
+<p>max iteration：30k</p>
+<p>momentum：0.9</p>
+<p>weight decy：0.0001</p>
+<p>数据增强：随机镜像和随机缩放到0.5到2倍之间。</p>
+<h2 id="6-1-Model-Compression"><a href="#6-1-Model-Compression" class="headerlink" title="6.1 Model Compression"></a>6.1 Model Compression</h2><p>以PSPNet50为baseline使用相同的模型压缩方法，与ICNet比较。</p>
+<p><img src="/2018/05/29/ICNet-for-Real-Time-Semantic-Segmentation-on-High-Resolution-Images/05.png" alt="lbxx"></p>
+<h2 id="6-2-Ablation-Study-for-Image-Cascade-Framework"><a href="#6-2-Ablation-Study-for-Image-Cascade-Framework" class="headerlink" title="6.2 Ablation Study for Image Cascade Framework"></a>6.2 Ablation Study for Image Cascade Framework</h2><p><img src="/2018/05/29/ICNet-for-Real-Time-Semantic-Segmentation-on-High-Resolution-Images/06.png" alt="lbxx"><br><img src="/2018/05/29/ICNet-for-Real-Time-Semantic-Segmentation-on-High-Resolution-Images/07.png" alt="lbxx"><br><img src="/2018/05/29/ICNet-for-Real-Time-Semantic-Segmentation-on-High-Resolution-Images/08.png" alt="lbxx"><br><img src="/2018/05/29/ICNet-for-Real-Time-Semantic-Segmentation-on-High-Resolution-Images/09.png" alt="lbxx"></p>
+<p>Video example：</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/qWl9idsCuLQ" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
       
     </div>
     
@@ -1226,14 +485,38 @@
 
     <footer class="post-footer">
       
-
+        <div class="post-tags">
+          
+            <a href="/tags/Semantic-Segmentation/" rel="tag"># Semantic Segmentation</a>
+          
+            <a href="/tags/Real-Time/" rel="tag"># Real-Time</a>
+          
+        </div>
       
 
       
+      
+      
 
       
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/05/30/Pixel-Deconvolutional-Networks/" rel="prev" title="Pixel Deconvolutional Networks">
+                Pixel Deconvolutional Networks <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
       
-        <div class="post-eof"></div>
+
+      
       
     </footer>
   </div>
@@ -1243,10 +526,11 @@
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -1254,6 +538,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -1274,8 +562,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -1339,6 +636,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Introduction"><span class="nav-text">1.Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Related-Work"><span class="nav-text">2. Related Work</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Speed-Analysis"><span class="nav-text">3. Speed Analysis</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-Time-Budget"><span class="nav-text">3.1. Time Budget</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-Intuitive-Speedup"><span class="nav-text">3.2. Intuitive Speedup</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#4-Image-Cascade-Network"><span class="nav-text">4. Image Cascade Network</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#4-1-主要结构和分支"><span class="nav-text">4.1 主要结构和分支</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2-分支分析"><span class="nav-text">4.2 分支分析</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-3-和其他Cascade-Structures的不同之处"><span class="nav-text">4.3 和其他Cascade Structures的不同之处</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#5-Cascade-Feature-Fusion-and-Final-Model"><span class="nav-text">5. Cascade Feature Fusion and Final Model</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#5-1-The-Loss-Function"><span class="nav-text">5.1 The Loss Function</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-2-Final-Model-Compression"><span class="nav-text">5.2 Final Model Compression</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#6-Experimental-Evaluation"><span class="nav-text">6. Experimental Evaluation</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#6-1-Model-Compression"><span class="nav-text">6.1 Model Compression</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-2-Ablation-Study-for-Image-Cascade-Framework"><span class="nav-text">6.2 Ablation Study for Image Cascade Framework</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -1488,6 +801,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

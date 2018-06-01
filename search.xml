@@ -1,8 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
-    <title><![CDATA[Hello World]]></title>
-    <url>%2F2018%2F05%2F29%2Fhello-world%2F</url>
-    <content type="text"><![CDATA[Welcome to Hexo! This is your very first post. Check documentation for more info. If you get any problems when using Hexo, you can find the answer in troubleshooting or you can ask me on GitHub. Quick StartCreate a new post1$ hexo new "My New Post" More info: Writing Run server1$ hexo server More info: Server Generate static files1$ hexo generate More info: Generating Deploy to remote sites1$ hexo deploy More info: Deployment]]></content>
+    <title><![CDATA[Stacked Deconvolutional Network for Semantic Segmentation]]></title>
+    <url>%2F2018%2F06%2F01%2FStacked-Deconvolutional-Network-for-Semantic-Segmentation%2F</url>
+    <content type="text"><![CDATA[]]></content>
+  </entry>
+  <entry>
+    <title><![CDATA[Gated Feedback Refinement Network for Dense Image Labeling]]></title>
+    <url>%2F2018%2F05%2F31%2FGated-Feedback-Re%EF%AC%81nement-Network-for-Dense-Image-Labeling%2F</url>
+    <content type="text"><![CDATA[在本文中作者在encoder-decoder结构的Skip Connection中利用门控机制结合深层特征减少浅层特征得歧义性。 Paper: http://openaccess.thecvf.com/content_cvpr_2017/html/Islam_Gated_Feedback_Refinement_CVPR_2017_paper.html Code: https://github.com/mrochan/gfrnet Gated Feedback Reﬁnement Network作者认为在encoder-decoder结构中直接利用Skip Connection将encoder中的特征传到decoder中是有问题的，因为encoder中的特征相对较浅，具有一定的歧义性，更深层的特征由于有较大的感受野更具有判别能力(如上图)，因此为了减少这种歧义性，利用gating mechanism将浅层特征和深层特征结合再通过Skip Connection传到decoder中。作者所提出的Gated Feedback Reﬁnement Network(G-FRNet)如图所示，encoder网络基于VGG-16，移除了最后的softmax层和全连接层，在其后又加了两个卷积层conv6和conv7，这样对于一幅输入图像就获得了7个大小的特征图($f_1,f_2,…,f_7$)。decoder网络为作者提出的Feedback Reﬁnement Network(FRN)，在decoder中通过使用gating mechanism调节由Skip Connection传来的信息。通过对$f_7$应用通道数类别数3×3的卷积得到第一幅粗略的预测图$Pm^G$。之后的预测图以$Pm^{RU_1}$为例，原始的Skip Connection将$f_5$与对$Pm^G$卷积之后的特征图进行concatenate。而作者首先基于$f_5$和更深层的特征图$f_6$通过gate unit得到gated特征图$G_1$(这么做的原因就是上面说的)来过滤掉类别的歧义性。然后与粗略的预测结果$Pm^G$结合得到大分辨率的特征图$Pm^{RU_1}$。重复这个过程得到后续的预测图$Pm^{RU_2}$，$Pm^{RU_3}$，$Pm^{RU_4}$，$Pm^{RU_5}$。 其中gate unit如图所示，分别对$f^i_g$和$f^{i+1}_g$做3×3的卷积使得$f^{i+1}_g$的通道数与$f^i_g$相同。然后上采样两倍得到$f^{i+1}_{g^{‘}}$，这样特征图大小也相同，最后两个特征图逐元素相乘得到$M_f$。 网络中的RU代表Gated Reﬁnement Unit，其结构如图所示。Gated Reﬁnement Unit的输入为粗略的预测图$R_f$和gated特征图$M_f$。首先对gated特征图$M_f$做3×3的卷积得到特征图$m_f$，然后$m_f$与$R_f$concatenate，最后再做一次3×3的卷积得到特征图$R’_f$。上采样两倍后传入下一个Gated Reﬁnement Unit。可视化结果如下 网络最后会得到6个特征图$Pm^G$，$Pm^{RU_1}$，$Pm^{RU_2}$，$Pm^{RU_3}$，$Pm^{RU_4}$，$Pm^{RU_5}$，每个特征图都可以计算loss，最终的loss fuction由这6个loss求和得到。 Experiments实验平台：caffeGPU：Titan x网络conv1到conv5用VGG-16初始化，其他卷积层Xavier初始化输入图像大小: Pascal VOC 320×320 CamVid 360×480]]></content>
+      <categories>
+        <category>Semantic Segmentation</category>
+      </categories>
+      <tags>
+        <tag>Semantic Segmentation</tag>
+        <tag>encoder-decoder</tag>
+        <tag>gating mechanism</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[DeepLab V3--Rethinking Atrous Convolution for Semantic Image Segmentation]]></title>
+    <url>%2F2018%2F05%2F30%2FDeepLab-V3-Rethinking-Atrous-Convolution-for-Semantic-Image-Segmentation%2F</url>
+    <content type="text"><![CDATA[在DeepLab的第3个版本中，作者主要通过串联或并行Dilation Convolution解决多尺度的问题，并且优化了第2版中提出的Atrous Spatial Pyramid Pooling module，在PASCAL VOC 2012数据集上达到state-of-art的效果。 Paper: https://arxiv.org/abs/1706.05587 Code: https://github.com/tensorflow/models/tree/master/research/deeplab 1. Introduction在这篇论文中，作者提出语义分割的挑战有2个(在上一个版本的论文中作者认为有3个，第三个是由于DXNN的invariance而带来的定位精度的减少，当时的解决方案是CRF)： 由于连续的pooling操作和stride不为1的卷积所造成的特征图的大小不断减小，但是这样却可以让DCNN学到更抽象的特征表达，解决方案是使用dilated Convolution。 另一个挑战是由于物体的多尺度问题。 作者分析了现有的解决多尺度问题的解决方法： 输入多个尺度的图像，分别训练，最后融合预测结果 encoder-decoder结构利用来自于encoder部分的多尺度特征来恢复decoder部分的空间分辨率 在网络后增加额外的模块来捕获大范围的信息，如DenseCRF 采用Spatial Pyramid Pooling 作者采用了串联或者并行的Atrous Spatial Pyramid Pooling module来克服多尺度的问题，设计了DeepLab V3。 2. Related Work在这里作者主要讨论了4种类型的FCN。 Image pyramid这种网络用小尺度的输入来编码大范围的上下文信息，而大尺度的输入用来保留小物体的细节。这种网络的缺点为：对于很大或者很深的网络由于GPU内存的限制并不能很好的同时输入多个尺度的图像进行训练，因此它经常用于测试阶段。 Encoder-decoder这种网络由两部分组成：在encoder中随着特征图大小的逐渐减少，越容易捕获大范围的信息，在decoder中逐渐地恢复特征图的大小。如SegNet，UNet，RefineNet等。 Context module这种网络包含额外的模块来编码大范围的上下文信息。例如DenseCRF. Spatial pyramid pooling这种模型应用金字塔池化在几个范围内来捕获上下文信息。如ParseNet，DeepLab V2，PSPNet。 在本文中，作者则用dilated convolution作为上下文模块和工具进行空间金字塔池化。 3. Methods3.1 Multi-grid MethodMulti-grid Method是指在block4到block7中采用不同的atrous rate。这是通过串联dilation convolution解决多尺度的问题。 3.2 Atrous Spatial Pyramid Pooling作者发现当在3×3的卷积采用越来越大的atrous rates的时候，有效的滤波权重越来越小，在极端情况下，退化成一个简单的1×1的卷积。因此为了克服这个问题且整合全局上下文信息，作者采用了图像级特征，即采用全局平均值池化得到1×1的特征图，然后双线性插值到需要的分辨率。最后改进版的ASPP由两部分组成：(a) 1个1×1的卷积和3个3×3的rate为(6,12,18)的卷积(全部都有batch normalization)(b) 全局平均值池化 所有分支之后concatenate传到另一个1×1的卷积(有batch normalization)，最后传到最终的1×1的卷积。 4. Experimental Evaluation实验设置：学习率策略：polycrop size：513上采样预测结果：在之前地工作中，训练时都是将ground truth下采样，但是作者发现下采样ground truth会移除一些细小地标注从而导致细节没有反向传播，因此保持ground truth不动非常重要，因此训练时采用上采样最终特征图。数据增强：随即缩放，随机左右翻转。 以串联方式应用artous convolution首先对于不同地output stride进行了比较，可以看到随着特征图地不断减小，导致语义分割地结果会持续下降：在保持output stride为16时，在RenNet50和ResNet101中添加不同数量串联block地比较在保持output stride为16时，在ResNet101中添加不同数量串联block和多种rate地artous卷积地比较在训练时output stride为16，但是在测试时output stride变为8可以得到更好地精度，当采用了多尺度地输入和翻转输入时，精度进一步提升。 以并行方式应用artous convolution，即Atrous Spatial Pyramid Pooling]]></content>
+      <categories>
+        <category>Semantic Segmentation</category>
+      </categories>
+      <tags>
+        <tag>Semantic Segmentation</tag>
+        <tag>Dilation Convolution</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Dilated Residual Networks]]></title>
+    <url>%2F2018%2F05%2F30%2FDilated-Residual-Networks%2F</url>
+    <content type="text"><![CDATA[将Dilation Convolution引入Image Classification任务中，使得在最终的特征图不至于太小而丢失太多的细节。为了由于引入Dilation Convolution带来的网格效应，提出了移除网格效应的方法。除此之外DRN还可以用于object localization和semantic segmentation任务中。 Paper: https://arxiv.org/abs/1705.09914 http://openaccess.thecvf.com/content_cvpr_2017/html/Yu_Dilated_Residual_Networks_CVPR_2017_paper.html Code: https://github.com/fyu/drn 1. Dilated Residual Networks如何将ResNet转变为DRN呢？ 将group 4的第一层stride变为1，dilation变为1，group 4中剩余卷积层和group 5的第一层dilation变为2，group 5中剩余卷积层dilation变为4。 2. Localization 如何将DRN用于Localization呢？ 直接移除global average pooling层，之后用1×1的卷积激活函数为softmax生成n个通道特征图。每一层中的像素值对应每类物体出现的概率。这样没有增加参数，也不需要重新训练模型用于Localization，可以直接将模型用于Localization。 3. Degridding由于引入Dilation Convolution带来的网格效应，作者通过3个步骤逐渐移除网格效应。 Removing max pooling。作者发现网络中的max pooling会带来高频的激活，这种高频的激活会传导到后面的层，最后加剧网格效应。因此取代max pooling层为卷积层。具体为：第一层7×7的卷积核数量由64变为16，然后跟随两个residual block。下图显示了这一操作的影响：DRN-A-18为max pooling之后的特征图，DRN-B-26为将max pooling变为卷积层后的特征图。 Adding layers。在网络的最后逐渐减少dilation，增加了dilation为2的residual block和dilation为1的block。这样ResNet-18由于前两步的操作增加了6层，变为DRN-B-26。 Removing residual connections。由于在上一步中最后加入的residual block含有residual connections，这仍然会带来网格效应，因此需要将level 7和level 8的residual connections移除，这就是最后的DRN-C-26。实验表明：DRN-C-26具有和DRN-A-34相似的精度，比DRN-A-50还高的定位精度和语义分割精度。 4. Experiments4.1 Image Classification 4.2 Weakly-supervised Object Localization 4.3 Semantic Segmentation]]></content>
+      <categories>
+        <category>Semantic Segmentation</category>
+      </categories>
+      <tags>
+        <tag>Semantic Segmentation</tag>
+        <tag>Dilation Convolution</tag>
+        <tag>Image Classification</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[Pixel Deconvolutional Networks]]></title>
+    <url>%2F2018%2F05%2F30%2FPixel-Deconvolutional-Networks%2F</url>
+    <content type="text"><![CDATA[作者为了解决deconvolution中出现的棋盘格效应，提出了pixel deconvolutional layer(PixelDCL)，来直接建立上采样特征图相邻像素的关系，可以直接替换掉任何deconvolution layer。 Paper: https://arxiv.org/abs/1705.06820 Code: https://github.com/divelab/PixelDCN 棋盘格效应： 效果图： 第三行为使用deconvolution的结果，第四行为作者提出的PixelDCL的结果。 1. Deconvolution layer1维的deconvolution：输入特征图为4×1，输出特征图为8×1。输入特征图的每个像素与卷积核相乘，结果依次偏移两个值，结果特征图的像素值为每列求和。可以看到紫色像素只和(1,3)有关，橙色像素只和(2,4)有关。因此可以分解为两个独立的卷积，如右图所示。可以看出相邻像素没有直接的关系，这就导致了棋盘格效应。 2维的deconvolution：对于2维的deconvolution，同理输入特征图为4×4，输出特征图为8×8，中间由不同的卷积核得到4个特征图，最终输出特征图由4个中间特征图重新排列得到。同样相邻像素没有直接的关系，这就导致了棋盘格效应。 2. Pixel deconvolutional layer在作者提出的PixelDCL中，中间特征图图是依次生成的，只有第一个中间特征图和输入特征图有关，后续所有中间特征图都只和之前的特征图有关。最终输出特征图还是由4个中间特征图重新排列得到。实际上，作者还提出了一种input pixel deconvolutional layer (iPixelDCL)，中间特征图不仅和之前的特征图有关，还和输入特征图有关，但是实验发现PixelDCL的效果比iPixelDCL和deconvolution效果好。 PixelDCL可以应用于语义分割网络，VAE和GAN中，作者将PixelDCL应用于UNet和VAE中测试了PixelDCL的效果。实际中，作者设计了一个更加简单的PixelDCL。如下图所示： 3. 实验结果]]></content>
+      <categories>
+        <category>Semantic Segmentation</category>
+      </categories>
+      <tags>
+        <tag>Semantic Segmentation</tag>
+        <tag>Deconvolution</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title><![CDATA[ICNet for Real-Time Semantic Segmentation on High-Resolution Images]]></title>
+    <url>%2F2018%2F05%2F29%2FICNet-for-Real-Time-Semantic-Segmentation-on-High-Resolution-Images%2F</url>
+    <content type="text"><![CDATA[project：https://hszhao.github.io/projects/icnet/ Paper: https://arxiv.org/abs/1704.08545 Code: https://github.com/hszhao/ICNet 1.Introduction当前fast semantic segmentation的状态下图是在Cityscapes数据集上测试速度和mIoU的比较： 一方面，可以看到大多数现有方法几乎都不能达到实时的要求。另一方面，虽然SegNet，ENet，SQ速度较快，但是mIoU低于60%。因此作者提出建立一个实用的快速语义分割框架。核心思想是：让低分辨率的图像先通过网络得到粗略的预测图，然后所提出的cascade fusion unit引入中等分辨率和高分辨率的图像逐渐改善预测图。 主要贡献 提出了image cascade network (ICNet)，它可以同时有效地利用低分辨率地语义信息和高分辨率的细节。 所提出的ICNet实现了5倍多的加速，减少了5倍多的内存消耗。 可以在1024×2048的图像上达到30.3fps的同时实现高质量的结果。 2. Related Work分别对High Quality Semantic Segmentation，Fast Semantic Segmentation和Video Segmentation Architectures进行回顾。 3. Speed Analysis3.1. Time Budget在这里作者先回顾了PSPNet的分割性能，然后引入了加速语义分割的直观策略，从它们网络的去缺点中，描述所提出的image cascade框架和cascade feature fusion unit。下图展示了PSPNet50(这里是优化后的，详细的变化在原文第6节)在512×1024和1024×2048分辨率下的运行时间。很显然当图像变大时，运行时间必然增加。同时网络的宽度(或卷积核的数量)也会影响运行时间。如在stage4 和 stage5阶段有相同的空间分辨率，但是在stage5的时间是stage4的4倍多。这是因为在stage5中的卷积核的数量是stage4的两倍。 3.2. Intuitive Speedup这里主要有三点： 1.输入降采样后的图像具体做法是：输入1/2或1/4的降采样后的图像，得到预测结果后，再上采样到原始大小。这样做的缺点是虽然时间减少了但是预测的结果非常粗糙，丢失了许多小的但是却重要的细节。如下图： 2.除了直接降采样图像外，另一个直接的方法是降采样特征图。在FCN中降采样32倍，DeepLab中降采样了8倍。作者测试PSPNet50降采样8倍，16倍，32倍的结果如下： 可以看到小的特征图需要的时间更少，而且即使是最小的特征图仍然需要131ms，达不到实时的要求。 3.除了以上策略外，另一个自然的方式是模型压缩。作者测试了最近提出的一种压缩方法，发现并没有满足实时的要求。即使只保留1/4的卷积核，所需要的时间还是太长了，与此同时mIuO非常低，不能产生合理的分割图。 4. Image Cascade Network4.1 主要结构和分支 首先将输入图像缩放到原图的1/2和1/4，分别将3个尺度的图像输入网络的3个分支。 对于低分辨率的图像，即原始图像的1/4大小，通过卷积及池化后缩小了1/8，对应原图的1/32，然后应用dilated convlution来增加感受野，输出为原始图像大小的1/32。 对于中等分辨率的图像，即原始图像的1/2大小，同样通过几个卷积层和池化层(和上面一个分支共享一部分卷积层来减少参数数量)后缩小了8倍，即原始图像的1/16。为了融合1/32的特征图和1/8的特征图，作者提出了cascade feature fusion(CFF)单元来产生1/16的特征图。 对于高等分辨率的图像，即原始图像，同样通过几个卷积层和池化层后缩小了8倍，得到1/8的特征图。为了融合1/32的特征图和1/8的特征图，作者提出了cascade feature fusion(CFF)单元来产生1/16的特征图。由于在中等分辨率时，已经恢复了大多数在低分辨率中丢失的语义信息，因此可以限制处理高分辨率时的卷积层的数量。只使用了3×3的卷积核和stride为2来降采样到原图的1/8。然后使用CFF单元整合由中等分辨率得到的特征图和原始图片得到的特征图。最终得到原始图像的1/8的特征图。 Cascade Label Guidance为了辅助学习过程，作者提出了Cascade Label Guidance策略：在训练时每个分支上采样2倍后，同时也将ground truth降采样1/16，1/8和1/4(紫线)，这样损失函数就有3项。在测试时将低分辨率和中等分辨率的这一操作丢弃。Cascade Label Guidance策略可以保证训练迭代更容易，梯度优化更平滑。 4.2 分支分析在ICnet中在第二分支有17个卷积层，第三分支只有3个卷积层，而且第一分支和第二分支共享部分计算。最深的网络结构应用在低分辨率图像上，这可以有效的提取大多数语义信息。即使超过50层，测试时运行时间不超过18ms，内存消耗不超过0.6G。因此，所提出的ICNet是一个非常高效和节省内存的结构。 4.3 和其他Cascade Structures的不同之处其他Cascade Structures都聚焦于融合单尺度或多尺度的输入的不同层的特征，而ICNet则用低分辨率的图像通过主体语义分割分支，再用高分辨率信息进行优化。 5. Cascade Feature Fusion and Final Model 为了结合不同分辨率的图像，提出了Cascade Feature Fusion(CCF)单元，输入包含3个部分：两个特征图$F_1$和$F_2$，大小为$H_1\times{W_1\times{C_1}}$和$H_2\times{W_2\times{C_2}}$,和一个ground truth label大小为$H_2\times{W_2\times{1}}$。$F_2$的大小是$F_1$的2倍。首先将$F_1$上采样2倍使得与$F_2$大小相同，然后用$3\times3$的卷积核，dilation 1的dilated convolution对上采样的特征图refine。而对于特征图$F_2$用$1\times1$的卷积使得与特征图$F_1$具有相同的通道数。在dilated convolution和$1\times1$的卷积后都使用了Batch normalization。最后两个特征图相加再通过ReLU激活函数，得到融合的特征图F^{‘}_2。除此之外，还对对上采样的特征图$F_1$添加了辅助分类器，辅助分类器损失的权重设为0.4。 5.1 The Loss Function最终的损失函数由3部分组成：$$L=\lambda_{1}L_1+\lambda_{2}L_2+\lambda_{3}L_3$$ 5.2 Final Model Compression最后为了进一步减少运行时间，对模型进行压缩。作者采取的是渐进式的方式。以压缩率为1/2为例，并没有直接移除一半的卷积核，而是先保存3/4的卷积核再进行fine-tuning。之后再移除更多的卷积核，再fine-tuning直到达到1/2的压缩率。 如何选择哪个卷积核要被移除呢？ 作者通过计算卷积核的L1范数，再根据L1范数进行排序，去掉那些较小的卷积核。这种方式不会剧烈的更新所有参数，因此可以较好地减少网络大小。 6. Experimental Evaluation实验平台：caffe CUDA7.5 CUDNN V5 GPU：TitanX 基础网络：PSPNet 修改： 在金字塔池化模块时的concat操作变为sum，减少特征维度从4096到2048 改变金字塔池化后的卷积操作的卷积核大小由$3\times3$变为$1\times1$ batch size：16 base learning rate：0.01 learning policy：poly max iteration：30k momentum：0.9 weight decy：0.0001 数据增强：随机镜像和随机缩放到0.5到2倍之间。 6.1 Model Compression以PSPNet50为baseline使用相同的模型压缩方法，与ICNet比较。 6.2 Ablation Study for Image Cascade Framework Video example：]]></content>
+      <categories>
+        <category>Semantic Segmentation</category>
+      </categories>
+      <tags>
+        <tag>Semantic Segmentation</tag>
+        <tag>Real-Time</tag>
+      </tags>
   </entry>
 </search>
