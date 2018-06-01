@@ -26,8 +26,8 @@
         <category>Semantic Segmentation</category>
       </categories>
       <tags>
-        <tag>Semantic Segmentation</tag>
         <tag>Dilation Convolution</tag>
+        <tag>Semantic Segmentation</tag>
       </tags>
   </entry>
   <entry>
@@ -38,8 +38,8 @@
         <category>Semantic Segmentation</category>
       </categories>
       <tags>
-        <tag>Semantic Segmentation</tag>
         <tag>Dilation Convolution</tag>
+        <tag>Semantic Segmentation</tag>
         <tag>Image Classification</tag>
       </tags>
   </entry>
