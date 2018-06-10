@@ -106,7 +106,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/05/30/DeepLab-V3-Rethinking-Atrous-Convolution-for-Semantic-Image-Segmentation/08.png">
 <meta property="og:image" content="http://yoursite.com/2018/05/30/DeepLab-V3-Rethinking-Atrous-Convolution-for-Semantic-Image-Segmentation/09.png">
 <meta property="og:image" content="http://yoursite.com/2018/05/30/DeepLab-V3-Rethinking-Atrous-Convolution-for-Semantic-Image-Segmentation/10.png">
-<meta property="og:updated_time" content="2018-05-31T09:24:02.284Z">
+<meta property="og:updated_time" content="2018-06-01T12:52:00.934Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="DeepLab V3--Rethinking Atrous Convolution for Semantic Image Segmentation">
 <meta name="twitter:description" content="在DeepLab的第3个版本中，作者主要通过串联或并行Dilation Convolution解决多尺度的问题，并且优化了第2版中提出的Atrous Spatial Pyramid Pooling module，在PASCAL VOC 2012数据集上达到state-of-art的效果。">
@@ -390,7 +390,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  1,130
+                  1,257
                 </span>
               
 
@@ -439,7 +439,8 @@
 <li><strong>Spatial pyramid pooling</strong><br>这种模型应用金字塔池化在几个范围内来捕获上下文信息。如ParseNet，DeepLab V2，PSPNet。</li>
 </ol>
 <p>在本文中，作者则用dilated convolution作为上下文模块和工具进行空间金字塔池化。</p>
-<h1 id="3-Methods"><a href="#3-Methods" class="headerlink" title="3. Methods"></a>3. Methods</h1><h2 id="3-1-Multi-grid-Method"><a href="#3-1-Multi-grid-Method" class="headerlink" title="3.1 Multi-grid Method"></a>3.1 Multi-grid Method</h2><p><img src="/2018/05/30/DeepLab-V3-Rethinking-Atrous-Convolution-for-Semantic-Image-Segmentation/00.png" alt="lbxx"><br>Multi-grid Method是指在block4到block7中采用不同的atrous rate。这是通过串联dilation convolution解决多尺度的问题。</p>
+<h1 id="3-Methods"><a href="#3-Methods" class="headerlink" title="3. Methods"></a>3. Methods</h1><p>作者首先以串联方式设计artous convolution模块。在ResNet的最后一个模块叫做block4，在block4后复制block4 3次得到block5，block6，block7。每个block中都包含3个3×3的卷积，除了在最后一个block stride为1，剩余blockstride都为2。如图中(a)所示。这种连续stride使得更深的block可以捕获大范围的信息，但是对于语义分割来说是有害的，因为细节都丢失了。所以在block3开始用artous convolution，rate依次为2，4，8，16。</p>
+<h2 id="3-1-Multi-grid-Method"><a href="#3-1-Multi-grid-Method" class="headerlink" title="3.1 Multi-grid Method"></a>3.1 Multi-grid Method</h2><p><img src="/2018/05/30/DeepLab-V3-Rethinking-Atrous-Convolution-for-Semantic-Image-Segmentation/00.png" alt="lbxx"><br>Multi-grid Method是指在block4到block7中采用不同的atrous rate。这是通过串联dilation convolution解决多尺度的问题。</p>
 <h2 id="3-2-Atrous-Spatial-Pyramid-Pooling"><a href="#3-2-Atrous-Spatial-Pyramid-Pooling" class="headerlink" title="3.2 Atrous Spatial Pyramid Pooling"></a>3.2 Atrous Spatial Pyramid Pooling</h2><p><img src="/2018/05/30/DeepLab-V3-Rethinking-Atrous-Convolution-for-Semantic-Image-Segmentation/02.png" alt="lbxx"><br>作者发现当在3×3的卷积采用越来越大的atrous rates的时候，有效的滤波权重越来越小，在极端情况下，退化成一个简单的1×1的卷积。因此为了克服这个问题且整合全局上下文信息，作者采用了图像级特征，即采用全局平均值池化得到1×1的特征图，然后双线性插值到需要的分辨率。<br><img src="/2018/05/30/DeepLab-V3-Rethinking-Atrous-Convolution-for-Semantic-Image-Segmentation/03.png" alt="lbxx"><br>最后改进版的ASPP由两部分组成：<br>(a) 1个1×1的卷积和3个3×3的rate为(6,12,18)的卷积(全部都有batch normalization)<br>(b) 全局平均值池化</p>
 <p>所有分支之后concatenate传到另一个1×1的卷积(有batch normalization)，最后传到最终的1×1的卷积。</p>
 <h1 id="4-Experimental-Evaluation"><a href="#4-Experimental-Evaluation" class="headerlink" title="4. Experimental Evaluation"></a>4. Experimental Evaluation</h1><p>实验设置：<br>学习率策略：poly<br>crop size：513<br>上采样预测结果：在之前地工作中，训练时都是将ground truth下采样，但是作者发现下采样ground truth会移除一些细小地标注从而导致细节没有反向传播，因此保持ground truth不动非常重要，因此训练时采用上采样最终特征图。<br>数据增强：随即缩放，随机左右翻转。</p>
@@ -570,7 +571,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-count">7</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -592,7 +593,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">7</span>
+                  <span class="site-state-item-count">8</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

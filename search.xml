@@ -1,9 +1,30 @@
 <?xml version="1.0" encoding="utf-8"?>
 <search>
   <entry>
+    <title><![CDATA[DeepLab V3+——Encoder-Decoder with Atrous Separable Convolution for Semantic Image Segmentation]]></title>
+    <url>%2F2018%2F06%2F03%2FEncoder-Decoder-with-Atrous-Separable-Convolution-for-Semantic-Image-Segmentation%2F</url>
+    <content type="text"><![CDATA[在DeepLab V3+中通过采用了encoder-decoder结构，在DeepLab V3中加入了一个简单有效的decoder模块来改善物体边缘的分割结果。除此之外还尝试使用Xception作为encoder，在Atrous Spatial Pyramid Pooling和decoder中应用depth-wise separable convolution得到了更快精度更高的网络，在PASCAL VOC 2012数据集上达到state-of-art的效果。 Paper: https://arxiv.org/abs/1802.02611 Code: https://github.com/tensorflow/models/tree/master/research/deeplab 1. Introduction在Introduction和related works中，作者回顾语义分割中的常用的两种结构： 空间金字塔池化 encoder-decoder空间金字塔池化(图a)可以池化不同分辨率的特征图来捕获丰富的上下文信息，而encoder-decoder结构(图b)则可以获得锋利的边界。因此，在DeepLab V3+中通过采用了encoder-decoder结构，在DeepLab V3中加入了一个简单有效的decoder模块来改善物体边缘的分割结果(图c)：先上采样4倍，在与encoder中的特征图concatenate，最后在上采样4倍恢复到原始图像大小。除此之外还尝试使用Xception作为encoder，在Atrous Spatial Pyramid Pooling和decoder中应用depth-wise separable convolution得到了更快精度更高的网络。 2. Methods encoderencoder就是DeepLab V3，通过修改ResNet101最后两(一)个block的stride，使得output stride为8(16)。之后在block4后应用改进后的Atrous Spatial Pyramid Pooling，将所得的特征图concatenate用1×1的卷积得到256个通道的特征图。 decoder在decoder中，特征图首先上采样4倍，然后与encoder中对应分辨率低级特征concatenate。在concatenate之前，由于低级特征图的通道数通常太多(256或512)，而从encoder中得到的富含语义信息的特征图通道数只有256，这样会淡化语义信息，因此在concatenate之前，需要将低级特征图通过1×1的卷积减少通道数。在concatenate之后用3×3的卷积改善特征，最后上采样4倍恢复到原始图像大小。 将Xception作为encoder原始的Xception结构如下：采用的Xception模型为MSRA team提出的改进的Xception，叫做Aligned Xception，并做了几点修改： 网络深度与Aligned Xception相同，不同的地方在于不修改entry flow network的结构，为了快速计算和有效的使用内存。 所有的max pooling操作替换成带stride的separable convolution，这能使得对任意分辨率的图像应用atrous separable convolution提取特征。 在每个3×3的depath-wise convolution后增加BN层和ReLU。 3. Experimental Evaluationlearning rate schedule：polyinitial learning rate 0.007crop size 513×513 3.1. Decoder Design Choicesdecoder的设计主要考虑三点： 1×1卷积的通道数。最后采用了48。 用来获得更锋利的边界的3×3的卷积。最后采用了2个3×3的卷积。在卷积类型方面，实验发现2个3×3的卷积效果要比1个或者3个3×3的卷积，或者卷积核为1×1的效果好。 所使用的encoder的低级特征。当同时使用conv2和conv3的特征时，先上采样2倍与conv3的特征concatenate，然后再上采样2倍与conv2的特征concatenate。这种结构并没有观察到显著的改进。因此最后只利用了conv2的特征。 3.2. ResNet-101 as Network Backbone 3.3. Xception as Network Backbone首先在ImageNet上预训练Xception。 3.4. Improvement along Object Boundaries使用trimap实验测量模型在分割边界的准确度。计算边界周围扩展频带(称为trimap)内的mIoU。结果如下：附MobileNet V2应用DeepLab V3+的结果]]></content>
+      <categories>
+        <category>Semantic Segmentation</category>
+      </categories>
+      <tags>
+        <tag>Dilation Convolution</tag>
+        <tag>Semantic Segmentation</tag>
+        <tag>encoder-decoder</tag>
+      </tags>
+  </entry>
+  <entry>
     <title><![CDATA[Stacked Deconvolutional Network for Semantic Segmentation]]></title>
     <url>%2F2018%2F06%2F01%2FStacked-Deconvolutional-Network-for-Semantic-Segmentation%2F</url>
-    <content type="text"><![CDATA[]]></content>
+    <content type="text"><![CDATA[作者是中科院自动化所CASIA_IVA_JD团队，在COCO Places Challenges 2017 Scene Parsing取得了冠军，其中就运用了这个网络。提出了Stacked Deconvolutional Network(SDN)，网络的第一个encoder为DenseNet161，后续SDN通过堆叠多个浅层的Deconvolutional Network来整合上下文信息和恢复位置信息，为了帮助网络训练和特征重用加入了inter-unit连接和intra-unit连接，同时用hierarchical supervision使网络各个部分学习到有判别力发的特征表达，有利于网络优化。 Paper: https://arxiv.org/abs/1708.04943Slide：http://presentations.cocodataset.org/Places17-CASIA_IVA_JD.pdf 比赛中采用了SDN，改进后的DeepLabV3和ResNet38三个模型集成。]]></content>
+      <categories>
+        <category>Semantic Segmentation</category>
+      </categories>
+      <tags>
+        <tag>Semantic Segmentation</tag>
+        <tag>deconvolution</tag>
+        <tag>encoder-decoder</tag>
+      </tags>
   </entry>
   <entry>
     <title><![CDATA[Gated Feedback Refinement Network for Dense Image Labeling]]></title>
@@ -21,7 +42,7 @@
   <entry>
     <title><![CDATA[DeepLab V3--Rethinking Atrous Convolution for Semantic Image Segmentation]]></title>
     <url>%2F2018%2F05%2F30%2FDeepLab-V3-Rethinking-Atrous-Convolution-for-Semantic-Image-Segmentation%2F</url>
-    <content type="text"><![CDATA[在DeepLab的第3个版本中，作者主要通过串联或并行Dilation Convolution解决多尺度的问题，并且优化了第2版中提出的Atrous Spatial Pyramid Pooling module，在PASCAL VOC 2012数据集上达到state-of-art的效果。 Paper: https://arxiv.org/abs/1706.05587 Code: https://github.com/tensorflow/models/tree/master/research/deeplab 1. Introduction在这篇论文中，作者提出语义分割的挑战有2个(在上一个版本的论文中作者认为有3个，第三个是由于DXNN的invariance而带来的定位精度的减少，当时的解决方案是CRF)： 由于连续的pooling操作和stride不为1的卷积所造成的特征图的大小不断减小，但是这样却可以让DCNN学到更抽象的特征表达，解决方案是使用dilated Convolution。 另一个挑战是由于物体的多尺度问题。 作者分析了现有的解决多尺度问题的解决方法： 输入多个尺度的图像，分别训练，最后融合预测结果 encoder-decoder结构利用来自于encoder部分的多尺度特征来恢复decoder部分的空间分辨率 在网络后增加额外的模块来捕获大范围的信息，如DenseCRF 采用Spatial Pyramid Pooling 作者采用了串联或者并行的Atrous Spatial Pyramid Pooling module来克服多尺度的问题，设计了DeepLab V3。 2. Related Work在这里作者主要讨论了4种类型的FCN。 Image pyramid这种网络用小尺度的输入来编码大范围的上下文信息，而大尺度的输入用来保留小物体的细节。这种网络的缺点为：对于很大或者很深的网络由于GPU内存的限制并不能很好的同时输入多个尺度的图像进行训练，因此它经常用于测试阶段。 Encoder-decoder这种网络由两部分组成：在encoder中随着特征图大小的逐渐减少，越容易捕获大范围的信息，在decoder中逐渐地恢复特征图的大小。如SegNet，UNet，RefineNet等。 Context module这种网络包含额外的模块来编码大范围的上下文信息。例如DenseCRF. Spatial pyramid pooling这种模型应用金字塔池化在几个范围内来捕获上下文信息。如ParseNet，DeepLab V2，PSPNet。 在本文中，作者则用dilated convolution作为上下文模块和工具进行空间金字塔池化。 3. Methods3.1 Multi-grid MethodMulti-grid Method是指在block4到block7中采用不同的atrous rate。这是通过串联dilation convolution解决多尺度的问题。 3.2 Atrous Spatial Pyramid Pooling作者发现当在3×3的卷积采用越来越大的atrous rates的时候，有效的滤波权重越来越小，在极端情况下，退化成一个简单的1×1的卷积。因此为了克服这个问题且整合全局上下文信息，作者采用了图像级特征，即采用全局平均值池化得到1×1的特征图，然后双线性插值到需要的分辨率。最后改进版的ASPP由两部分组成：(a) 1个1×1的卷积和3个3×3的rate为(6,12,18)的卷积(全部都有batch normalization)(b) 全局平均值池化 所有分支之后concatenate传到另一个1×1的卷积(有batch normalization)，最后传到最终的1×1的卷积。 4. Experimental Evaluation实验设置：学习率策略：polycrop size：513上采样预测结果：在之前地工作中，训练时都是将ground truth下采样，但是作者发现下采样ground truth会移除一些细小地标注从而导致细节没有反向传播，因此保持ground truth不动非常重要，因此训练时采用上采样最终特征图。数据增强：随即缩放，随机左右翻转。 以串联方式应用artous convolution首先对于不同地output stride进行了比较，可以看到随着特征图地不断减小，导致语义分割地结果会持续下降：在保持output stride为16时，在RenNet50和ResNet101中添加不同数量串联block地比较在保持output stride为16时，在ResNet101中添加不同数量串联block和多种rate地artous卷积地比较在训练时output stride为16，但是在测试时output stride变为8可以得到更好地精度，当采用了多尺度地输入和翻转输入时，精度进一步提升。 以并行方式应用artous convolution，即Atrous Spatial Pyramid Pooling]]></content>
+    <content type="text"><![CDATA[在DeepLab的第3个版本中，作者主要通过串联或并行Dilation Convolution解决多尺度的问题，并且优化了第2版中提出的Atrous Spatial Pyramid Pooling module，在PASCAL VOC 2012数据集上达到state-of-art的效果。 Paper: https://arxiv.org/abs/1706.05587 Code: https://github.com/tensorflow/models/tree/master/research/deeplab 1. Introduction在这篇论文中，作者提出语义分割的挑战有2个(在上一个版本的论文中作者认为有3个，第三个是由于DXNN的invariance而带来的定位精度的减少，当时的解决方案是CRF)： 由于连续的pooling操作和stride不为1的卷积所造成的特征图的大小不断减小，但是这样却可以让DCNN学到更抽象的特征表达，解决方案是使用dilated Convolution。 另一个挑战是由于物体的多尺度问题。 作者分析了现有的解决多尺度问题的解决方法： 输入多个尺度的图像，分别训练，最后融合预测结果 encoder-decoder结构利用来自于encoder部分的多尺度特征来恢复decoder部分的空间分辨率 在网络后增加额外的模块来捕获大范围的信息，如DenseCRF 采用Spatial Pyramid Pooling 作者采用了串联或者并行的Atrous Spatial Pyramid Pooling module来克服多尺度的问题，设计了DeepLab V3。 2. Related Work在这里作者主要讨论了4种类型的FCN。 Image pyramid这种网络用小尺度的输入来编码大范围的上下文信息，而大尺度的输入用来保留小物体的细节。这种网络的缺点为：对于很大或者很深的网络由于GPU内存的限制并不能很好的同时输入多个尺度的图像进行训练，因此它经常用于测试阶段。 Encoder-decoder这种网络由两部分组成：在encoder中随着特征图大小的逐渐减少，越容易捕获大范围的信息，在decoder中逐渐地恢复特征图的大小。如SegNet，UNet，RefineNet等。 Context module这种网络包含额外的模块来编码大范围的上下文信息。例如DenseCRF. Spatial pyramid pooling这种模型应用金字塔池化在几个范围内来捕获上下文信息。如ParseNet，DeepLab V2，PSPNet。 在本文中，作者则用dilated convolution作为上下文模块和工具进行空间金字塔池化。 3. Methods作者首先以串联方式设计artous convolution模块。在ResNet的最后一个模块叫做block4，在block4后复制block4 3次得到block5，block6，block7。每个block中都包含3个3×3的卷积，除了在最后一个block stride为1，剩余blockstride都为2。如图中(a)所示。这种连续stride使得更深的block可以捕获大范围的信息，但是对于语义分割来说是有害的，因为细节都丢失了。所以在block3开始用artous convolution，rate依次为2，4，8，16。 3.1 Multi-grid MethodMulti-grid Method是指在block4到block7中采用不同的atrous rate。这是通过串联dilation convolution解决多尺度的问题。 3.2 Atrous Spatial Pyramid Pooling作者发现当在3×3的卷积采用越来越大的atrous rates的时候，有效的滤波权重越来越小，在极端情况下，退化成一个简单的1×1的卷积。因此为了克服这个问题且整合全局上下文信息，作者采用了图像级特征，即采用全局平均值池化得到1×1的特征图，然后双线性插值到需要的分辨率。最后改进版的ASPP由两部分组成：(a) 1个1×1的卷积和3个3×3的rate为(6,12,18)的卷积(全部都有batch normalization)(b) 全局平均值池化 所有分支之后concatenate传到另一个1×1的卷积(有batch normalization)，最后传到最终的1×1的卷积。 4. Experimental Evaluation实验设置：学习率策略：polycrop size：513上采样预测结果：在之前地工作中，训练时都是将ground truth下采样，但是作者发现下采样ground truth会移除一些细小地标注从而导致细节没有反向传播，因此保持ground truth不动非常重要，因此训练时采用上采样最终特征图。数据增强：随即缩放，随机左右翻转。 以串联方式应用artous convolution首先对于不同地output stride进行了比较，可以看到随着特征图地不断减小，导致语义分割地结果会持续下降：在保持output stride为16时，在RenNet50和ResNet101中添加不同数量串联block地比较在保持output stride为16时，在ResNet101中添加不同数量串联block和多种rate地artous卷积地比较在训练时output stride为16，但是在测试时output stride变为8可以得到更好地精度，当采用了多尺度地输入和翻转输入时，精度进一步提升。 以并行方式应用artous convolution，即Atrous Spatial Pyramid Pooling]]></content>
       <categories>
         <category>Semantic Segmentation</category>
       </categories>
@@ -52,7 +73,7 @@
       </categories>
       <tags>
         <tag>Semantic Segmentation</tag>
-        <tag>Deconvolution</tag>
+        <tag>deconvolution</tag>
       </tags>
   </entry>
   <entry>
