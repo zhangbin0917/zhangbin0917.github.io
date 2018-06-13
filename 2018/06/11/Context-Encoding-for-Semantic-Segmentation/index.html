@@ -94,14 +94,14 @@
 <meta property="og:site_name" content="Zhang Bin&#39;s Blog">
 <meta property="og:description" content="提出了Context Encoding Module来捕获场景的语义上下文并选择性地强调与类别相关的特征图，所提出的EncNet实现了新的state-of-the-art的结果。在PASCAL-Context达到51.7% mIoU, 在PASCAL VOC 2012达到85.9% mIoU，单个模型在ADE20K test set达到0.5567,超过了COCO-Place Challenge">
 <meta property="og:locale" content="default">
-<meta property="og:image" content="http://yoursite.com/2018/06/11/Context-Encoding-for-Semantic-Segmentation/01.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/11/Context-Encoding-for-Semantic-Segmentation/Context-Encoding-for-Semantic-Segmentation/01.png">
 <meta property="og:image" content="http://yoursite.com/2018/06/11/Context-Encoding-for-Semantic-Segmentation/Context-Encoding-for-Semantic-Segmentation/00.png">
 <meta property="og:image" content="http://yoursite.com/2018/06/11/Context-Encoding-for-Semantic-Segmentation/Context-Encoding-for-Semantic-Segmentation/01.png">
-<meta property="og:updated_time" content="2018-06-13T14:07:55.506Z">
+<meta property="og:updated_time" content="2018-06-13T14:19:16.235Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Context Encoding for Semantic Segmentation(CVPR2018)">
 <meta name="twitter:description" content="提出了Context Encoding Module来捕获场景的语义上下文并选择性地强调与类别相关的特征图，所提出的EncNet实现了新的state-of-the-art的结果。在PASCAL-Context达到51.7% mIoU, 在PASCAL VOC 2012达到85.9% mIoU，单个模型在ADE20K test set达到0.5567,超过了COCO-Place Challenge">
-<meta name="twitter:image" content="http://yoursite.com/2018/06/11/Context-Encoding-for-Semantic-Segmentation/01.png">
+<meta name="twitter:image" content="http://yoursite.com/2018/06/11/Context-Encoding-for-Semantic-Segmentation/Context-Encoding-for-Semantic-Segmentation/01.png">
 
 
 
@@ -319,7 +319,6 @@
         
 
         <div class="post-meta">
-		  
           <span class="post-time">
             
               <span class="post-meta-item-icon">
@@ -407,7 +406,7 @@
       
 
       
-        <p>提出了Context Encoding Module来捕获场景的语义上下文并选择性地强调与类别相关的特征图，所提出的EncNet实现了新的state-of-the-art的结果。在PASCAL-Context达到51.7% mIoU, 在PASCAL VOC 2012达到85.9% mIoU，单个模型在ADE20K test set达到0.5567,超过了COCO-Place Challenge 2017的冠军。Context Encoding Module也可以改善用于分类的相对较浅的网络的特征表达，在CIFAR-10上14层的网络实现了3.45%的错误率与state-of-the-art approaches的10倍多层网络的精度相当。<br><img src="01.png" alt=""><br><a id="more"></a></p>
+        <p>提出了Context Encoding Module来捕获场景的语义上下文并选择性地强调与类别相关的特征图，所提出的EncNet实现了新的state-of-the-art的结果。在PASCAL-Context达到51.7% mIoU, 在PASCAL VOC 2012达到85.9% mIoU，单个模型在ADE20K test set达到0.5567,超过了COCO-Place Challenge 2017的冠军。Context Encoding Module也可以改善用于分类的相对较浅的网络的特征表达，在CIFAR-10上14层的网络实现了3.45%的错误率与state-of-the-art approaches的10倍多层网络的精度相当。<br><img src="Context-Encoding-for-Semantic-Segmentation/01.png" alt=""><br><a id="more"></a></p>
 <p>paper: <a href="https://arxiv.org/abs/1803.08904" target="_blank" rel="noopener">https://arxiv.org/abs/1803.08904</a><br><a href="http://openaccess.thecvf.com/content_cvpr_2018/html/Zhang_Context_Encoding_for_CVPR_2018_paper.html" target="_blank" rel="noopener">http://openaccess.thecvf.com/content_cvpr_2018/html/Zhang_Context_Encoding_for_CVPR_2018_paper.html</a><br>code: <a href="https://github.com/zhanghang1989/PyTorch-Encoding" target="_blank" rel="noopener">https://github.com/zhanghang1989/PyTorch-Encoding</a><br>author：<a href="http://hangzh.com/" target="_blank" rel="noopener">Hang Zhang</a>, <a href="http://eceweb1.rutgers.edu/vision/dana.html" target="_blank" rel="noopener">Kristin Dana</a>, <a href="http://shijianping.me/" target="_blank" rel="noopener">Jianping Shi</a>, <a href="http://zhongyuezhang.com/" target="_blank" rel="noopener">Zhongyue Zhang</a>, <a href="http://www.ee.cuhk.edu.hk/~xgwang/" target="_blank" rel="noopener">Xiaogang Wang</a>, <a href="https://scholar.google.com/citations?user=GaSWCoUAAAAJ&amp;hl=en" target="_blank" rel="noopener">Ambrish Tyagi</a>, <a href="http://www.amitkagrawal.com/" target="_blank" rel="noopener">Amit Agrawal</a></p>
 <h1 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h1><p>最近语义分割网络使用基于多分辨率金字塔来扩大感受野，如PSPSNet中的Spatial Pyramid Pooling和Deeplab中的Atrous Spatial Pyramid Pooling。虽然这些方法可以提升性能，但是上下文地表达不明确，导致了一个问题：增加感受野就等同于整合了上下文信息了吗？如图所示是来自于ADE20K中的一张图片，包含150个类别。如果允许标注者先选择图像的语境(如卧室)，接着工具会提供一个小的相关的类别列表(如床，椅子等)，这会极大地减少可能的类别搜索空间。同样，如果可以设计一个方法来充分利用场景语境类别的概率的关系，对网络来说语义分割会更容易。<br><img src="Context-Encoding-for-Semantic-Segmentation/00.png" alt=""><br>是否可以把传统方法的上下文编码和深度学习结合？之前作者就设计了一个Encoding Layer整合字典学习和残差编码过程到一个CNN层中来捕获无序的表达，在纹理分类中获得了state-of-the-art的结果。在这篇论文中作者延申Encoding Layer来捕获全局特征统计信息来理解语义上下文。<br>这篇论文的两个贡献：</p>
 <ol>
