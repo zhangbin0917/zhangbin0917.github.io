@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Semantic Segmentation," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="作者认为在预测一个像素的类别时，靠近靠近这个像素的区域比相对较远的区域更加重要。因此提出了Vortex Pooling来有效的上下文信息。用Vortex Pooling取代DeepLab v3中的ASPP muodule后在PASCAl VOC 2012验证集上超过DeepLab v3 1.5%，在测试集上超过0.6%。">
+<meta name="keywords" content="Semantic Segmentation">
+<meta property="og:type" content="article">
+<meta property="og:title" content="论文阅读 - Vortex Pooling: Improving Context Representation in Semantic Segmentation">
+<meta property="og:url" content="http://yoursite.com/2018/06/14/Vortex-Pooling-Improving-Context-Representation-in-Semantic-Segmentation/index.html">
+<meta property="og:site_name" content="Zhang Bin&#39;s Blog">
+<meta property="og:description" content="作者认为在预测一个像素的类别时，靠近靠近这个像素的区域比相对较远的区域更加重要。因此提出了Vortex Pooling来有效的上下文信息。用Vortex Pooling取代DeepLab v3中的ASPP muodule后在PASCAl VOC 2012验证集上超过DeepLab v3 1.5%，在测试集上超过0.6%。">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/06/14/Vortex-Pooling-Improving-Context-Representation-in-Semantic-Segmentation/01.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/14/Vortex-Pooling-Improving-Context-Representation-in-Semantic-Segmentation/00.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/14/Vortex-Pooling-Improving-Context-Representation-in-Semantic-Segmentation/01.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/14/Vortex-Pooling-Improving-Context-Representation-in-Semantic-Segmentation/02.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/14/Vortex-Pooling-Improving-Context-Representation-in-Semantic-Segmentation/03.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/14/Vortex-Pooling-Improving-Context-Representation-in-Semantic-Segmentation/04.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/14/Vortex-Pooling-Improving-Context-Representation-in-Semantic-Segmentation/05.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/14/Vortex-Pooling-Improving-Context-Representation-in-Semantic-Segmentation/06.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/14/Vortex-Pooling-Improving-Context-Representation-in-Semantic-Segmentation/07.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/14/Vortex-Pooling-Improving-Context-Representation-in-Semantic-Segmentation/08.png">
+<meta property="og:updated_time" content="2018-06-16T07:43:14.917Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="论文阅读 - Vortex Pooling: Improving Context Representation in Semantic Segmentation">
+<meta name="twitter:description" content="作者认为在预测一个像素的类别时，靠近靠近这个像素的区域比相对较远的区域更加重要。因此提出了Vortex Pooling来有效的上下文信息。用Vortex Pooling取代DeepLab v3中的ASPP muodule后在PASCAl VOC 2012验证集上超过DeepLab v3 1.5%，在测试集上超过0.6%。">
+<meta name="twitter:image" content="http://yoursite.com/2018/06/14/Vortex-Pooling-Improving-Context-Representation-in-Semantic-Segmentation/01.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/06/14/Vortex-Pooling-Improving-Context-Representation-in-Semantic-Segmentation/"/>
+
+
+
+
+
+  <title>论文阅读 - Vortex Pooling: Improving Context Representation in Semantic Segmentation | Zhang Bin's Blog</title>
+  
+
+
+
+
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zhang Bin's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Less interests, more interest!!!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/14/Vortex-Pooling-Improving-Context-Representation-in-Semantic-Segmentation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bin Zhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/jonathon-reed-190894.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhang Bin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">论文阅读 - Vortex Pooling: Improving Context Representation in Semantic Segmentation</h1>
+        
+
+        <div class="post-meta">
+		  
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-14T17:37:02+08:00">
+                2018-06-14
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Semantic-Segmentation/" itemprop="url" rel="index">
+                    <span itemprop="name">Semantic Segmentation</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  1,230
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>作者认为在预测一个像素的类别时，靠近靠近这个像素的区域比相对较远的区域更加重要。因此提出了Vortex Pooling来有效的上下文信息。用Vortex Pooling取代DeepLab v3中的ASPP muodule后在PASCAl VOC 2012验证集上超过DeepLab v3 1.5%，在测试集上超过0.6%。<br><img src="/2018/06/14/Vortex-Pooling-Improving-Context-Representation-in-Semantic-Segmentation/01.png" alt=""><br><a id="more"></a></p>
+<h1 id="1-DeepLab-v3-recap"><a href="#1-DeepLab-v3-recap" class="headerlink" title="1. DeepLab v3 recap"></a>1. DeepLab v3 recap</h1><p><img src="/2018/06/14/Vortex-Pooling-Improving-Context-Representation-in-Semantic-Segmentation/00.png" alt=""><br>&emsp;&emsp;在DeepLab v3中使用了ResNet-101和ASPP module分别进行feature extraction和feature aggregation。<br>&emsp;&emsp;ASPP mudule中是由一个1×1的卷积，3个3×3的卷积和平均值池化组成的。<br>&emsp;&emsp;ASPP mudule的输入为h×w×c的特征图，作者这里将特征图看作h×w个c维的descriptor，在分类一个像素是使用了25个descriptor，计算方式如下：<br>&emsp;&emsp;<em>1×1的卷积使用了1个descriptor，3个3×3的卷积使用了(3×3)×3=27个descriptor，但是中心像素在1×1的卷积时已经算过了，因此需要减去3，所以在ASPP module一共使用了(1+27)-3=25个descriptor</em><br>&emsp;&emsp;随后作者定义了descriptor的利用率：$r=\frac{u}{hw}$<br>&emsp;&emsp;在输入特征图为513×513的情况下，ASPP module的输入特征图h和w都为65，所以ASPP的利用率为$r=\frac{25}{65×65}\approx0.0059$，这意味着ASPP module只使用了所有descriptor的0.59%，所以ASPP module只使用了所有descriptor的一小部分，这会丢失一些重要的上下文信息。</p>
+<p>&emsp;&emsp;因此，作者的这篇论文的目的是改进feature aggregation的方法。<strong>一方面，在聚合局部和上下文信息时，应该考虑尽可能多的descriptor，这可以使逐像素的分类得到全面的上下文特征；另一方面，虽然需要更多的descriptor，但是应该区别对待descriptor，因为靠近target pixel的区域一般包含更多的语义信息，可以得到一个好的特征表达，对于那些远离target pixel的区域，粗略的表达就足够上下文信息</strong>。因此作者提出了两个有更高的利用率的module。</p>
+<h1 id="2-Vortex-Pooling"><a href="#2-Vortex-Pooling" class="headerlink" title="2. Vortex Pooling"></a>2. Vortex Pooling</h1><p><img src="/2018/06/14/Vortex-Pooling-Improving-Context-Representation-in-Semantic-Segmentation/01.png" alt=""></p>
+<h2 id="2-1-Module-A"><a href="#2-1-Module-A" class="headerlink" title="2.1 Module A"></a>2.1 Module A</h2><p>&emsp;&emsp;在Module A中首先对特征图用k×k的平均值池化，然后使用四个不同dilation rate为1，12，24，36的卷积层，然后聚合得到descriptor。Module A的利用率的越是$k^2$。</p>
+<h2 id="2-2-Module-B"><a href="#2-2-Module-B" class="headerlink" title="2.2 Module B"></a>2.2 Module B</h2><p>&emsp;&emsp;由于在Module A中同样对待所有的descriptor而不管是否靠近target pixel，作者又提出了Module B，也把它叫做Vortex Pooling。在Module B中首先分别对特征图采用3×3，9×9，27×27的平均值池化，然后使用四个不同dilation rate为1，3，9，27的卷积层，然后聚合得到descriptor。1，3，9，27这样的几何序列不仅对不同的子区域的关注不同，而且后续还可以更加高效的执行。当h和w小于81时，Module B的利用率为1，在实际中h和w小于81很容易达到。</p>
+<h2 id="2-3-Accelerate-Vortex-Pooling"><a href="#2-3-Accelerate-Vortex-Pooling" class="headerlink" title="2.3 Accelerate Vortex Pooling"></a>2.3 Accelerate Vortex Pooling</h2><p><img src="/2018/06/14/Vortex-Pooling-Improving-Context-Representation-in-Semantic-Segmentation/02.png" alt=""><br>&emsp;&emsp;Vortex Pooling中包含了pooling操作和大的卷积核，效率不够高。因此作者提出了Module C来加速Vortex Pooling。具体做法为在对特征图X进行3×3的池化后得到Y1，计算Y2时不对X做9×9的池化，而对Y1做3×3的池化得到Y2，同理对对Y2做3×3的池化得到Y3。所以在Module B中使用了一个3×3的池化，一个9×9的池化，一个9×9的池化。而在Module C中使用了3个3×3的池化。实验表明使用Module C时测试速度和Deeplab v3相似但是有更高的精度。</p>
+<h1 id="3-Experimental-Results"><a href="#3-Experimental-Results" class="headerlink" title="3. Experimental Results"></a>3. Experimental Results</h1><h2 id="3-1-Ablation-Studies"><a href="#3-1-Ablation-Studies" class="headerlink" title="3.1 Ablation Studies"></a>3.1 Ablation Studies</h2><p>这部分使用ResNet50做实验</p>
+<ul>
+<li>Learning rate policy：poly 初始学习率0.007，30000次迭代</li>
+<li>Data Augmentation：随机缩放图像0.5倍到2倍，随机翻转</li>
+<li>Crop Size：513×513</li>
+<li>Multi-grid：在block4中dilation rate为(1,2,4)来减轻网格效应</li>
+<li>Inference strategy on the val set：通过在ResNet的后两个block中使用dilated convolution使output stride为8</li>
+<li>Batch Normalization：batchsize为16，同样使用了EncNet中的synchronized batch nomalization layer</li>
+</ul>
+<p><img src="/2018/06/14/Vortex-Pooling-Improving-Context-Representation-in-Semantic-Segmentation/03.png" alt=""><br>&emsp;&emsp;实验发现在Module A中使用5×5的池化比ASPP精度高，但是当进一步增加pooling size时，不能进一步增加精度。如虽然9×9的池化的利用率为0.479比5×5的池化利用率0.148高，但是9×9的池化更差，作者认为对于靠近target pixel的区域，9×9的池化太大而丢失了细节；对于远离target pixel的区域，9×9的池化太大小而不能全面的理解上下文。而在Module B中利用不同的池化大小可以避免这个问题，小的池化可以建立对于细节的特征表达，大的池化可以帮助得到粗略的上下文信息。</p>
+<h2 id="3-2-Compared-with-State-of-the-Art"><a href="#3-2-Compared-with-State-of-the-Art" class="headerlink" title="3.2 Compared with State-of-the-Art"></a>3.2 Compared with State-of-the-Art</h2><p>整体网络结构如下，以ResNet101为基础网络，取代了DeepLab v3中的ASPP为Vortex Pooling，同时也使用了一个全局平均值池化来整合全局特征，最后通过1×1的卷积得到最终的预测图。<br><img src="/2018/06/14/Vortex-Pooling-Improving-Context-Representation-in-Semantic-Segmentation/04.png" alt=""></p>
+<p><img src="/2018/06/14/Vortex-Pooling-Improving-Context-Representation-in-Semantic-Segmentation/05.png" alt=""><br><img src="/2018/06/14/Vortex-Pooling-Improving-Context-Representation-in-Semantic-Segmentation/06.png" alt=""><br><img src="/2018/06/14/Vortex-Pooling-Improving-Context-Representation-in-Semantic-Segmentation/07.png" alt=""><br><img src="/2018/06/14/Vortex-Pooling-Improving-Context-Representation-in-Semantic-Segmentation/08.png" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Semantic-Segmentation/" rel="tag"># Semantic Segmentation</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/12/遥感数据集/" rel="next" title="遥感数据集">
+                <i class="fa fa-chevron-left"></i> 遥感数据集
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/06/19/Windows通过ssh连接内网Ubuntu/" rel="prev" title="Windows通过ssh连接内网Ubuntu">
+                Windows通过ssh连接内网Ubuntu <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/jonathon-reed-190894.jpg"
+                alt="Bin Zhang" />
+            
+              <p class="site-author-name" itemprop="name">Bin Zhang</p>
+              <p class="site-description motion-element" itemprop="description">I am currently a Master candidate in Wuhan University majoring Photogrammetry and remote sensing</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-DeepLab-v3-recap"><span class="nav-text">1. DeepLab v3 recap</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Vortex-Pooling"><span class="nav-text">2. Vortex Pooling</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Module-A"><span class="nav-text">2.1 Module A</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-Module-B"><span class="nav-text">2.2 Module B</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-Accelerate-Vortex-Pooling"><span class="nav-text">2.3 Accelerate Vortex Pooling</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Experimental-Results"><span class="nav-text">3. Experimental Results</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-Ablation-Studies"><span class="nav-text">3.1 Ablation Studies</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-Compared-with-State-of-the-Art"><span class="nav-text">3.2 Compared with State-of-the-Art</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bin Zhang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
