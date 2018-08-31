@@ -75,7 +75,7 @@
 
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="Semantic Segmentation,Channel Attention mechanism,Feature Pyramid," />
 
 
 
@@ -86,17 +86,30 @@
 
 
 
-<meta name="description" content="I am currently a Master candidate in Wuhan University majoring Photogrammetry and remote sensing">
-<meta name="keywords" content="Remote Sensing, Image Processing, Deep learning">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Zhang Bin&#39;s Blog">
-<meta property="og:url" content="http://yoursite.com/tags/Channel-Attention/index.html">
+<meta name="description" content="论文作者将注意力机制和空间金字塔（spatial pyramid）相结合，来提取准确而密集的特征并获取像素标签。他们引入了一个特征金字塔注意力模块 (Feature Pyramid Attention module)，在高层的输出上施加空间金字塔注意力结构，并结合全局池化策略来学习更好的特征表征。此外，利用每个解码器层中的全局注意力上采样模块 (Global Attention Upsample">
+<meta name="keywords" content="Semantic Segmentation,Channel Attention mechanism,Feature Pyramid">
+<meta property="og:type" content="article">
+<meta property="og:title" content="论文阅读 - Pyramid Attention Network for Semantic Segmentation">
+<meta property="og:url" content="http://yoursite.com/2018/06/20/Pyramid-Attention-Network-for-Semantic-Segmentation/index.html">
 <meta property="og:site_name" content="Zhang Bin&#39;s Blog">
-<meta property="og:description" content="I am currently a Master candidate in Wuhan University majoring Photogrammetry and remote sensing">
+<meta property="og:description" content="论文作者将注意力机制和空间金字塔（spatial pyramid）相结合，来提取准确而密集的特征并获取像素标签。他们引入了一个特征金字塔注意力模块 (Feature Pyramid Attention module)，在高层的输出上施加空间金字塔注意力结构，并结合全局池化策略来学习更好的特征表征。此外，利用每个解码器层中的全局注意力上采样模块 (Global Attention Upsample">
 <meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2018/06/20/Pyramid-Attention-Network-for-Semantic-Segmentation/00.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/20/Pyramid-Attention-Network-for-Semantic-Segmentation/01.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/20/Pyramid-Attention-Network-for-Semantic-Segmentation/02.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/20/Pyramid-Attention-Network-for-Semantic-Segmentation/00.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/20/Pyramid-Attention-Network-for-Semantic-Segmentation/03.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/20/Pyramid-Attention-Network-for-Semantic-Segmentation/04.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/20/Pyramid-Attention-Network-for-Semantic-Segmentation/05.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/20/Pyramid-Attention-Network-for-Semantic-Segmentation/06.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/20/Pyramid-Attention-Network-for-Semantic-Segmentation/07.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/20/Pyramid-Attention-Network-for-Semantic-Segmentation/08.png">
+<meta property="og:image" content="http://yoursite.com/2018/06/20/Pyramid-Attention-Network-for-Semantic-Segmentation/09.png">
+<meta property="og:updated_time" content="2018-06-20T13:47:56.685Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Zhang Bin&#39;s Blog">
-<meta name="twitter:description" content="I am currently a Master candidate in Wuhan University majoring Photogrammetry and remote sensing">
+<meta name="twitter:title" content="论文阅读 - Pyramid Attention Network for Semantic Segmentation">
+<meta name="twitter:description" content="论文作者将注意力机制和空间金字塔（spatial pyramid）相结合，来提取准确而密集的特征并获取像素标签。他们引入了一个特征金字塔注意力模块 (Feature Pyramid Attention module)，在高层的输出上施加空间金字塔注意力结构，并结合全局池化策略来学习更好的特征表征。此外，利用每个解码器层中的全局注意力上采样模块 (Global Attention Upsample">
+<meta name="twitter:image" content="http://yoursite.com/2018/06/20/Pyramid-Attention-Network-for-Semantic-Segmentation/00.png">
 
 
 
@@ -126,18 +139,28 @@
 
 
 
-  <link rel="canonical" href="http://yoursite.com/tags/Channel-Attention/"/>
+  <link rel="canonical" href="http://yoursite.com/2018/06/20/Pyramid-Attention-Network-for-Semantic-Segmentation/"/>
 
 
 
 
 
-  <title>Tag: Channel Attention | Zhang Bin's Blog</title>
+  <title>论文阅读 - Pyramid Attention Network for Semantic Segmentation | Zhang Bin's Blog</title>
   
 
 
 
 
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b50a5b1e67dd059ba3990c68a8ba3110";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -151,7 +174,7 @@
     
   
 
-  <div class="container sidebar-position-left ">
+  <div class="container sidebar-position-left page-post-detail">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -279,54 +302,217 @@
           <div id="content" class="content">
             
 
-  
-  
-  
-  <div class="post-block tag">
+  <div id="posts" class="posts-expand">
+    
 
-    <div id="posts" class="posts-collapse">
-      <div class="collection-title">
-        <h1>Channel Attention<small>Tag</small>
-        </h1>
-      </div>
+  
 
-      
-        
+  
+  
+  
 
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/06/20/Pyramid-Attention-Network-for-Semantic-Segmentation/">
 
-      <h2 class="post-title">
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bin Zhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/jonathon-reed-190894.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhang Bin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
         
-            <a class="post-title-link" href="/2018/06/19/Learning-a-Discriminative-Feature-Network-for-Semantic-Segmentation/" itemprop="url">
-              
-                <span itemprop="name">论文阅读 - Learning a Discriminative Feature Network for Semantic Segmentation (CVPR2018)</span>
-              
-            </a>
         
-      </h2>
+          <h1 class="post-title" itemprop="name headline">论文阅读 - Pyramid Attention Network for Semantic Segmentation</h1>
+        
 
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2018-06-19T16:29:17+08:00"
-              content="2018-06-19" >
-          06-19
-        </time>
-      </div>
+        <div class="post-meta">
+		  
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-20T16:21:12+08:00">
+                2018-06-20
+              </time>
+            
 
-    </header>
-  </article>
+            
 
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Semantic-Segmentation/" itemprop="url" rel="index">
+                    <span itemprop="name">Semantic Segmentation</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  2,465
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>论文作者将注意力机制和空间金字塔（spatial pyramid）相结合，来提取准确而密集的特征并获取像素标签。他们引入了一个特征金字塔注意力模块 (Feature Pyramid Attention module)，在高层的输出上施加空间金字塔注意力结构，并结合全局池化策略来学习更好的特征表征。此外，利用每个解码器层中的全局注意力上采样模块 (Global Attention Upsample module) 得到的全局上下文特征信息，作为低级别特征的指导，以此来筛选不同类别的定位细节。提出的方法在 PASCAL VOC 2012 数据集上实现了当前最佳的性能。而且无需经过 COCO 数据集的预训练过程，他们的模型在 PASCAL VOC 2012 和 Cityscapes 基准测试中能够实现了 84.0% mIoU。<br><img src="/2018/06/20/Pyramid-Attention-Network-for-Semantic-Segmentation/00.png" alt=""><br><a id="more"></a><br>paper: <a href="https://arxiv.org/abs/1805.10180" target="_blank" rel="noopener">https://arxiv.org/abs/1805.10180</a></p>
+<h1 id="1-Introduction"><a href="#1-Introduction" class="headerlink" title="1. Introduction"></a>1. Introduction</h1><p>&emsp;&emsp;作者在语义分割时主要考虑两个挑战。<strong>首先是多尺度目标的存在会加大语义分割任务中类别分类的困难。</strong>为了解决这个问题，PSPNet 或 DeepLab提出空间金字塔结构，旨在不同的网格尺度或扩张率下(称之为空间金字塔池化，ASPP)，融合多尺度的特征信息。在 ASPP 模块中，扩张卷积是一种稀疏计算，这可能会导致产生grid artifacts。而 PSPNet 中提出的金字塔池化模块则可能会丢失像素级别的定位信息。受SENet和Parsenet的启发，作者尝试从CNN的高层次特征中提取出准确的像素级注意力特征。<br>&emsp;&emsp;<strong>另一个问题是，高层次的特征在对类别进行准确分类时非常有效，但在重组原始分辨率的二类预测问题方面比较薄弱。</strong>一些U型网络，如SegNet，Refinenet以及Large Kernel Matters能够在复杂的解码器模块中使用低层次信息来帮助高层次特征恢复图像细节。但是，这些方法都很耗时，运行效率不高。解决这个问题，作者提出了一种称为<strong>Global Attention Upsample (GAU)</strong>方法，这是一个有效的解码器模块，在不需要耗费过多计算资源的情况下，它可以提取高层次特征的全局上下文信息，作为低层次特征的加权计算的指导。<br>作者的工作主要有以下三个贡献：</p>
+<ol>
+<li><strong>提出一个Feature Pyramid Attention(FPA)模块，可以在基于FCN的像素预测框架中嵌入不同尺度的上下文特征信息</strong></li>
+<li><strong>开发了一个高效的解码器模块Global Attention Upsample，用于处理图像的语义分割问题</strong></li>
+<li><strong>结合Feature Pyramid Attention模块和Global Attention Upsample模块，Pyramid Attention Network 在VOC2012和cityscapes的测试基准中取得了当前最佳的性能</strong></li>
+</ol>
+<h1 id="2-Method"><a href="#2-Method" class="headerlink" title="2. Method"></a>2. Method</h1><h2 id="2-1-Feature-Pyramid-Attention"><a href="#2-1-Feature-Pyramid-Attention" class="headerlink" title="2.1 Feature Pyramid Attention"></a>2.1 Feature Pyramid Attention</h2><p><img src="/2018/06/20/Pyramid-Attention-Network-for-Semantic-Segmentation/01.png" alt=""><br>&emsp;&emsp;最近，PSPNet或DeepLab分别用空间金字塔池化和ASPP模块，但是dilated convolution可能会导致局部信息丢失或网格效应，这对于特征图的局部一致性是有害的。受到注意力机制的启发，作者考虑如何由高级特征提供精确的像素级的注意力。在当前的语义分割结构中，金字塔结构可以提取不同尺度的特征同时可以增加感受野，但是缺乏全局上下文的注意力取选择channle-wise的特征如SENet和EncNet一样。另一方面，channel-wise的attention并不足够取有效地提取多尺度特征且缺乏pixel-wise的信息。<br>&emsp;&emsp;因此，作者提出了<strong>Feature Pyramid Attention(FPA)</strong>模块。模块能够融合来自 U 型网络 (如特征金字塔网络 FPN) 所提取的三种不同尺度的金字塔特征。为了更好地提取不同尺度下金字塔特征的上下文信息，作者<strong>在金字塔结构中分别使用3×3, 5×5, 7×7的卷积核</strong>。由于高层次特征图的分辨率较小，因此我们使用较大的内核并不会带来太多的计算负担。随后，金字塔结构逐步集成不同尺度下的特征信息，这样可以更准确地结合相邻尺度的上下文特征。<strong>然后，经过 1×1 卷积处理后，由 CNN 所提取的原始特征通过金字塔注意力特征进行逐像素相乘</strong>。此外，还引入了<strong>全局池化</strong>分支来联结输出的特征，这将进一步提高FPA模块的性能。得益于空间金字塔结构，FPA 模块可以融合不同尺度的上下文信息，同时还能为高层次的特征图提供更好的像素级注意力。不像PSPNet和ASPPconcatenate不同金字塔尺度的特征图，上下文信息和原始特征相乘是逐像素的，不会引入太多的计算量。</p>
+<h2 id="2-2-Global-Attention-Upsample"><a href="#2-2-Global-Attention-Upsample" class="headerlink" title="2.2 Global Attention Upsample"></a>2.2 Global Attention Upsample</h2><p><img src="/2018/06/20/Pyramid-Attention-Network-for-Semantic-Segmentation/02.png" alt=""><br>&emsp;&emsp;由于PSPNet和Deeplab中的直接上采样和DUC中的one-step decoder缺乏不同尺度的低级特征图信息，可能对恢复空间定位精度有害。一般的encoder-decoder网络在decoder中逐渐地恢复尖锐地边界，但是大多数方法使用了复杂地decoder block，这消耗了大量地计算资源。最近研究表明将CNN和精心设计地金字塔模块可以获得很好的性能。作者认为decoder主要地特性为恢复类别像素地定位精度。而且含有大量的类别信息地高级特征可以用来给低级信息加入不同地权重去选择精确的位置细节信息。<br>&emsp;&emsp;因此，作者提出的<strong>全局注意力上采样模块(Global Attention Upsample，GAU)</strong>，通过全局池化过程将全局上下文信息作为低层特征的指导，来选择类别的定位细节。具体地说，<strong>对低层次特征执行3×3 的卷积操作，以减少CNN特征图的通道数。从高层次特征生成的全局上下文信息依次经过1×1卷积、batch normalization和nonlinearity，然后再与低层次特征相乘。最后，高层次特征与加权后的低层次特征相加并进行逐步的上采样过程</strong>。GAU模块不仅能够更有效地适应不同尺度下的特征映射，还能以简单的方式为低层次的特征映射提供指导信息。</p>
+<h2 id="2-3-Network-Architecture"><a href="#2-3-Network-Architecture" class="headerlink" title="2.3 Network Architecture"></a>2.3 Network Architecture</h2><p><img src="/2018/06/20/Pyramid-Attention-Network-for-Semantic-Segmentation/00.png" alt=""><br>&emsp;&emsp;结合特征金字塔注意力模块 (FPA) 和全局注意力上采样模块 (GAU)，提出金字塔注意力网络 (PAN)。使用在 ImageNet 数据集上预训练好的 ResNet-101 模型，辅以扩张卷积策略来提取特征图。具体地说，在res5b模块上应用扩张率2的扩张卷积，以便ResNet输出的特征图大小为原输入图像的1/16，这与DeepLabv3+模型中的设置是一致的。正如PSPNet和DUC模型那样，用三个 3×3 卷积层来取代原ResNet-101模型中的7×7卷积。此外，使用FPA模块来收集ResNet的输出中密集的像素级注意力信息。结合全局的上下文信息，经GAU模块后，生成最终的预测图。</p>
+<h1 id="3-Experimental-Results"><a href="#3-Experimental-Results" class="headerlink" title="3. Experimental Results"></a>3. Experimental Results</h1><ul>
+<li>poly learning rate policy</li>
+<li>initial learning rate 4e-3</li>
+<li>batch size 16</li>
+<li>weight decay 0.0001</li>
+<li>randomly left-right flipping and scaling between 0.5 and 2</li>
+</ul>
+<h2 id="3-1-Ablation-Experiments"><a href="#3-1-Ablation-Experiments" class="headerlink" title="3.1 Ablation Experiments"></a>3.1 Ablation Experiments</h2><h3 id="3-1-1-Feature-Pyramid-Attention"><a href="#3-1-1-Feature-Pyramid-Attention" class="headerlink" title="3.1.1 Feature Pyramid Attention"></a>3.1.1 Feature Pyramid Attention</h3><p>分别对池化类型、金字塔结构、卷积核大小、全局池化四种设置进行了 Ablation Experiments 分析，结果如下：其中 AVE 表示平均池化策略，MAX 表示最大池化，C333 代表全部使用 3×3 的卷积核，C357 表示所使用的卷积核分别为 3×3、5×5 和 7×7，GP 代表全局池化分支，SE 表示使用 SENet 注意力模块。</p>
+<p><strong>池化类型</strong>：发现 AVE 的性能要优于 MAX：对于 3×3 的卷积核设置，AVE 的性能能达到 77.54%，优于 MAX 所取得的77.13%。</p>
+<p><strong>金字塔结构</strong>：在验证集上能取得 72.60％ 的 mIoU。此外，使用  C333 和 AVE 时，模型的性能能够从 72.6％ 提升至 77.54％。还使用 SENet 注意力模块来取代金字塔结构，进一步对比评估二者的性能。实验结果表明，与 SENet 注意力模块相比，C333 和 AVE 设置能将性能提高了近1.8％。</p>
+<p><strong>卷积核大小</strong>：对于使用平均池化的金字塔结构，使用 C357 取代 C333 卷积核设置，金字塔结构中特征映射的分辨率为 16×16，8×8，4×4。实验结果表明，模型性能能够从 77.54％ 提高至 78.19％。</p>
+<p><strong>全局池化</strong>：进一步在金字塔结构中添加全局池化分支以提高模型性能。实验结果表明，在最佳设置下模型能够取得 78.37 的 mIoU 和 95.03% 的 Pixel Acc。<br><img src="/2018/06/20/Pyramid-Attention-Network-for-Semantic-Segmentation/03.png" alt=""><br><img src="/2018/06/20/Pyramid-Attention-Network-for-Semantic-Segmentation/04.png" alt=""></p>
+<h3 id="3-1-2-Global-Attention-Upsample"><a href="#3-1-2-Global-Attention-Upsample" class="headerlink" title="3.1.2 Global Attention Upsample"></a>3.1.2 Global Attention Upsample</h3><p>首先，评估 ResNet101+GAU 模型，然后将 FPA 和 GAU 模块结合并在 VOC 2012 验证集中评估我们的模型。分别在三种不同的解码器设置下评估模型：(1) 仅使用跳跃连接的低级特征而没有全局上下文注意力分支。(2) 使用 1×1 卷积来减少 GAU 模块中的低层次特征的通道数。(3) 用 3×3 卷积代替 1×1 卷积减少通道数。<br><img src="/2018/06/20/Pyramid-Attention-Network-for-Semantic-Segmentation/05.png" alt=""><br>此外，还比较了ResNet101+GAU 模型、Global Convolution Network 和 Discriminate Feature Network。<br><img src="/2018/06/20/Pyramid-Attention-Network-for-Semantic-Segmentation/06.png" alt=""></p>
+<h2 id="3-2-PASCAL-VOC-2012"><a href="#3-2-PASCAL-VOC-2012" class="headerlink" title="3.2 PASCAL VOC 2012"></a>3.2 PASCAL VOC 2012</h2><p>结合 FPA 模块和 GAU 模块的最佳设置，在 PASVAL VOC 2012 数据集上评估了金字塔注意力网络 (PAN)。实验结果如表4、表5所示。可以看到，PAN 取得了84.0% mIoU，超过现有的所有方法。<br><img src="/2018/06/20/Pyramid-Attention-Network-for-Semantic-Segmentation/07.png" alt=""><br><img src="/2018/06/20/Pyramid-Attention-Network-for-Semantic-Segmentation/08.png" alt=""></p>
+<h2 id="3-3-Cityscapes"><a href="#3-3-Cityscapes" class="headerlink" title="3.3 Cityscapes"></a>3.3 Cityscapes</h2><p><img src="/2018/06/20/Pyramid-Attention-Network-for-Semantic-Segmentation/09.png" alt=""></p>
 
       
     </div>
+    
+    
+    
 
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Semantic-Segmentation/" rel="tag"># Semantic Segmentation</a>
+          
+            <a href="/tags/Channel-Attention-mechanism/" rel="tag"># Channel Attention mechanism</a>
+          
+            <a href="/tags/Feature-Pyramid/" rel="tag"># Feature Pyramid</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/06/19/Learning-a-Discriminative-Feature-Network-for-Semantic-Segmentation/" rel="next" title="论文阅读 - Learning a Discriminative Feature Network for Semantic Segmentation (CVPR2018)">
+                <i class="fa fa-chevron-left"></i> 论文阅读 - Learning a Discriminative Feature Network for Semantic Segmentation (CVPR2018)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
   </div>
   
   
   
+  </article>
 
-  
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
 
 
           </div>
@@ -334,6 +520,10 @@
 
 
           
+
+  
+
+
 
         </div>
         
@@ -354,8 +544,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -374,7 +573,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -396,7 +595,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
@@ -419,6 +618,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#1-Introduction"><span class="nav-text">1. Introduction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2-Method"><span class="nav-text">2. Method</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#2-1-Feature-Pyramid-Attention"><span class="nav-text">2.1 Feature Pyramid Attention</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-2-Global-Attention-Upsample"><span class="nav-text">2.2 Global Attention Upsample</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-3-Network-Architecture"><span class="nav-text">2.3 Network Architecture</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#3-Experimental-Results"><span class="nav-text">3. Experimental Results</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#3-1-Ablation-Experiments"><span class="nav-text">3.1 Ablation Experiments</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-1-Feature-Pyramid-Attention"><span class="nav-text">3.1.1 Feature Pyramid Attention</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-2-Global-Attention-Upsample"><span class="nav-text">3.1.2 Global Attention Upsample</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2-PASCAL-VOC-2012"><span class="nav-text">3.2 PASCAL VOC 2012</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-3-Cityscapes"><span class="nav-text">3.3 Cityscapes</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
@@ -568,6 +783,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
 
   
 

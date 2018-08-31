@@ -104,7 +104,7 @@
 <meta property="og:image" content="http://yoursite.com/2018/05/30/Dilated-Residual-Networks/07.png">
 <meta property="og:image" content="http://yoursite.com/2018/05/30/Dilated-Residual-Networks/08.png">
 <meta property="og:image" content="http://yoursite.com/2018/05/30/Dilated-Residual-Networks/09.png">
-<meta property="og:updated_time" content="2018-06-14T06:41:15.630Z">
+<meta property="og:updated_time" content="2018-06-28T14:30:55.553Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="论文阅读 - Dilated Residual Networks">
 <meta name="twitter:description" content="将Dilation Convolution引入Image Classification任务中，使得在最终的特征图不至于太小而丢失太多的细节。为了由于引入Dilation Convolution带来的网格效应，提出了移除网格效应的方法。除此之外DRN还可以用于object localization和semantic segmentation任务中。">
@@ -150,6 +150,16 @@
 
 
 
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b50a5b1e67dd059ba3990c68a8ba3110";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
 
 
 
@@ -389,7 +399,7 @@
                   <span class="post-meta-item-text">Words count in article&#58;</span>
                 
                 <span title="Words count in article">
-                  533
+                  583
                 </span>
               
 
@@ -431,6 +441,7 @@
 </li>
 <li><p>Removing residual connections。由于在上一步中最后加入的residual block含有residual connections，这仍然会带来网格效应，因此需要将level 7和level 8的residual connections移除，这就是最后的DRN-C-26。实验表明：DRN-C-26具有和DRN-A-34相似的精度，比DRN-A-50还高的定位精度和语义分割精度。</p>
 </li>
+<li>在code中作者还设计了DRN-C的简化版DRN-D，DRN-D在7×7的卷积之后去掉了2个3×3的卷积，也去掉了最后2个3×3的卷积。减少了4层</li>
 </ol>
 <p><img src="/2018/05/30/Dilated-Residual-Networks/04.png" alt="lbxx"><br><img src="/2018/05/30/Dilated-Residual-Networks/05.png" alt="lbxx"></p>
 <h1 id="4-Experiments"><a href="#4-Experiments" class="headerlink" title="4. Experiments"></a>4. Experiments</h1><h2 id="4-1-Image-Classification"><a href="#4-1-Image-Classification" class="headerlink" title="4.1 Image Classification"></a>4.1 Image Classification</h2><p><img src="/2018/05/30/Dilated-Residual-Networks/06.png" alt="lbxx"></p>
@@ -563,7 +574,7 @@
               
                 <a href="/archives">
               
-                  <span class="site-state-item-count">14</span>
+                  <span class="site-state-item-count">15</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -585,7 +596,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-count">14</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>
