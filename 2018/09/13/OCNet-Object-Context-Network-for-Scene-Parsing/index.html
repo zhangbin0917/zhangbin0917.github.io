@@ -1,0 +1,1171 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+  
+  
+    
+    
+  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
+  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Semantic Segmentation,Self Attention Mechanism," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="不同于之前图像级的context的方法，这篇论文提出逐像素的object context，object context由像素P所对应的类别的物体组成。由于测试时不知道标签信息，所以用Self Attention方法通过学习逐像素的相似度图估计objects。在此基础上有进一步提出了Pyramid Object Context和Atrous Spatial Pyramid Object Contex">
+<meta name="keywords" content="Semantic Segmentation,Self Attention Mechanism">
+<meta property="og:type" content="article">
+<meta property="og:title" content="OCNet: Object Context Network for Scene Parsing&lt;br&gt;(Microsoft Research)">
+<meta property="og:url" content="http://yoursite.com/2018/09/13/OCNet-Object-Context-Network-for-Scene-Parsing/index.html">
+<meta property="og:site_name" content="Zhang Bin&#39;s Blog">
+<meta property="og:description" content="不同于之前图像级的context的方法，这篇论文提出逐像素的object context，object context由像素P所对应的类别的物体组成。由于测试时不知道标签信息，所以用Self Attention方法通过学习逐像素的相似度图估计objects。在此基础上有进一步提出了Pyramid Object Context和Atrous Spatial Pyramid Object Contex">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="https://github.com/PkuRainBow/OCNet/raw/master/OCNet.png?raw=true">
+<meta property="og:image" content="http://yoursite.com/2018/09/13/OCNet-Object-Context-Network-for-Scene-Parsing/01.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/13/OCNet-Object-Context-Network-for-Scene-Parsing/02.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/13/OCNet-Object-Context-Network-for-Scene-Parsing/03.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/13/OCNet-Object-Context-Network-for-Scene-Parsing/04.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/13/OCNet-Object-Context-Network-for-Scene-Parsing/05.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/13/OCNet-Object-Context-Network-for-Scene-Parsing/06.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/13/OCNet-Object-Context-Network-for-Scene-Parsing/07.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/13/OCNet-Object-Context-Network-for-Scene-Parsing/08.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/13/OCNet-Object-Context-Network-for-Scene-Parsing/09.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/13/OCNet-Object-Context-Network-for-Scene-Parsing/10.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/13/OCNet-Object-Context-Network-for-Scene-Parsing/11.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/13/OCNet-Object-Context-Network-for-Scene-Parsing/12.png">
+<meta property="og:image" content="http://yoursite.com/2018/09/13/OCNet-Object-Context-Network-for-Scene-Parsing/13.png">
+<meta property="og:updated_time" content="2018-09-14T07:40:13.493Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="OCNet: Object Context Network for Scene Parsing&lt;br&gt;(Microsoft Research)">
+<meta name="twitter:description" content="不同于之前图像级的context的方法，这篇论文提出逐像素的object context，object context由像素P所对应的类别的物体组成。由于测试时不知道标签信息，所以用Self Attention方法通过学习逐像素的相似度图估计objects。在此基础上有进一步提出了Pyramid Object Context和Atrous Spatial Pyramid Object Contex">
+<meta name="twitter:image" content="https://github.com/PkuRainBow/OCNet/raw/master/OCNet.png?raw=true">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/09/13/OCNet-Object-Context-Network-for-Scene-Parsing/"/>
+
+
+
+
+
+  <title>OCNet: Object Context Network for Scene Parsing<br>(Microsoft Research) | Zhang Bin's Blog</title>
+  
+
+
+
+
+
+  <script type="text/javascript">
+    var _hmt = _hmt || [];
+    (function() {
+      var hm = document.createElement("script");
+      hm.src = "https://hm.baidu.com/hm.js?b50a5b1e67dd059ba3990c68a8ba3110";
+      var s = document.getElementsByTagName("script")[0];
+      s.parentNode.insertBefore(hm, s);
+    })();
+  </script>
+
+
+
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zhang Bin's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">Less interests, more interest!!!</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+
+      
+        <li class="menu-item menu-item-search">
+          
+            <a href="javascript:;" class="popup-trigger">
+          
+            
+              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
+            
+            Search
+          </a>
+        </li>
+      
+    </ul>
+  
+
+  
+    <div class="site-search">
+      
+  <div class="popup search-popup local-search-popup">
+  <div class="local-search-header clearfix">
+    <span class="search-icon">
+      <i class="fa fa-search"></i>
+    </span>
+    <span class="popup-btn-close">
+      <i class="fa fa-times-circle"></i>
+    </span>
+    <div class="local-search-input-wrapper">
+      <input autocomplete="off"
+             placeholder="Searching..." spellcheck="false"
+             type="text" id="local-search-input">
+    </div>
+  </div>
+  <div id="local-search-result"></div>
+</div>
+
+
+
+    </div>
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/13/OCNet-Object-Context-Network-for-Scene-Parsing/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bin Zhang">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/jonathon-reed-190894.jpg">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhang Bin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">OCNet: Object Context Network for Scene Parsing<br>(Microsoft Research)</h1>
+        
+
+        <div class="post-meta">
+		  
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-09-13T14:50:18+08:00">
+                2018-09-13
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-wordcount">
+              
+                
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                
+                <span title="Words count in article">
+                  924
+                </span>
+              
+
+              
+
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>不同于之前图像级的context的方法，这篇论文提出逐像素的object context，object context由像素P所对应的类别的物体组成。由于测试时不知道标签信息，所以用Self Attention方法通过学习逐像素的相似度图估计objects。在此基础上有进一步提出了Pyramid Object Context和Atrous Spatial Pyramid Object Context来捕获多尺度的上下文。在object context module基础上提出了OCNet，OCNet在Cityscapes和ADE20K数据集上取得了state-of-the-art的结果。<br><img src="https://github.com/PkuRainBow/OCNet/raw/master/OCNet.png?raw=true" alt=""><br><a id="more"></a></p>
+<p>paper: <a href="https://arxiv.org/abs/1809.00916" target="_blank" rel="noopener">https://arxiv.org/abs/1809.00916</a><br>code: <a href="https://github.com/PkuRainBow/OCNet" target="_blank" rel="noopener">https://github.com/PkuRainBow/OCNet</a></p>
+<p>主要贡献：</p>
+<ol>
+<li>提出了逐像素的object context，包含了与像素P相同类别的objects的信息。</li>
+<li>OCNet在Cityscapes和ADE20K数据集上取得了state-of-the-art的结果</li>
+</ol>
+<h1 id="OverView"><a href="#OverView" class="headerlink" title="OverView"></a>OverView</h1><p><img src="/2018/09/13/OCNet-Object-Context-Network-for-Scene-Parsing/01.png" alt=""><br>OCNet以ResNet-101为backbone(后两个block为dilated convolution，dilation rate分别为2和4)，其后是这篇文章提出的object context module去计算逐像素的object context，最后是1×1的卷积输出预测图。object context module是基于Self Attention Mechanism，作者一共提出了3种不同的object context module: base-OC, Pyramid-OC, ASP-OC。</p>
+<h1 id="Object-Context"><a href="#Object-Context" class="headerlink" title="Object Context"></a>Object Context</h1><p><img src="/2018/09/13/OCNet-Object-Context-Network-for-Scene-Parsing/02.png" alt=""><br>这里大致介绍了Object Context module中的变量和基本原理。<br>X为输入的特征图，P为位置特征图，W为由self-attention得到的逐像素的相似度图，第i行表示所有像素与第i个像素的相关性，C为Object Context module最后得到的逐像素的object context表达。用公式表示为：<br>$$c_{i}=\sum_{j=1}^{N}{w_{i,j}\phi\left ( x_{j} \right )}$$<br>其中W可由以下公式得到：<br>$$w_{i,j}=\Phi \left ( x_{i},x_{j},p_{i},p_{j} \right )$$<br>进一步又可以写成：<br>$$\bar{x}_{i} = x_{i}+p_{i} \quad w_{i,j}=\Phi \left ( \bar{x}_{i},\bar{x}_{j} \right )=\frac{exp\left ( f_{query}\left ( \bar{x}_{i} \right )^{T} f_{key}\left ( \bar{x}_{j} \right )\right )}{\mathbb{C}\left ( \bar{x}_{i} \right )}$$<br>其中$\mathbb{C}\left ( \bar{x}_{i} \right )=\sum_{j=1}^{N}exp\left ( f_{query}\left ( \bar{x}_{i} \right )^{T} f_{key}\left ( \bar{x}_{j} \right )\right )$</p>
+<h1 id="Object-Context-Module"><a href="#Object-Context-Module" class="headerlink" title="Object Context Module"></a>Object Context Module</h1><p><img src="/2018/09/13/OCNet-Object-Context-Network-for-Scene-Parsing/03.png" alt=""><br>这里介绍了3种不同的object context module: base-OC, Pyramid-OC, ASP-OC。每个object context module都含有3个阶段：(1)计算X；(2)计算C；(3)融合。</p>
+<h2 id="Base-OC"><a href="#Base-OC" class="headerlink" title="Base-OC"></a>Base-OC</h2><p>(1)计算X: 3×3的卷积减少channel从2048到512<br>(2)计算C: 用self-attention模块计算逐像素的attention map和object context<br>(3)融合: concatenate C 和 X<br>进一步用1×1的卷积减少channel维度为512</p>
+<h2 id="Pyramid-OC-受PSPNet的启发"><a href="#Pyramid-OC-受PSPNet的启发" class="headerlink" title="Pyramid-OC(受PSPNet的启发)"></a>Pyramid-OC(受PSPNet的启发)</h2><p>(1)计算X: 3×3的卷积减少channel从2048到512<br>(2)计算C: 在四个分支中分别用self-attention模块计算逐像素的attention map和object context。第一个分支把全部特征图作为输入，第二个分支把特征图分为2×2的子区域，每个子区域应用共享的transform，第三个和第四个分支把输入分为3×3和6×6的子区域，每个子区域的transform不共享。最后concatenate每个分支的结果并用1×1的卷积增加X的维度与object context的维度相等再进行concatenate<br>(3)融合: 进一步用1×1的卷积减少channel维度为512</p>
+<h2 id="ASP-OC-受DeepLAbV3的ASPP启发"><a href="#ASP-OC-受DeepLAbV3的ASPP启发" class="headerlink" title="ASP-OC(受DeepLAbV3的ASPP启发)"></a>ASP-OC(受DeepLAbV3的ASPP启发)</h2><p>(1)计算X: 共有5个分支。分别为1×1的卷积，3×3的卷积，dilation rate为12的3×3卷积，dilation rate为24的3×3卷积，dilation rate为36的3×3卷积<br>(2)计算C: 对每个分支的结果分别用self-attention模块计算逐像素的attention map和object context。实验发现再2，3，4，5分支中使用self-attention模块会有害performance<br>(3)融合: concatenate C 和 X，进一步用1×1的卷积减少channel维度为512</p>
+<h1 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h1><h2 id="Influence-of-the-Positional-Feature"><a href="#Influence-of-the-Positional-Feature" class="headerlink" title="Influence of the Positional Feature"></a>Influence of the Positional Feature</h2><p><img src="/2018/09/13/OCNet-Object-Context-Network-for-Scene-Parsing/04.png" alt=""></p>
+<h2 id="Influence-of-the-Key-Query-transform"><a href="#Influence-of-the-Key-Query-transform" class="headerlink" title="Influence of the Key/Query transform"></a>Influence of the Key/Query transform</h2><p><img src="/2018/09/13/OCNet-Object-Context-Network-for-Scene-Parsing/05.png" alt=""></p>
+<h2 id="Influence-of-the-Self-attention-in-ASP-OC"><a href="#Influence-of-the-Self-attention-in-ASP-OC" class="headerlink" title="Influence of the Self-attention in ASP-OC"></a>Influence of the Self-attention in ASP-OC</h2><p><img src="/2018/09/13/OCNet-Object-Context-Network-for-Scene-Parsing/06.png" alt=""></p>
+<h2 id="Influence-of-Auxiliary-loss"><a href="#Influence-of-Auxiliary-loss" class="headerlink" title="Influence of Auxiliary loss"></a>Influence of Auxiliary loss</h2><p><img src="/2018/09/13/OCNet-Object-Context-Network-for-Scene-Parsing/07.png" alt=""></p>
+<h2 id="Influence-of-the-OHEM-Ms-Flip-Validation-set"><a href="#Influence-of-the-OHEM-Ms-Flip-Validation-set" class="headerlink" title="Influence of the OHEM, Ms, Flip, Validation set"></a>Influence of the OHEM, Ms, Flip, Validation set</h2><p><img src="/2018/09/13/OCNet-Object-Context-Network-for-Scene-Parsing/08.png" alt=""></p>
+<h2 id="Comparison-with-Baseline"><a href="#Comparison-with-Baseline" class="headerlink" title="Comparison with Baseline"></a>Comparison with Baseline</h2><p><img src="/2018/09/13/OCNet-Object-Context-Network-for-Scene-Parsing/09.png" alt=""><br><img src="/2018/09/13/OCNet-Object-Context-Network-for-Scene-Parsing/10.png" alt=""></p>
+<h2 id="Comparison-with-State-of-the-art"><a href="#Comparison-with-State-of-the-art" class="headerlink" title="Comparison with State-of-the-art"></a>Comparison with State-of-the-art</h2><p><img src="/2018/09/13/OCNet-Object-Context-Network-for-Scene-Parsing/11.png" alt=""><br><img src="/2018/09/13/OCNet-Object-Context-Network-for-Scene-Parsing/12.png" alt=""></p>
+<h2 id="Visualization-of-the-object-context"><a href="#Visualization-of-the-object-context" class="headerlink" title="Visualization of the object context"></a>Visualization of the object context</h2><p><img src="/2018/09/13/OCNet-Object-Context-Network-for-Scene-Parsing/13.png" alt=""></p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Semantic-Segmentation/" rel="tag"># Semantic Segmentation</a>
+          
+            <a href="/tags/Self-Attention-Mechanism/" rel="tag"># Self Attention Mechanism</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/08/03/BiSeNet-Bilateral-Segmentation-Network-for-Real-time-Semantic-Segmentation/" rel="next" title="BiSeNet: Bilateral Segmentation Network for Real-time Semantic Segmentation<br>(ECCV 2018 Megvii Inc.)">
+                <i class="fa fa-chevron-left"></i> BiSeNet: Bilateral Segmentation Network for Real-time Semantic Segmentation<br>(ECCV 2018 Megvii Inc.)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/13/Dual-Attention-Network-for-Scene-Segmentation/" rel="prev" title="Dual Attention Network for Scene Segmentation<br>(AAAI 2019 中科院自动化所)">
+                Dual Attention Network for Scene Segmentation<br>(AAAI 2019 中科院自动化所) <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/jonathon-reed-190894.jpg"
+                alt="Bin Zhang" />
+            
+              <p class="site-author-name" itemprop="name">Bin Zhang</p>
+              <p class="site-description motion-element" itemprop="description">I am currently a Master candidate in Wuhan University majoring Photogrammetry and remote sensing</p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives">
+              
+                  <span class="site-state-item-count">18</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">1</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#OverView"><span class="nav-text">OverView</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Object-Context"><span class="nav-text">Object Context</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Object-Context-Module"><span class="nav-text">Object Context Module</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Base-OC"><span class="nav-text">Base-OC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pyramid-OC-受PSPNet的启发"><span class="nav-text">Pyramid-OC(受PSPNet的启发)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ASP-OC-受DeepLAbV3的ASPP启发"><span class="nav-text">ASP-OC(受DeepLAbV3的ASPP启发)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Experiments"><span class="nav-text">Experiments</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Influence-of-the-Positional-Feature"><span class="nav-text">Influence of the Positional Feature</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Influence-of-the-Key-Query-transform"><span class="nav-text">Influence of the Key/Query transform</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Influence-of-the-Self-attention-in-ASP-OC"><span class="nav-text">Influence of the Self-attention in ASP-OC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Influence-of-Auxiliary-loss"><span class="nav-text">Influence of Auxiliary loss</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Influence-of-the-OHEM-Ms-Flip-Validation-set"><span class="nav-text">Influence of the OHEM, Ms, Flip, Validation set</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Comparison-with-Baseline"><span class="nav-text">Comparison with Baseline</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Comparison-with-State-of-the-art"><span class="nav-text">Comparison with State-of-the-art</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Visualization-of-the-object-context"><span class="nav-text">Visualization of the object context</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bin Zhang</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  <script type="text/javascript">
+    // Popup Window;
+    var isfetched = false;
+    var isXml = true;
+    // Search DB path;
+    var search_path = "search.xml";
+    if (search_path.length === 0) {
+      search_path = "search.xml";
+    } else if (/json$/i.test(search_path)) {
+      isXml = false;
+    }
+    var path = "/" + search_path;
+    // monitor main search box;
+
+    var onPopupClose = function (e) {
+      $('.popup').hide();
+      $('#local-search-input').val('');
+      $('.search-result-list').remove();
+      $('#no-result').remove();
+      $(".local-search-pop-overlay").remove();
+      $('body').css('overflow', '');
+    }
+
+    function proceedsearch() {
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
+        .css('overflow', 'hidden');
+      $('.search-popup-overlay').click(onPopupClose);
+      $('.popup').toggle();
+      var $localSearchInput = $('#local-search-input');
+      $localSearchInput.attr("autocapitalize", "none");
+      $localSearchInput.attr("autocorrect", "off");
+      $localSearchInput.focus();
+    }
+
+    // search function;
+    var searchFunc = function(path, search_id, content_id) {
+      'use strict';
+
+      // start loading animation
+      $("body")
+        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
+          '<div id="search-loading-icon">' +
+          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
+          '</div>' +
+          '</div>')
+        .css('overflow', 'hidden');
+      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
+
+      $.ajax({
+        url: path,
+        dataType: isXml ? "xml" : "json",
+        async: true,
+        success: function(res) {
+          // get the contents from search data
+          isfetched = true;
+          $('.popup').detach().appendTo('.header-inner');
+          var datas = isXml ? $("entry", res).map(function() {
+            return {
+              title: $("title", this).text(),
+              content: $("content",this).text(),
+              url: $("url" , this).text()
+            };
+          }).get() : res;
+          var input = document.getElementById(search_id);
+          var resultContent = document.getElementById(content_id);
+          var inputEventFunction = function() {
+            var searchText = input.value.trim().toLowerCase();
+            var keywords = searchText.split(/[\s\-]+/);
+            if (keywords.length > 1) {
+              keywords.push(searchText);
+            }
+            var resultItems = [];
+            if (searchText.length > 0) {
+              // perform local searching
+              datas.forEach(function(data) {
+                var isMatch = false;
+                var hitCount = 0;
+                var searchTextCount = 0;
+                var title = data.title.trim();
+                var titleInLowerCase = title.toLowerCase();
+                var content = data.content.trim().replace(/<[^>]+>/g,"");
+                var contentInLowerCase = content.toLowerCase();
+                var articleUrl = decodeURIComponent(data.url);
+                var indexOfTitle = [];
+                var indexOfContent = [];
+                // only match articles with not empty titles
+                if(title != '') {
+                  keywords.forEach(function(keyword) {
+                    function getIndexByWord(word, text, caseSensitive) {
+                      var wordLen = word.length;
+                      if (wordLen === 0) {
+                        return [];
+                      }
+                      var startPosition = 0, position = [], index = [];
+                      if (!caseSensitive) {
+                        text = text.toLowerCase();
+                        word = word.toLowerCase();
+                      }
+                      while ((position = text.indexOf(word, startPosition)) > -1) {
+                        index.push({position: position, word: word});
+                        startPosition = position + wordLen;
+                      }
+                      return index;
+                    }
+
+                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
+                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
+                  });
+                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
+                    isMatch = true;
+                    hitCount = indexOfTitle.length + indexOfContent.length;
+                  }
+                }
+
+                // show search results
+
+                if (isMatch) {
+                  // sort index by position of keyword
+
+                  [indexOfTitle, indexOfContent].forEach(function (index) {
+                    index.sort(function (itemLeft, itemRight) {
+                      if (itemRight.position !== itemLeft.position) {
+                        return itemRight.position - itemLeft.position;
+                      } else {
+                        return itemLeft.word.length - itemRight.word.length;
+                      }
+                    });
+                  });
+
+                  // merge hits into slices
+
+                  function mergeIntoSlice(text, start, end, index) {
+                    var item = index[index.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    var hits = [];
+                    var searchTextCountInSlice = 0;
+                    while (position + word.length <= end && index.length != 0) {
+                      if (word === searchText) {
+                        searchTextCountInSlice++;
+                      }
+                      hits.push({position: position, length: word.length});
+                      var wordEnd = position + word.length;
+
+                      // move to next position of hit
+
+                      index.pop();
+                      while (index.length != 0) {
+                        item = index[index.length - 1];
+                        position = item.position;
+                        word = item.word;
+                        if (wordEnd > position) {
+                          index.pop();
+                        } else {
+                          break;
+                        }
+                      }
+                    }
+                    searchTextCount += searchTextCountInSlice;
+                    return {
+                      hits: hits,
+                      start: start,
+                      end: end,
+                      searchTextCount: searchTextCountInSlice
+                    };
+                  }
+
+                  var slicesOfTitle = [];
+                  if (indexOfTitle.length != 0) {
+                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
+                  }
+
+                  var slicesOfContent = [];
+                  while (indexOfContent.length != 0) {
+                    var item = indexOfContent[indexOfContent.length - 1];
+                    var position = item.position;
+                    var word = item.word;
+                    // cut out 100 characters
+                    var start = position - 20;
+                    var end = position + 80;
+                    if(start < 0){
+                      start = 0;
+                    }
+                    if (end < position + word.length) {
+                      end = position + word.length;
+                    }
+                    if(end > content.length){
+                      end = content.length;
+                    }
+                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
+                  }
+
+                  // sort slices in content by search text's count and hits' count
+
+                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
+                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
+                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
+                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
+                      return sliceRight.hits.length - sliceLeft.hits.length;
+                    } else {
+                      return sliceLeft.start - sliceRight.start;
+                    }
+                  });
+
+                  // select top N slices in content
+
+                  var upperBound = parseInt('1');
+                  if (upperBound >= 0) {
+                    slicesOfContent = slicesOfContent.slice(0, upperBound);
+                  }
+
+                  // highlight title and content
+
+                  function highlightKeyword(text, slice) {
+                    var result = '';
+                    var prevEnd = slice.start;
+                    slice.hits.forEach(function (hit) {
+                      result += text.substring(prevEnd, hit.position);
+                      var end = hit.position + hit.length;
+                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
+                      prevEnd = end;
+                    });
+                    result += text.substring(prevEnd, slice.end);
+                    return result;
+                  }
+
+                  var resultItem = '';
+
+                  if (slicesOfTitle.length != 0) {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
+                  } else {
+                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
+                  }
+
+                  slicesOfContent.forEach(function (slice) {
+                    resultItem += "<a href='" + articleUrl + "'>" +
+                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
+                      "...</p>" + "</a>";
+                  });
+
+                  resultItem += "</li>";
+                  resultItems.push({
+                    item: resultItem,
+                    searchTextCount: searchTextCount,
+                    hitCount: hitCount,
+                    id: resultItems.length
+                  });
+                }
+              })
+            };
+            if (keywords.length === 1 && keywords[0] === "") {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
+            } else if (resultItems.length === 0) {
+              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
+            } else {
+              resultItems.sort(function (resultLeft, resultRight) {
+                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
+                  return resultRight.searchTextCount - resultLeft.searchTextCount;
+                } else if (resultLeft.hitCount !== resultRight.hitCount) {
+                  return resultRight.hitCount - resultLeft.hitCount;
+                } else {
+                  return resultRight.id - resultLeft.id;
+                }
+              });
+              var searchResultList = '<ul class=\"search-result-list\">';
+              resultItems.forEach(function (result) {
+                searchResultList += result.item;
+              })
+              searchResultList += "</ul>";
+              resultContent.innerHTML = searchResultList;
+            }
+          }
+
+          if ('auto' === 'auto') {
+            input.addEventListener('input', inputEventFunction);
+          } else {
+            $('.search-icon').click(inputEventFunction);
+            input.addEventListener('keypress', function (event) {
+              if (event.keyCode === 13) {
+                inputEventFunction();
+              }
+            });
+          }
+
+          // remove loading animation
+          $(".local-search-pop-overlay").remove();
+          $('body').css('overflow', '');
+
+          proceedsearch();
+        }
+      });
+    }
+
+    // handle and trigger popup window;
+    $('.popup-trigger').click(function(e) {
+      e.stopPropagation();
+      if (isfetched === false) {
+        searchFunc(path, 'local-search-input', 'local-search-result');
+      } else {
+        proceedsearch();
+      };
+    });
+
+    $('.popup-btn-close').click(onPopupClose);
+    $('.popup').click(function(e){
+      e.stopPropagation();
+    });
+    $(document).on('keyup', function (event) {
+      var shouldDismissSearchPopup = event.which === 27 &&
+        $('.search-popup').is(':visible');
+      if (shouldDismissSearchPopup) {
+        onPopupClose();
+      }
+    });
+  </script>
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+        tex2jax: {
+          inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+          processEscapes: true,
+          skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+        }
+      });
+    </script>
+
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Queue(function() {
+        var all = MathJax.Hub.getAllJax(), i;
+        for (i=0; i < all.length; i += 1) {
+          all[i].SourceElement().parentNode.className += ' has-jax';
+        }
+      });
+    </script>
+    <script type="text/javascript" src="//cdn.bootcss.com/mathjax/2.7.1/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+  
+
+
+  
+
+  
+
+</body>
+</html>
