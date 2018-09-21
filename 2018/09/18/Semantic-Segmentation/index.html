@@ -1,0 +1,979 @@
+<!DOCTYPE html>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.1">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.1">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
+
+
+
+
+
+
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+  
+
+
+
+
+  <meta name="description" content="Semantic Segmentation论文整理">
+<meta name="keywords" content="Remote Sensing, Image Processing, Deep learning">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Semantic Segmentation">
+<meta property="og:url" content="http://yoursite.com/2018/09/18/Semantic-Segmentation/index.html">
+<meta property="og:site_name" content="Zhang Bin&#39;s Blog">
+<meta property="og:description" content="Semantic Segmentation论文整理">
+<meta property="og:locale" content="en">
+<meta property="og:updated_time" content="2018-09-20T12:34:15.648Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Semantic Segmentation">
+<meta name="twitter:description" content="Semantic Segmentation论文整理">
+
+
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2018/09/18/Semantic-Segmentation/"/>
+
+
+
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
+
+  <title>Semantic Segmentation | Zhang Bin's Blog</title>
+  
+
+
+
+
+
+
+
+
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/" class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">Zhang Bin's Blog</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+    
+      
+        <p class="site-subtitle">Less interests, more interest!!!</p>
+      
+    
+  </div>
+
+  <div class="site-nav-toggle">
+    <button aria-label="Toggle navigation bar">
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  
+    <ul id="menu" class="menu">
+      
+        
+        
+        
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+  </li>
+
+      
+      
+    </ul>
+  
+
+  
+
+  
+</nav>
+
+
+
+  
+
+
+
+</div>
+    </header>
+
+    
+
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+            
+
+          
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="http://yoursite.com/2018/09/18/Semantic-Segmentation/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="Bin Zhang">
+      <meta itemprop="description" content="I am currently a Master candidate in Wuhan University majoring Photogrammetry and remote sensing">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Zhang Bin's Blog">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Semantic Segmentation
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+		
+			<span class="post-meta-item-icon">
+				<i class="fa fa-thumb-tack"></i>
+			</span>
+			<font color="red">置顶</font>
+			<span class="post-meta-divider">|</span>
+		
+          <span class="post-time">
+
+            
+            
+            
+
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+
+              
+                
+              
+
+              <time title="Created: 2018-09-18 15:43:28" itemprop="dateCreated datePublished" datetime="2018-09-18T15:43:28+08:00">2018-09-18</time>
+            
+
+            
+              
+
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-09-20 20:34:15" itemprop="dateModified" datetime="2018-09-20T20:34:15+08:00">2018-09-20</time>
+              
+            
+          </span>
+
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+            <div class="post-symbolscount">
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-file-word-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Symbols count in article: </span>
+                
+                <span title="Symbols count in article">6.4k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">6 mins.</span>
+              
+            </div>
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>Semantic Segmentation论文整理<br><a id="more"></a></p>
+<h1 id="2D-Semantic-Segmentation"><a href="#2D-Semantic-Segmentation" class="headerlink" title="2D Semantic Segmentation"></a>2D Semantic Segmentation</h1><ul>
+<li>[<strong>FCN</strong>] Fully Convolutional Networks for Semantic Segmentation <a href="http://arxiv.org/abs/1411.4038" target="_blank" rel="noopener">[Paper1]</a> <a href="http://arxiv.org/abs/1605.06211" target="_blank" rel="noopener">[Paper2]</a> <a href="https://docs.google.com/presentation/d/1VeWFMpZ8XN7OC3URZP4WdXvOGYckoFWGVN7hApoXVnc" target="_blank" rel="noopener">[Slides1]</a> <a href="http://tutorial.caffe.berkeleyvision.org/caffe-cvpr15-pixels.pdf" target="_blank" rel="noopener">[Slides2]</a></li>
+<li>[<strong>DeepLab v1</strong>] Semantic Image Segmentation With Deep Convolutional Nets and Fully Connected CRFs<a href="https://bitbucket.org/deeplab/deeplab-public/" target="_blank" rel="noopener">[Code-Caffe]</a> <a href="http://arxiv.org/abs/1412.7062" target="_blank" rel="noopener">[Paper]</a></li>
+<li>[<strong>CRF as RNN</strong>] Conditional Random Fields as Recurrent Neural Networks <a href="http://www.robots.ox.ac.uk/~szheng/CRFasRNN.html" target="_blank" rel="noopener">[Project]</a> <a href="http://www.robots.ox.ac.uk/~szheng/crfasrnndemo" target="_blank" rel="noopener">[Demo]</a> <a href="http://arxiv.org/abs/1502.03240" target="_blank" rel="noopener">[Paper]</a></li>
+<li>[<strong>DeconvNet</strong>] Learning Deconvolution Network for Semantic Segmentation <a href="http://cvlab.postech.ac.kr/research/deconvnet/" target="_blank" rel="noopener">[Project]</a> <a href="http://arxiv.org/abs/1505.04366" target="_blank" rel="noopener">[Paper]</a> <a href="http://web.cs.hacettepe.edu.tr/~aykut/classes/spring2016/bil722/slides/w06-deconvnet.pdf" target="_blank" rel="noopener">[Slides]</a></li>
+<li>[<strong>U-Net</strong>] U-Net: Convolutional Networks for Biomedical Image Segmentation <a href="http://lmb.informatik.uni-freiburg.de/people/ronneber/u-net/" target="_blank" rel="noopener">[Project]</a> <a href="http://arxiv.org/abs/1505.04597" target="_blank" rel="noopener">[Paper]</a></li>
+<li>[<strong>SegNet</strong>] SegNet: A Deep Convolutional Encoder-Decoder Architecture for Image Segmentation <a href="http://mi.eng.cam.ac.uk/projects/segnet/" target="_blank" rel="noopener">[Project]</a> <a href="http://arxiv.org/abs/1511.00561" target="_blank" rel="noopener">[Paper]</a> <a href="http://mi.eng.cam.ac.uk/projects/segnet/tutorial.html" target="_blank" rel="noopener">[Tutorial1]</a> <a href="https://github.com/alexgkendall/SegNet-Tutorial" target="_blank" rel="noopener">[Tutorial2]</a></li>
+<li>Multi-scale context aggregation by dilated convolutions <a href="https://arxiv.org/pdf/1511.07122.pdf" target="_blank" rel="noopener">[Paper]</a></li>
+<li>[<strong>DeepLab v2</strong>] DeepLab v2:Semantic Image Segmentation with Deep Convolutional Nets, Atrous Convolution, and Fully Connected CRFs** <a href="http://liangchiehchen.com/projects/DeepLab.html" target="_blank" rel="noopener">[Project]</a> <a href="https://bitbucket.org/deeplab/deeplab-public/" target="_blank" rel="noopener">[Code-Caffe]</a> <a href="https://arxiv.org/abs/1606.00915" target="_blank" rel="noopener">[Paper]</a></li>
+<li>[<strong>RefineNet</strong>] [CVPR2017] RefineNet: Multi-Path Refinement Networks for High-Resolution Semantic Segmentation <a href="https://github.com/guosheng/refinenet" target="_blank" rel="noopener">[Code-MatConvNet]</a> <a href="https://arxiv.org/abs/1611.06612" target="_blank" rel="noopener">[Paper]</a></li>
+<li>[<strong>IFCN</strong>] Improving Fully Convolution Network for Semantic Segmentation <a href="https://arxiv.org/abs/1611.08986" target="_blank" rel="noopener">[Paper]</a></li>
+<li>[<strong>FC-DenseNet</strong>] [CVPRW2017] The One Hundred Layers Tiramisu: Fully Convolutional DenseNets for Semantic Segmentation <a href="https://github.com/SimJeg/FC-DenseNet" target="_blank" rel="noopener">[Code-Theano]</a> <a href="https://github.com/titu1994/Fully-Connected-DenseNets-Semantic-Segmentation" target="_blank" rel="noopener">[Code-Keras1]</a> <a href="https://github.com/0bserver07/One-Hundred-Layers-Tiramisu" target="_blank" rel="noopener">[Code-Keras2]</a> <a href="https://arxiv.org/abs/1611.09326" target="_blank" rel="noopener">[Paper]</a></li>
+<li>[<strong>PSPNet</strong>] [CVPR-2017] Pyramid Scene Parsing Network <a href="https://hszhao.github.io/projects/pspnet/" target="_blank" rel="noopener">[Project]</a> <a href="https://github.com/hszhao/PSPNet" target="_blank" rel="noopener">[Code-Caffe]</a> <a href="https://arxiv.org/abs/1612.01105" target="_blank" rel="noopener">[Paper]</a> <a href="http://image-net.org/challenges/talks/2016/SenseCUSceneParsing.pdf" target="_blank" rel="noopener">[Slides]</a></li>
+<li>[<strong>FusionNet</strong>] FusionNet: A deep fully residual convolutional neural network for image segmentation in connectomics <a href="https://github.com/GunhoChoi/FusionNet_Pytorch" target="_blank" rel="noopener">[Code-PyTorch]</a> <a href="https://arxiv.org/abs/1612.05360" target="_blank" rel="noopener">[Paper]</a></li>
+<li>[<strong>PixelNet</strong>] PixelNet: Representation of the pixels, by the pixels, and for the pixels <a href="http://www.cs.cmu.edu/~aayushb/pixelNet/" target="_blank" rel="noopener">[Project]</a> <a href="https://github.com/aayushbansal/PixelNet" target="_blank" rel="noopener">[Code-Caffe]</a> <a href="https://arxiv.org/abs/1702.06506" target="_blank" rel="noopener">[Paper]</a></li>
+<li>[<strong>DUC-HDC</strong>] [WACV 2018]Understanding Convolution for Semantic Segmentation <a href="https://drive.google.com/drive/folders/0B72xLTlRb0SoREhISlhibFZTRmM" target="_blank" rel="noopener">[Model-Mxnet]</a> <a href="https://arxiv.org/abs/1702.08502" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/TuSimple/TuSimple-DUC" target="_blank" rel="noopener">[Code]</a></li>
+<li>[<strong>GCN</strong>] Large Kernel Matters - Improve Semantic Segmentation by Global Convolutional Network <a href="https://arxiv.org/abs/1703.02719" target="_blank" rel="noopener">[Paper]</a></li>
+<li>[CVPR 2017] Not All Pixels Are Equal: Difficulty-Aware Semantic Segmentation via Deep Layer Cascade-2017 <a href="https://arxiv.org/abs/1704.01344" target="_blank" rel="noopener">[Paper]</a></li>
+<li>Pixel Deconvolutional Networks-2017 <a href="https://github.com/HongyangGao/PixelDCN" target="_blank" rel="noopener">[Code-Tensorflow]</a> <a href="https://arxiv.org/abs/1705.06820" target="_blank" rel="noopener">[Paper]</a></li>
+<li>[<strong>DRN</strong>] [CVPR 2017] Dilated Residual Networks <a href="https://arxiv.org/abs/1705.09914" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/fyu/drn" target="_blank" rel="noopener">[Code]</a></li>
+<li>[<strong>Deeplab v3</strong>] Deeplab v3: Rethinking Atrous Convolution for Semantic Image Segmentation <a href="https://arxiv.org/abs/1706.05587" target="_blank" rel="noopener">[Paper]</a></li>
+<li>[<strong>LinkNet</strong>] LinkNet: Exploiting Encoder Representations for Efficient Semantic Segmentation <a href="https://arxiv.org/abs/1707.03718" target="_blank" rel="noopener">[Paper]</a></li>
+<li>[<strong>SDN</strong>] Stacked Deconvolutional Network for Semantic Segmentation <a href="https://arxiv.org/pdf/1708.04943.pdf" target="_blank" rel="noopener">[Paper]</a></li>
+<li>Learning to Segment Every Thing <a href="https://arxiv.org/pdf/1711.10370.pdf" target="_blank" rel="noopener">[Paper]</a></li>
+<li>Panoptic Segmentation <a href="https://arxiv.org/pdf/1801.00868.pdf" target="_blank" rel="noopener">[Paper]</a></li>
+<li>[<strong>DeepLabv3+</strong>] [ECCV 2018] Encoder-Decoder with Atrous Separable Convolution for Semantic Image Segmentation <a href="https://arxiv.org/pdf/1802.02611.pdf" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/tensorflow/models/tree/master/research/deeplab" target="_blank" rel="noopener">[Code]</a></li>
+<li>[<strong>EncNet</strong>] [CVPR 2018] Context Encoding for Semantic Segmentation <a href="https://arxiv.org/abs/1803.08904" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/zhanghang1989/PyTorch-Encoding" target="_blank" rel="noopener">[Code]</a> (<strong>Leverages global context to increase accuracy by adding a channel attention module, which triggers attention on certain feature maps based on a newly designed loss function. The loss is based on a network branch which predicts which classes are present in the image (i.e higher level global context)</strong>)</li>
+<li>[ECCV 2018] Adaptive Affinity Fields for Semantic Segmentation <a href="https://jyhjinghwang.github.io/projects/aaf.html" target="_blank" rel="noopener">[Project]</a> <a href="https://arxiv.org/abs/1803.10335" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/twke18/Adaptive_Affinity_Fields" target="_blank" rel="noopener">[Code]</a></li>
+<li>[<strong>EXFuse</strong>] [ECCV 2018] ExFuse: Enhancing Feature Fusion for Semantic Segmentation <a href="https://arxiv.org/abs/1804.03821" target="_blank" rel="noopener">[Paper]</a> (<strong>Uses deep supervision and explicitly combines the multi-scale features from the feature extraction frontend before processing, in order to ensure multi-scale information is processed together at all levels</strong>)</li>
+<li>Vortex Pooling: Improving Context Representation in Semantic Segmentation <a href="https://arxiv.org/abs/1804.06242" target="_blank" rel="noopener">[Paper]</a></li>
+<li>[<strong>DFN</strong>] [CVPR 2018] Learning a Discriminative Feature Network for Semantic Segmentation <a href="https://arxiv.org/abs/1804.09337" target="_blank" rel="noopener">[Paper]</a> (<strong>Uses deep supervision and attempts to process the smooth and edge portions of the segments separately</strong>)</li>
+<li>Stacked U-Nets: A No-Frills Approach to Natural Image Segmentation <a href="https://arxiv.org/abs/1804.10343" target="_blank" rel="noopener">[Paper]</a></li>
+<li>[BMVC 2018] Pyramid Attention Network for Semantic Segmentation <a href="https://arxiv.org/abs/1805.10180" target="_blank" rel="noopener">[Paper]</a></li>
+<li>[<strong>G-FRNet</strong>] [CVPR 2017] Gated Feedback Refinement Network for Coarse-to-Fine Dense Semantic Image Labeling <a href="https://arxiv.org/abs/1806.11266" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/mrochan/gfrnet" target="_blank" rel="noopener">[code]</a></li>
+<li>[CVPR 2018] Context Contrasted Feature and Gated Multi-Scale Aggregation for Scene Segmentation <a href="http://openaccess.thecvf.com/content_cvpr_2018/html/Ding_Context_Contrasted_Feature_CVPR_2018_paper.html" target="_blank" rel="noopener">[Paper]</a></li>
+<li>[<strong>DenseASPP</strong>] [CVPR 2018] DenseASPP for Semantic Segmentation in Street Scenes <a href="http://openaccess.thecvf.com/content_cvpr_2018/html/Yang_DenseASPP_for_Semantic_CVPR_2018_paper.html" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/DeepMotionAIResearch/DenseASPP" target="_blank" rel="noopener">[code]</a> (<strong>Combines dense connections with atrous convolutions</strong>)</li>
+<li>[CVPR 2018] Dense Decoder Shortcut Connections for Single-Pass Semantic Segmentation <a href="http://openaccess.thecvf.com/content_cvpr_2018/html/Bilinski_Dense_Decoder_Shortcut_CVPR_2018_paper.html" target="_blank" rel="noopener">[Paper]</a> (<strong>Use dense connections in the decoding stage for higher accuracy (previously only done during feature extraction / encoding)</strong>)</li>
+<li>Smoothed Dilated Convolutions for Improved Dense Prediction <a href="https://arxiv.org/abs/1808.08931" target="_blank" rel="noopener">[Paper]</a></li>
+<li>[<strong>PSANet</strong>] [ECCV 2018] PSANet: Point-wise Spatial Attention Network for Scene Parsing <a href="http://openaccess.thecvf.com/content_ECCV_2018/html/Hengshuang_Zhao_PSANet_Point-wise_Spatial_ECCV_2018_paper.html" target="_blank" rel="noopener">[Paper]</a> <a href="https://hszhao.github.io/projects/psanet/" target="_blank" rel="noopener">[project]</a> <a href="https://github.com/hszhao/PSANet" target="_blank" rel="noopener">[code]</a> <a href="https://docs.google.com/presentation/d/1_brKNBtv8nVu_jOwFRGwVkEPAq8B8hEngBSQuZCWaZA/edit?usp=sharing" target="_blank" rel="noopener">[slide]</a></li>
+<li>[<strong>OCNet</strong>] OCNet: Object Context Network for Scene Parsing <a href="https://arxiv.org/abs/1809.00916" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/PkuRainBow/OCNet" target="_blank" rel="noopener">[code]</a></li>
+<li>[<strong>DAN</strong>] Dual Attention Network for Scene Segmentation <a href="https://arxiv.org/abs/1809.02983" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/junfu1115/DANet" target="_blank" rel="noopener">[code]</a></li>
+</ul>
+<h1 id="Real-Time-Semantic-Segmentation"><a href="#Real-Time-Semantic-Segmentation" class="headerlink" title="Real-Time Semantic Segmentation"></a>Real-Time Semantic Segmentation</h1><ul>
+<li>[<strong>ENet</strong>] ENet: A Deep Neural Network Architecture for Real-Time Semantic Segmentation-2016  <a href="https://arxiv.org/abs/1606.02147" target="_blank" rel="noopener">[Paper]</a></li>
+<li>[<strong>ICNet</strong>] [ECCV 2018] ICNet for Real-Time Semantic Segmentation on High-Resolution Images <a href="https://hszhao.github.io/projects/icnet/" target="_blank" rel="noopener">[Project]</a> <a href="https://github.com/hszhao/ICNet" target="_blank" rel="noopener">[Code]</a> <a href="https://arxiv.org/abs/1704.08545" target="_blank" rel="noopener">[Paper]</a> <a href="https://www.youtube.com/watch?v=qWl9idsCuLQ" target="_blank" rel="noopener">[Video]</a> (<strong>Uses deep supervision and runs the input image at different scales, each scale through their own subnetwork and progressively combining the results</strong>)</li>
+<li>[<strong>RTSeg</strong>] RTSeg: Real-time Semantic Segmentation Comparative Study <a href="https://arxiv.org/abs/1803.02758" target="_blank" rel="noopener">[Paper]</a></li>
+<li>[<strong>ShuffleSeg</strong>] ShuffleSeg: Real-time Semantic Segmentation Network <a href="https://arxiv.org/abs/1803.03816" target="_blank" rel="noopener">[Paper]</a></li>
+<li>[<strong>ESPNet</strong>] [ECCV 2018] ESPNet: Efficient Spatial Pyramid of Dilated Convolutions for Semantic Segmentation <a href="https://arxiv.org/pdf/1803.06815.pdf" target="_blank" rel="noopener">[Paper]</a></li>
+<li>[<strong>ContextNet</strong>] [BMVC 2018] ContextNet: Exploring Context and Detail for Semantic Segmentation in Real-time <a href="https://arxiv.org/abs/1805.04554" target="_blank" rel="noopener">[Paper]</a></li>
+<li>Guided Upsampling Network for Real-Time Semantic Segmentation <a href="http://www.ivl.disco.unimib.it/activities/semantic-segmentation/" target="_blank" rel="noopener">[Project]</a> <a href="https://arxiv.org/abs/1807.07466" target="_blank" rel="noopener">[Paper]</a></li>
+<li>[<strong>BiSeNet</strong>] [ECCV 2018] BiSeNet: Bilateral Segmentation Network for Real-time Semantic Segmentation <a href="https://arxiv.org/abs/1808.00897" target="_blank" rel="noopener">[Paper]</a> (<strong>Has 2 branches: one is deep for getting semantic information, while the other does very little / minor processing on the input image as to preserve the low-level pixel information</strong>)</li>
+<li>Efficient Dense Modules of Asymmetric Convolution for Real-Time Semantic Segmentation <a href="https://arxiv.org/abs/1809.06323" target="_blank" rel="noopener">[Paper]</a></li>
+</ul>
+<h1 id="Loss-Fuction"><a href="#Loss-Fuction" class="headerlink" title="Loss Fuction"></a>Loss Fuction</h1><ul>
+<li>[CVPR 2017 ] Loss Max-Pooling for Semantic Image Segmentation <a href="https://arxiv.org/abs/1704.02966" target="_blank" rel="noopener">[Paper]</a></li>
+<li>[CVPR 2018] The Lovász-Softmax loss：A tractable surrogate for the optimization of the intersection-over-union measure in neural networks <a href="https://arxiv.org/abs/1705.08790" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/bermanmaxim/LovaszSoftmax" target="_blank" rel="noopener">[Code]</a></li>
+<li>Generalised Dice overlap as a deep learning loss function for highly unbalanced segmentations <a href="https://arxiv.org/abs/1707.03237" target="_blank" rel="noopener">[Paper]</a></li>
+<li>[BMVC 2018] NeuroIoU: Learning a Surrogate Loss for Semantic Segmentation <a href="http://cdn.iiit.ac.in/cdn/cvit.iiit.ac.in/images/ConferencePapers/2018/bmvc2018-NeuroIoU.pdf" target="_blank" rel="noopener">[Paper]</a></li>
+</ul>
+<h1 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h1><ul>
+<li>A Survey of Semantic Segmentation <a href="https://arxiv.org/abs/1602.06541" target="_blank" rel="noopener">[arxiv]</a></li>
+<li>A Review on Deep Learning Techniques Applied to Semantic Segmentation <a href="https://arxiv.org/abs/1704.06857" target="_blank" rel="noopener">[arxiv]</a></li>
+</ul>
+
+      
+    </div>
+
+    
+
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2018/09/15/ShuffleNet-V2-Practical-Guidelines-for-Efficient-CNN-Architecture-Design/" rel="next" title="论文阅读 - ShuffleNet V2: Practical Guidelines for Efficient CNN Architecture Design<br>(ECCV2018 Megvii Inc)">
+                <i class="fa fa-chevron-left"></i> 论文阅读 - ShuffleNet V2: Practical Guidelines for Efficient CNN Architecture Design<br>(ECCV2018 Megvii Inc)
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2018/09/18/几种新的regularization方法/" rel="prev" title="几种新的regularization方法">
+                几种新的regularization方法 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+  </div>
+
+
+          </div>
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name">Bin Zhang</p>
+              <p class="site-description motion-element" itemprop="description">I am currently a Master candidate in Wuhan University majoring Photogrammetry and remote sensing</p>
+          </div>
+
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
+              
+
+              
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
+              
+            </nav>
+          
+
+          
+
+          
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/zhangbin0917" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:bin.zhang@whu.edu.cn" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+            
+          
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2D-Semantic-Segmentation"><span class="nav-number">1.</span> <span class="nav-text">2D Semantic Segmentation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Real-Time-Semantic-Segmentation"><span class="nav-number">2.</span> <span class="nav-text">Real-Time Semantic Segmentation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Loss-Fuction"><span class="nav-number">3.</span> <span class="nav-text">Loss Fuction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Review"><span class="nav-number">4.</span> <span class="nav-text">Review</span></a></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+  <span class="with-love" id="animate">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Bin Zhang</span>
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Symbols count total">120k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="Reading time total">1:49</span>
+  
+</div>
+
+
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Gemini</a> v6.4.1</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+	
+    
+
+    
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

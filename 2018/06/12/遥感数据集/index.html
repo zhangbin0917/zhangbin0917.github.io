@@ -2,24 +2,29 @@
 
 
 
+
+
+
+
+
+
+
+
+
   
 
 
-<html class="theme-next gemini use-motion" lang="">
+<html class="theme-next gemini use-motion" lang="en">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2"/>
 <meta name="theme-color" content="#222">
 
 
 
-  
-  
-    
-    
-  <script src="/lib/pace/pace.min.js?v=1.0.2"></script>
-  <link href="/lib/pace/pace-theme-minimal.min.css?v=1.0.2" rel="stylesheet">
+
+
 
 
 
@@ -45,10 +50,6 @@
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
-
 
 
 
@@ -57,25 +58,19 @@
 
 <link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
 
-<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+<link href="/css/main.css?v=6.4.1" rel="stylesheet" type="text/css" />
 
 
-  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=6.4.1">
 
 
-  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=6.4.1">
 
 
-  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=6.4.1">
 
 
-  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
-
-
-
-
-
-  <meta name="keywords" content="Hexo, NexT" />
+  <link rel="mask-icon" href="/images/logo.svg?v=6.4.1" color="#222">
 
 
 
@@ -85,15 +80,42 @@
 
 
 
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '/',
+    scheme: 'Gemini',
+    version: '6.4.1',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: false,
+    fastclick: false,
+    lazyload: false,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
 
-<meta name="description" content="整理了遥感中的数据集，长期更新！！">
+
+  
+
+
+
+
+  <meta name="description" content="整理了遥感中的数据集，长期更新！！">
 <meta name="keywords" content="Remote Sensing, Image Processing, Deep learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="遥感数据集">
 <meta property="og:url" content="http://yoursite.com/2018/06/12/遥感数据集/index.html">
 <meta property="og:site_name" content="Zhang Bin&#39;s Blog">
 <meta property="og:description" content="整理了遥感中的数据集，长期更新！！">
-<meta property="og:locale" content="default">
+<meta property="og:locale" content="en">
 <meta property="og:image" content="http://csc.lsu.edu/~saikat/deepsat/images/sat_img.png">
 <meta property="og:image" content="https://captain-whu.github.io/AID/aid-dataset.png">
 <meta property="og:image" content="http://www.escience.cn/system/img?imgId=86962">
@@ -125,7 +147,7 @@
 <meta property="og:image" content="https://www.onera.fr/sites/default/files/300/beirut-triptych.png">
 <meta property="og:image" content="https://github.com/201528014227051/RSICD_optimal/raw/master/example.PNG">
 <meta property="og:image" content="https://s3-us-west-2.amazonaws.com/codalab-webiks/Images/examples.jpg">
-<meta property="og:updated_time" content="2018-09-15T14:41:38.496Z">
+<meta property="og:updated_time" content="2018-09-19T07:28:02.505Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="遥感数据集">
 <meta name="twitter:description" content="整理了遥感中的数据集，长期更新！！">
@@ -133,29 +155,6 @@
 
 
 
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Gemini',
-    version: '5.1.4',
-    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
-    fancybox: true,
-    tabs: true,
-    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
-    duoshuo: {
-      userId: '0',
-      author: 'Author'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
 
 
 
@@ -163,7 +162,11 @@
 
 
 
-
+<script type="text/javascript" id="page.configurations">
+  CONFIG.page = {
+    sidebar: "",
+  };
+</script>
 
   <title>遥感数据集 | Zhang Bin's Blog</title>
   
@@ -172,22 +175,40 @@
 
 
 
-  <script type="text/javascript">
-    var _hmt = _hmt || [];
-    (function() {
-      var hm = document.createElement("script");
-      hm.src = "https://hm.baidu.com/hm.js?b50a5b1e67dd059ba3990c68a8ba3110";
-      var s = document.getElementsByTagName("script")[0];
-      s.parentNode.insertBefore(hm, s);
-    })();
-  </script>
 
 
 
+
+  <noscript>
+  <style type="text/css">
+    .use-motion .motion-element,
+    .use-motion .brand,
+    .use-motion .menu-item,
+    .sidebar-inner,
+    .use-motion .post-block,
+    .use-motion .pagination,
+    .use-motion .comments,
+    .use-motion .post-header,
+    .use-motion .post-body,
+    .use-motion .collection-title { opacity: initial; }
+
+    .use-motion .logo,
+    .use-motion .site-title,
+    .use-motion .site-subtitle {
+      opacity: initial;
+      top: initial;
+    }
+
+    .use-motion {
+      .logo-line-before i { left: initial; }
+      .logo-line-after i { right: initial; }
+    }
+  </style>
+</noscript>
 
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="default">
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
 
   
   
@@ -203,19 +224,21 @@
     
 
     <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
+      <a href="/" class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
         <span class="site-title">Zhang Bin's Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
+    
       
         <p class="site-subtitle">Less interests, more interest!!!</p>
       
+    
   </div>
 
   <div class="site-nav-toggle">
-    <button>
+    <button aria-label="Toggle navigation bar">
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
       <span class="btn-bar"></span>
@@ -223,102 +246,82 @@
   </div>
 </div>
 
-<nav class="site-nav">
-  
 
+
+<nav class="site-nav">
   
     <ul id="menu" class="menu">
       
         
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            Home
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-categories">
-          <a href="/categories/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
-            
-            Categories
-          </a>
-        </li>
-      
         
-        <li class="menu-item menu-item-tags">
-          <a href="/tags/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            Tags
-          </a>
-        </li>
-      
+          
+          <li class="menu-item menu-item-home">
+    <a href="/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-home"></i> <br />Home</a>
+  </li>
         
-        <li class="menu-item menu-item-about">
-          <a href="/about/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
-            
-            About
-          </a>
-        </li>
-      
+        
+        
+          
+          <li class="menu-item menu-item-tags">
+    <a href="/tags/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />Tags</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-categories">
+    <a href="/categories/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-th"></i> <br />Categories</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-archives">
+    <a href="/archives/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />Archives</a>
+  </li>
+        
+        
+        
+          
+          <li class="menu-item menu-item-about">
+    <a href="/about/" rel="section">
+      <i class="menu-item-icon fa fa-fw fa-user"></i> <br />About</a>
+  </li>
 
       
-        <li class="menu-item menu-item-search">
-          
-            <a href="javascript:;" class="popup-trigger">
-          
-            
-              <i class="menu-item-icon fa fa-search fa-fw"></i> <br />
-            
-            Search
-          </a>
-        </li>
       
     </ul>
   
 
   
-    <div class="site-search">
-      
-  <div class="popup search-popup local-search-popup">
-  <div class="local-search-header clearfix">
-    <span class="search-icon">
-      <i class="fa fa-search"></i>
-    </span>
-    <span class="popup-btn-close">
-      <i class="fa fa-times-circle"></i>
-    </span>
-    <div class="local-search-input-wrapper">
-      <input autocomplete="off"
-             placeholder="Searching..." spellcheck="false"
-             type="text" id="local-search-input">
-    </div>
-  </div>
-  <div id="local-search-result"></div>
-</div>
 
-
-
-    </div>
   
 </nav>
 
 
 
- </div>
+  
+
+
+
+</div>
     </header>
+
+    
+
 
     <main id="main" class="main">
       <div class="main-inner">
         <div class="content-wrap">
+          
+            
+
+          
           <div id="content" class="content">
             
 
@@ -331,6 +334,8 @@
   
   
 
+  
+
   <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
   
   
@@ -340,8 +345,8 @@
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="Bin Zhang">
-      <meta itemprop="description" content="">
-      <meta itemprop="image" content="/images/jonathon-reed-190894.jpg">
+      <meta itemprop="description" content="I am currently a Master candidate in Wuhan University majoring Photogrammetry and remote sensing">
+      <meta itemprop="image" content="/images/avatar.gif">
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
@@ -353,16 +358,26 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">遥感数据集</h1>
+          <h1 class="post-title" itemprop="name headline">遥感数据集
+              
+            
+          </h1>
         
 
         <div class="post-meta">
-		  
-            <i class="fa fa-thumb-tack"></i>
-            <font color=7D26CD>置顶</font>
-            <span class="post-meta-divider">|</span>
-          
+		
+			<span class="post-meta-item-icon">
+				<i class="fa fa-thumb-tack"></i>
+			</span>
+			<font color="red">置顶</font>
+			<span class="post-meta-divider">|</span>
+		
           <span class="post-time">
+
+            
+            
+            
+
             
               <span class="post-meta-item-icon">
                 <i class="fa fa-calendar-o"></i>
@@ -370,13 +385,30 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2018-06-12T12:43:15+08:00">
-                2018-06-12
-              </time>
+
+              
+                
+              
+
+              <time title="Created: 2018-06-12 12:43:15" itemprop="dateCreated datePublished" datetime="2018-06-12T12:43:15+08:00">2018-06-12</time>
             
 
             
+              
 
+              
+                
+                <span class="post-meta-divider">|</span>
+                
+
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-calendar-check-o"></i>
+                </span>
+                
+                  <span class="post-meta-item-text">Edited on</span>
+                
+                <time title="Modified: 2018-09-19 15:28:02" itemprop="dateModified" datetime="2018-09-19T15:28:02+08:00">2018-09-19</time>
+              
             
           </span>
 
@@ -392,11 +424,7 @@
                 <span class="post-meta-item-text">In</span>
               
               
-                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/Dataset/" itemprop="url" rel="index">
-                    <span itemprop="name">Dataset</span>
-                  </a>
-                </span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing"><a href="/categories/Dataset/" itemprop="url" rel="index"><span itemprop="name">Dataset</span></a></span>
 
                 
                 
@@ -414,22 +442,31 @@
           
 
           
-            <div class="post-wordcount">
+            <div class="post-symbolscount">
               
-                
+
+              
                 <span class="post-meta-item-icon">
                   <i class="fa fa-file-word-o"></i>
                 </span>
                 
-                  <span class="post-meta-item-text">Words count in article&#58;</span>
+                  <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Words count in article">
-                  9,600
+                <span title="Symbols count in article">62k</span>
+              
+
+              
+                <span class="post-meta-divider">|</span>
+              
+
+              
+                <span class="post-meta-item-icon">
+                  <i class="fa fa-clock-o"></i>
                 </span>
-              
-
-              
-
+                
+                  <span class="post-meta-item-text">Reading time &asymp;</span>
+                
+                <span title="Reading time">57 mins.</span>
               
             </div>
           
@@ -450,6 +487,7 @@
 
       
         <p>整理了遥感中的数据集，长期更新！！<br><a id="more"></a></p>
+<h1 id="web"><a href="#web" class="headerlink" title="web"></a>web</h1><p><a href="http://www.jhuapl.edu/pubgeo/pubgeo.html" target="_blank" rel="noopener">http://www.jhuapl.edu/pubgeo/pubgeo.html</a><br>约翰斯·霍普金斯大学Applied Physics Laboratory(JHU / APL)致力于通过开发公共基准数据集和开源软件来帮助推进地理空间计算机视觉的最新技术。该网页突出了一直支持的项目，并提供了数据和软件的链接。</p>
 <h1 id="场景分类"><a href="#场景分类" class="headerlink" title="场景分类"></a>场景分类</h1><h2 id="1-UC-Merced-Land-Use-Dataset"><a href="#1-UC-Merced-Land-Use-Dataset" class="headerlink" title="1. UC Merced Land Use Dataset"></a>1. UC Merced Land Use Dataset</h2><p><a href="http://vision.ucmerced.edu/datasets/landuse.html" target="_blank" rel="noopener">http://vision.ucmerced.edu/datasets/landuse.html</a><br>This is a <strong>21 class</strong> land use image dataset meant for research purposes.<br>There are <strong>100 images</strong> for each of the following classes:<br><font color="red">agricultural，airplane，baseballdiamond，beach，buildings，chaparral，denseresidential，forest，freeway，golfcourse，harbor，intersection，mediumresidential，mobilehomepark，overpass，parkinglot，river，runway，sparseresidential，storagetanks，tenniscourt</font><br>Each image measures <strong>256x256</strong> pixels.<br>The images were manually extracted from large images from the USGS National Map Urban Area Imagery collection for various urban areas around the country. The pixel resolution of this public domain imagery is <strong>1 foot</strong>.<br><strong>Reference：</strong></p>
 <ul>
 <li><em>Yi Yang and Shawn Newsam, “Bag-Of-Visual-Words and Spatial Extensions for Land-Use Classification,” ACM SIGSPATIAL International Conference on Advances in Geographic Information Systems (ACM GIS), 2010.</em></li>
@@ -894,6 +932,7 @@
 </ul>
 <h1 id="变化检测"><a href="#变化检测" class="headerlink" title="变化检测"></a>变化检测</h1><h2 id="1-Onera-Satellite-Change-Detection"><a href="#1-Onera-Satellite-Change-Detection" class="headerlink" title="1. Onera Satellite Change Detection"></a>1. Onera Satellite Change Detection</h2><p><a href="http://dase.ticinumaerospace.com" target="_blank" rel="noopener">http://dase.ticinumaerospace.com</a><br>The Onera Satellite Change Detection (OSCD) dataset address the issue of detecting changes between satellite images at different dates.<br>It comprises <strong>24 pairs of multispectral images</strong> taken from the <strong>Sentinel-2 satellite</strong> in <strong>2015</strong> and <strong>2018</strong>. Locations are picked all over the world, in North and South America, Europe, Middle-East and Asia. For each location, registered pairs of 13-band multispectral satellite images obtained by the Sentinel-2 satellites are provided. Images vary in spatial resolution between 10m, 20m and 60m.</p>
 <p>Pixel-level change groundtruth is provided for <strong>14</strong> of the image pairs. The annotated changes focus on urban changes, such as new buildings or new roads. These data can be used for training and setting parameters of change detection algorithms.<br><img src="https://www.onera.fr/sites/default/files/300/beirut-triptych.png" alt=""><br><strong>References:</strong><br><em>Urban Change Detection for Multispectral Earth Observation Using Convolutional Neural Networks R. Caye Daudt, B. Le Saux, A. Boulch, Y. Gousseau IEEE International Geoscience and Remote Sensing Symposium (IGARSS’2018) Valencia, Spain, July 2018</em></p>
+<h1 id="无人机数据"><a href="#无人机数据" class="headerlink" title="无人机数据"></a>无人机数据</h1><h2 id="Vision-Meets-Drones-A-Challenge-ECCV-2018-workshops"><a href="#Vision-Meets-Drones-A-Challenge-ECCV-2018-workshops" class="headerlink" title="Vision Meets Drones: A Challenge (ECCV 2018 workshops)"></a>Vision Meets Drones: A Challenge (ECCV 2018 workshops)</h2><p><a href="http://aiskyeye.com/" target="_blank" rel="noopener">http://aiskyeye.com/</a></p>
 <h1 id="其他数据集"><a href="#其他数据集" class="headerlink" title="其他数据集"></a>其他数据集</h1><h2 id="RSICD"><a href="#RSICD" class="headerlink" title="RSICD"></a>RSICD</h2><p><a href="https://github.com/201528014227051/RSICD_optimal" target="_blank" rel="noopener">https://github.com/201528014227051/RSICD_optimal</a><br><img src="https://github.com/201528014227051/RSICD_optimal/raw/master/example.PNG" alt=""><br>RSICD is used for remote sensing <strong>image captioning</strong> task. more than ten thousands remote sensing images are collected from Google Earth, Baidu Map, MapABC, Tianditu. The images are fixed to <strong>224X224</strong> pixels with various resolutions. The total number of remote sensing images are <strong>10921</strong>, with <strong>five sentences descriptions per image</strong>. To the best of our knowledge, this dataset is the largest dataset for remote sensing captioning. The sample images in the dataset are with high intra-class diversity and low inter-class dissimilarity. Thus, this dataset provides the researchers a data resource to advance the task of remote sensing captioning.<br><strong>Reference:</strong></p>
 <ul>
 <li><em>Lu X, Wang B, Zheng X, et al. Exploring Models and Data for Remote Sensing Image Caption Generation[J]. IEEE Transactions on Geoscience and Remote Sensing, 2017.</em></li>
@@ -902,7 +941,7 @@
 <ul>
 <li><em>Gordon Christie, Neil Fendley, James Wilson, Ryan Mukherjee; The IEEE Conference on Computer Vision and Pattern Recognition (CVPR), 2018, pp. 6172-6180</em></li>
 </ul>
-<h2 id="IARPA-Multi-View-Stereo-3D-Mapping-Challenge"><a href="#IARPA-Multi-View-Stereo-3D-Mapping-Challenge" class="headerlink" title="IARPA Multi-View Stereo 3D Mapping Challenge"></a>IARPA Multi-View Stereo 3D Mapping Challenge</h2><p><a href="https://www.iarpa.gov/challenges/3dchallenge.html" target="_blank" rel="noopener">https://www.iarpa.gov/challenges/3dchallenge.html</a><br><a href="https://spacenetchallenge.github.io/datasets/mvs_summary.html" target="_blank" rel="noopener">https://spacenetchallenge.github.io/datasets/mvs_summary.html</a><br>This data set includes DigitalGlobe <strong>WorldView-3 panchromatic and multispectral images</strong> of a <strong>100 square kilometer area</strong> near San Fernando, Argentina. We also provide <strong>20cm airborne lidar ground truth data</strong> for a <strong>20 square kilometer</strong> subset of this area and performance analysis software to assess accuracy and completeness metrics. Commercial satellite imagery is provided courtesy of DigitalGlobe, and ground truth lidar is provided courtesy of IARPA.<br><strong>Catalog</strong><br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">aws</span> <span class="built_in">s3</span> ls <span class="built_in">s3</span>://spacenet-dataset/mvs_dataset</span><br></pre></td></tr></table></figure></p>
+<h2 id="IARPA-Multi-View-Stereo-3D-Mapping-Challenge"><a href="#IARPA-Multi-View-Stereo-3D-Mapping-Challenge" class="headerlink" title="IARPA Multi-View Stereo 3D Mapping Challenge"></a>IARPA Multi-View Stereo 3D Mapping Challenge</h2><p><a href="https://www.iarpa.gov/challenges/3dchallenge.html" target="_blank" rel="noopener">https://www.iarpa.gov/challenges/3dchallenge.html</a><br><a href="https://spacenetchallenge.github.io/datasets/mvs_summary.html" target="_blank" rel="noopener">https://spacenetchallenge.github.io/datasets/mvs_summary.html</a><br><a href="http://www.jhuapl.edu/pubgeo/satellite-benchmark.html" target="_blank" rel="noopener">http://www.jhuapl.edu/pubgeo/satellite-benchmark.html</a><br>This data set includes DigitalGlobe <strong>WorldView-3 panchromatic and multispectral images</strong> of a <strong>100 square kilometer area</strong> near San Fernando, Argentina. We also provide <strong>20cm airborne lidar ground truth data</strong> for a <strong>20 square kilometer</strong> subset of this area and performance analysis software to assess accuracy and completeness metrics. Commercial satellite imagery is provided courtesy of DigitalGlobe, and ground truth lidar is provided courtesy of IARPA.<br><strong>Catalog</strong><br><figure class="highlight armasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="symbol">aws</span> <span class="built_in">s3</span> ls <span class="built_in">s3</span>://spacenet-dataset/mvs_dataset</span><br></pre></td></tr></table></figure></p>
 <p>The catalog contains the following packages:</p>
 <ul>
 <li>Updated metric analysis software with examples from contest winners</li>
@@ -955,9 +994,17 @@
 <li>test imagery - a folder containing 2,553 tiff and jpeg images.</li>
 <li>test.csv - A CSV file containing 11,879 tagged vehicles. This file includes objects in the same form as in the training set (tag ID, image ID and a bounding polygon), but without the classification data.</li>
 </ul>
+<h1 id="IARPA-CORE3D-Public-Data"><a href="#IARPA-CORE3D-Public-Data" class="headerlink" title="IARPA CORE3D Public Data"></a>IARPA CORE3D Public Data</h1><p>IARPA has publicly released DigitalGlobe satellite imagery for the Creation of Operationally Realistic 3D Environment (CORE3D) program to enable performer teams to crowdsource manual labeling efforts and to promote public research that aligns well with the CORE3D program’s objectives. The data is available for download using this <a href="http://www.jhuapl.edu/pubgeo/core3d-public-data.torrent.zip" target="_blank" rel="noopener">torrent</a> file and is now also available on <a href="https://spacenetchallenge.github.io/datasets/datasetHomePage.html" target="_blank" rel="noopener">SpaceNet</a>.</p>
+<p>Please consider referencing the following when reporting results using this data:<br><strong>Reference:</strong></p>
+<ul>
+<li><em>M. Brown, H. Goldberg, K. Foster, A. Leichtman, S. Wang, S. Hagstrom, M. Bosch, and S. Almes, “Large-Scale Public Lidar and Satellite Image Data Set for Urban Semantic Labeling,” in Proc. SPIE Laser Radar Technology and Applications XXII, 2018.</em></li>
+</ul>
 
       
     </div>
+
+    
+
     
     
     
@@ -1007,17 +1054,10 @@
   </article>
 
 
-
-    <div class="post-spread">
-      
-    </div>
   </div>
 
 
           </div>
-          
-
-
           
 
   
@@ -1057,61 +1097,128 @@
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
-              <img class="site-author-image" itemprop="image"
-                src="/images/jonathon-reed-190894.jpg"
-                alt="Bin Zhang" />
-            
               <p class="site-author-name" itemprop="name">Bin Zhang</p>
               <p class="site-description motion-element" itemprop="description">I am currently a Master candidate in Wuhan University majoring Photogrammetry and remote sensing</p>
           </div>
 
-          <nav class="site-state motion-element">
+          
+            <nav class="site-state motion-element">
+              
+                <div class="site-state-item site-state-posts">
+                
+                  <a href="/archives/">
+                
+                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-name">posts</span>
+                  </a>
+                </div>
+              
 
-            
-              <div class="site-state-item site-state-posts">
               
-                <a href="/archives">
+                
+                
+                <div class="site-state-item site-state-categories">
+                  <a href="/categories/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">4</span>
+                    <span class="site-state-item-name">categories</span>
+                  </a>
+                </div>
               
-                  <span class="site-state-item-count">20</span>
-                  <span class="site-state-item-name">posts</span>
-                </a>
-              </div>
-            
 
-            
               
+                
+                
+                <div class="site-state-item site-state-tags">
+                  <a href="/tags/index.html">
+                    
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                      
+                    
+                    <span class="site-state-item-count">21</span>
+                    <span class="site-state-item-name">tags</span>
+                  </a>
+                </div>
               
-              <div class="site-state-item site-state-categories">
-                <a href="/categories/index.html">
-                  <span class="site-state-item-count">4</span>
-                  <span class="site-state-item-name">categories</span>
-                </a>
-              </div>
-            
-
-            
-              
-              
-              <div class="site-state-item site-state-tags">
-                <a href="/tags/index.html">
-                  <span class="site-state-item-count">20</span>
-                  <span class="site-state-item-name">tags</span>
-                </a>
-              </div>
-            
-
-          </nav>
-
+            </nav>
           
 
           
 
           
+            <div class="links-of-author motion-element">
+              
+                <span class="links-of-author-item">
+                  <a href="https://github.com/zhangbin0917" target="_blank" title="GitHub"><i class="fa fa-fw fa-github"></i>GitHub</a>
+                  
+                </span>
+              
+                <span class="links-of-author-item">
+                  <a href="mailto:bin.zhang@whu.edu.cn" target="_blank" title="E-Mail"><i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  
+                </span>
+              
+            </div>
           
 
           
           
 
+          
+          
+
+          
+            
+          
           
 
         </div>
@@ -1127,7 +1234,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#场景分类"><span class="nav-text">场景分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-UC-Merced-Land-Use-Dataset"><span class="nav-text">1. UC Merced Land Use Dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-WHU-RS19"><span class="nav-text">2. WHU-RS19</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-RSSCN7"><span class="nav-text">3. RSSCN7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-SAT-4-and-SAT-6-airborne-datasets"><span class="nav-text">4. SAT-4 and SAT-6 airborne datasets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-RSC11"><span class="nav-text">5. RSC11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-SIRI-WHU"><span class="nav-text">6. SIRI-WHU</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-AID"><span class="nav-text">7. AID</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-NWPU-RESISC45"><span class="nav-text">8. NWPU-RESISC45</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-PatternNet"><span class="nav-text">9. PatternNet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-RSI-CB"><span class="nav-text">10. RSI-CB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-AID"><span class="nav-text">11. AID++</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目标检测"><span class="nav-text">目标检测</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-RSOD-Dataset"><span class="nav-text">1. RSOD-Dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-NWPU-VHR-10-dataset"><span class="nav-text">2. NWPU VHR-10 dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Cars-Overhead-With-Context-COWC"><span class="nav-text">3. Cars Overhead With Context(COWC)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-DOTA"><span class="nav-text">4. DOTA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-DIUx-xView-2018-Detection-Challenge"><span class="nav-text">5. DIUx xView 2018 Detection Challenge</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#语义分割"><span class="nav-text">语义分割</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Zurich-Summer-Dataset"><span class="nav-text">1. Zurich Summer Dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-ISPRS-Test-Project-on-Urban-Classification-and-3D-Building-Reconstruction–2D-Semantic-Labeling-Contest"><span class="nav-text">2. ISPRS Test Project on Urban Classification and 3D Building Reconstruction–2D Semantic Labeling Contest</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Vaihingen"><span class="nav-text">Vaihingen</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Potsdam"><span class="nav-text">Potsdam</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2017-IEEE-GRSS-Data-Fusion-Contest"><span class="nav-text">3. 2017 IEEE GRSS Data Fusion Contest</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2018-IEEE-GRSS-Data-Fusion-Contest–Advanced-multi-sensor-optical-remote-sensing-for-urban-land-use-and-land-cover-classification"><span class="nav-text">4. 2018 IEEE GRSS Data Fusion Contest–Advanced multi-sensor optical remote sensing for urban land use and land cover classification</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-EvLab-SS-Dataset"><span class="nav-text">5. EvLab-SS Dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-DeepGlobe-Land-Cover-Classification-Challenge"><span class="nav-text">6. DeepGlobe Land Cover Classification Challenge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Gaofen-Image-Dataset-GID"><span class="nav-text">7. Gaofen Image Dataset (GID)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-Airbus-Ship-Detection-Challenge"><span class="nav-text">8. Airbus Ship Detection Challenge</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#建筑物检测"><span class="nav-text">建筑物检测</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Massachusetts-Buildings-Dataset"><span class="nav-text">1. Massachusetts Buildings Dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-SpaceNet-Buildings-Dataset"><span class="nav-text">2. SpaceNet Buildings Dataset</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SpaceNet-Buildings-Dataset-Round-1"><span class="nav-text">SpaceNet Buildings Dataset Round 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SpaceNet-Buildings-Dataset-Round-2"><span class="nav-text">SpaceNet Buildings Dataset Round 2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Inria-Aerial-Image-Labeling-Dataset"><span class="nav-text">3. Inria Aerial Image Labeling Dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-The-USSOCOM-Urban-3D-Challenge"><span class="nav-text">4. The USSOCOM Urban 3D Challenge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-DeepGlobe-Building-Extraction-Challenge"><span class="nav-text">5. DeepGlobe Building Extraction Challenge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-CrowdAI-Mapping-Challenge"><span class="nav-text">6. CrowdAI Mapping Challenge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-WHU-Building-Dataset"><span class="nav-text">7. WHU Building Dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-AIRS-Aerial-Imagery-for-Roof-Segmentation"><span class="nav-text">8. AIRS (Aerial Imagery for Roof Segmentation)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-2018-Open-AI-Tanzania-Building-Footprint-Segmentation-Challenge"><span class="nav-text">9. 2018 Open AI Tanzania Building Footprint Segmentation Challenge</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#道路检测"><span class="nav-text">道路检测</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Massachusetts-Roads-Dataset"><span class="nav-text">1. Massachusetts Roads Dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-SpaceNet-Roads-Dataset"><span class="nav-text">2. SpaceNet Roads Dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-DeepGlobe-Road-Extraction-Challenge"><span class="nav-text">3. DeepGlobe Road Extraction Challenge</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变化检测"><span class="nav-text">变化检测</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Onera-Satellite-Change-Detection"><span class="nav-text">1. Onera Satellite Change Detection</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他数据集"><span class="nav-text">其他数据集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#RSICD"><span class="nav-text">RSICD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-IARPA-Functional-Map-of-the-World-fMoW-Challenge"><span class="nav-text">The IARPA Functional Map of the World (fMoW) Challenge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IARPA-Multi-View-Stereo-3D-Mapping-Challenge"><span class="nav-text">IARPA Multi-View Stereo 3D Mapping Challenge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SEN1-2"><span class="nav-text">SEN1-2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EuroSDR航空影像密集匹配数据"><span class="nav-text">EuroSDR航空影像密集匹配数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Okutama-Action"><span class="nav-text">Okutama-Action</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VEDAI-Vehicle-Dataset"><span class="nav-text">VEDAI Vehicle Dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MAFAT-Challenge-Fine-Grained-Classification-of-Objects-from-Aerial-Imagery"><span class="nav-text">MAFAT Challenge - Fine-Grained Classification of Objects from Aerial Imagery</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Data"><span class="nav-text">Data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Task-Specifications"><span class="nav-text">Task Specifications</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Training-Set"><span class="nav-text">Training Set</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Test-Set"><span class="nav-text">Test Set</span></a></li></ol></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#web"><span class="nav-number">1.</span> <span class="nav-text">web</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#场景分类"><span class="nav-number">2.</span> <span class="nav-text">场景分类</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-UC-Merced-Land-Use-Dataset"><span class="nav-number">2.1.</span> <span class="nav-text">1. UC Merced Land Use Dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-WHU-RS19"><span class="nav-number">2.2.</span> <span class="nav-text">2. WHU-RS19</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-RSSCN7"><span class="nav-number">2.3.</span> <span class="nav-text">3. RSSCN7</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-SAT-4-and-SAT-6-airborne-datasets"><span class="nav-number">2.4.</span> <span class="nav-text">4. SAT-4 and SAT-6 airborne datasets</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-RSC11"><span class="nav-number">2.5.</span> <span class="nav-text">5. RSC11</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-SIRI-WHU"><span class="nav-number">2.6.</span> <span class="nav-text">6. SIRI-WHU</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-AID"><span class="nav-number">2.7.</span> <span class="nav-text">7. AID</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-NWPU-RESISC45"><span class="nav-number">2.8.</span> <span class="nav-text">8. NWPU-RESISC45</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-PatternNet"><span class="nav-number">2.9.</span> <span class="nav-text">9. PatternNet</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-RSI-CB"><span class="nav-number">2.10.</span> <span class="nav-text">10. RSI-CB</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-AID"><span class="nav-number">2.11.</span> <span class="nav-text">11. AID++</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#目标检测"><span class="nav-number">3.</span> <span class="nav-text">目标检测</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-RSOD-Dataset"><span class="nav-number">3.1.</span> <span class="nav-text">1. RSOD-Dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-NWPU-VHR-10-dataset"><span class="nav-number">3.2.</span> <span class="nav-text">2. NWPU VHR-10 dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Cars-Overhead-With-Context-COWC"><span class="nav-number">3.3.</span> <span class="nav-text">3. Cars Overhead With Context(COWC)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-DOTA"><span class="nav-number">3.4.</span> <span class="nav-text">4. DOTA</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-DIUx-xView-2018-Detection-Challenge"><span class="nav-number">3.5.</span> <span class="nav-text">5. DIUx xView 2018 Detection Challenge</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#语义分割"><span class="nav-number">4.</span> <span class="nav-text">语义分割</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Zurich-Summer-Dataset"><span class="nav-number">4.1.</span> <span class="nav-text">1. Zurich Summer Dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-ISPRS-Test-Project-on-Urban-Classification-and-3D-Building-Reconstruction–2D-Semantic-Labeling-Contest"><span class="nav-number">4.2.</span> <span class="nav-text">2. ISPRS Test Project on Urban Classification and 3D Building Reconstruction–2D Semantic Labeling Contest</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Vaihingen"><span class="nav-number">4.2.1.</span> <span class="nav-text">Vaihingen</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Potsdam"><span class="nav-number">4.2.2.</span> <span class="nav-text">Potsdam</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-2017-IEEE-GRSS-Data-Fusion-Contest"><span class="nav-number">4.3.</span> <span class="nav-text">3. 2017 IEEE GRSS Data Fusion Contest</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-2018-IEEE-GRSS-Data-Fusion-Contest–Advanced-multi-sensor-optical-remote-sensing-for-urban-land-use-and-land-cover-classification"><span class="nav-number">4.4.</span> <span class="nav-text">4. 2018 IEEE GRSS Data Fusion Contest–Advanced multi-sensor optical remote sensing for urban land use and land cover classification</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-EvLab-SS-Dataset"><span class="nav-number">4.5.</span> <span class="nav-text">5. EvLab-SS Dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-DeepGlobe-Land-Cover-Classification-Challenge"><span class="nav-number">4.6.</span> <span class="nav-text">6. DeepGlobe Land Cover Classification Challenge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-Gaofen-Image-Dataset-GID"><span class="nav-number">4.7.</span> <span class="nav-text">7. Gaofen Image Dataset (GID)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-Airbus-Ship-Detection-Challenge"><span class="nav-number">4.8.</span> <span class="nav-text">8. Airbus Ship Detection Challenge</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#建筑物检测"><span class="nav-number">5.</span> <span class="nav-text">建筑物检测</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Massachusetts-Buildings-Dataset"><span class="nav-number">5.1.</span> <span class="nav-text">1. Massachusetts Buildings Dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-SpaceNet-Buildings-Dataset"><span class="nav-number">5.2.</span> <span class="nav-text">2. SpaceNet Buildings Dataset</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#SpaceNet-Buildings-Dataset-Round-1"><span class="nav-number">5.2.1.</span> <span class="nav-text">SpaceNet Buildings Dataset Round 1</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#SpaceNet-Buildings-Dataset-Round-2"><span class="nav-number">5.2.2.</span> <span class="nav-text">SpaceNet Buildings Dataset Round 2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Inria-Aerial-Image-Labeling-Dataset"><span class="nav-number">5.3.</span> <span class="nav-text">3. Inria Aerial Image Labeling Dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-The-USSOCOM-Urban-3D-Challenge"><span class="nav-number">5.4.</span> <span class="nav-text">4. The USSOCOM Urban 3D Challenge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-DeepGlobe-Building-Extraction-Challenge"><span class="nav-number">5.5.</span> <span class="nav-text">5. DeepGlobe Building Extraction Challenge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-CrowdAI-Mapping-Challenge"><span class="nav-number">5.6.</span> <span class="nav-text">6. CrowdAI Mapping Challenge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-WHU-Building-Dataset"><span class="nav-number">5.7.</span> <span class="nav-text">7. WHU Building Dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-AIRS-Aerial-Imagery-for-Roof-Segmentation"><span class="nav-number">5.8.</span> <span class="nav-text">8. AIRS (Aerial Imagery for Roof Segmentation)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-2018-Open-AI-Tanzania-Building-Footprint-Segmentation-Challenge"><span class="nav-number">5.9.</span> <span class="nav-text">9. 2018 Open AI Tanzania Building Footprint Segmentation Challenge</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#道路检测"><span class="nav-number">6.</span> <span class="nav-text">道路检测</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Massachusetts-Roads-Dataset"><span class="nav-number">6.1.</span> <span class="nav-text">1. Massachusetts Roads Dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-SpaceNet-Roads-Dataset"><span class="nav-number">6.2.</span> <span class="nav-text">2. SpaceNet Roads Dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-DeepGlobe-Road-Extraction-Challenge"><span class="nav-number">6.3.</span> <span class="nav-text">3. DeepGlobe Road Extraction Challenge</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#变化检测"><span class="nav-number">7.</span> <span class="nav-text">变化检测</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Onera-Satellite-Change-Detection"><span class="nav-number">7.1.</span> <span class="nav-text">1. Onera Satellite Change Detection</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#无人机数据"><span class="nav-number">8.</span> <span class="nav-text">无人机数据</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Vision-Meets-Drones-A-Challenge-ECCV-2018-workshops"><span class="nav-number">8.1.</span> <span class="nav-text">Vision Meets Drones: A Challenge (ECCV 2018 workshops)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#其他数据集"><span class="nav-number">9.</span> <span class="nav-text">其他数据集</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#RSICD"><span class="nav-number">9.1.</span> <span class="nav-text">RSICD</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#The-IARPA-Functional-Map-of-the-World-fMoW-Challenge"><span class="nav-number">9.2.</span> <span class="nav-text">The IARPA Functional Map of the World (fMoW) Challenge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#IARPA-Multi-View-Stereo-3D-Mapping-Challenge"><span class="nav-number">9.3.</span> <span class="nav-text">IARPA Multi-View Stereo 3D Mapping Challenge</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#SEN1-2"><span class="nav-number">9.4.</span> <span class="nav-text">SEN1-2</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#EuroSDR航空影像密集匹配数据"><span class="nav-number">9.5.</span> <span class="nav-text">EuroSDR航空影像密集匹配数据</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Okutama-Action"><span class="nav-number">9.6.</span> <span class="nav-text">Okutama-Action</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#VEDAI-Vehicle-Dataset"><span class="nav-number">9.7.</span> <span class="nav-text">VEDAI Vehicle Dataset</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MAFAT-Challenge-Fine-Grained-Classification-of-Objects-from-Aerial-Imagery"><span class="nav-number">9.8.</span> <span class="nav-text">MAFAT Challenge - Fine-Grained Classification of Objects from Aerial Imagery</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#Data"><span class="nav-number">9.8.1.</span> <span class="nav-text">Data</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Task-Specifications"><span class="nav-number">9.8.2.</span> <span class="nav-text">Task Specifications</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Training-Set"><span class="nav-number">9.8.3.</span> <span class="nav-text">Training Set</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#Test-Set"><span class="nav-number">9.8.4.</span> <span class="nav-text">Test Set</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#IARPA-CORE3D-Public-Data"><span class="nav-number">10.</span> <span class="nav-text">IARPA CORE3D Public Data</span></a></li></ol></div>
             
 
           </div>
@@ -1155,16 +1262,34 @@
     <footer id="footer" class="footer">
       <div class="footer-inner">
         <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
-  <span class="with-love">
+  <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
   <span class="author" itemprop="copyrightHolder">Bin Zhang</span>
 
   
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-area-chart"></i>
+    </span>
+    
+    <span title="Symbols count total">120k</span>
+  
+
+  
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-coffee"></i>
+    </span>
+    
+    <span title="Reading time total">1:49</span>
+  
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> v3.7.1</div>
 
 
 
@@ -1172,12 +1297,13 @@
 
 
 
-  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Gemini</a> v5.1.4</div>
+  <div class="theme-info">Theme – <a class="theme-link" target="_blank" href="https://theme-next.org">NexT.Gemini</a> v6.4.1</div>
 
 
 
 
         
+
 
 
 
@@ -1192,7 +1318,10 @@
     
 
     
+	
+    
 
+    
   </div>
 
   
@@ -1211,9 +1340,16 @@
 
 
 
+
+
+
+
+
   
 
 
+
+  
   
 
 
@@ -1233,16 +1369,6 @@
 
   
   
-    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
-  
-
-  
-  
-    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
-  
-
-  
-  
     <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
   
 
@@ -1253,64 +1379,53 @@
 
   
   
-    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
-  
-
-  
-  
     <script type="text/javascript" src="/lib/canvas-nest/canvas-nest.min.js"></script>
   
 
-
   
-
-
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
-
-
+  
+    <script type="text/javascript" src="/lib/three/three.min.js"></script>
+  
 
   
   
-
-
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
-
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
-
-
-
-  
-  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
-<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
-
-
-
-  
-
-
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
-
-
-
+    <script type="text/javascript" src="/lib/three/three-waves.min.js"></script>
   
 
 
   
 
 
+  <script type="text/javascript" src="/js/src/utils.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=6.4.1"></script>
 
 
-	
+
+  
+  
 
 
+  <script type="text/javascript" src="/js/src/affix.js?v=6.4.1"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=6.4.1"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=6.4.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=6.4.1"></script>
 
 
 
   
 
 
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=6.4.1"></script>
+
+
+
+  
 
 
 
@@ -1325,326 +1440,7 @@
 
 
 
-
-
   
-
-  <script type="text/javascript">
-    // Popup Window;
-    var isfetched = false;
-    var isXml = true;
-    // Search DB path;
-    var search_path = "search.xml";
-    if (search_path.length === 0) {
-      search_path = "search.xml";
-    } else if (/json$/i.test(search_path)) {
-      isXml = false;
-    }
-    var path = "/" + search_path;
-    // monitor main search box;
-
-    var onPopupClose = function (e) {
-      $('.popup').hide();
-      $('#local-search-input').val('');
-      $('.search-result-list').remove();
-      $('#no-result').remove();
-      $(".local-search-pop-overlay").remove();
-      $('body').css('overflow', '');
-    }
-
-    function proceedsearch() {
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay"></div>')
-        .css('overflow', 'hidden');
-      $('.search-popup-overlay').click(onPopupClose);
-      $('.popup').toggle();
-      var $localSearchInput = $('#local-search-input');
-      $localSearchInput.attr("autocapitalize", "none");
-      $localSearchInput.attr("autocorrect", "off");
-      $localSearchInput.focus();
-    }
-
-    // search function;
-    var searchFunc = function(path, search_id, content_id) {
-      'use strict';
-
-      // start loading animation
-      $("body")
-        .append('<div class="search-popup-overlay local-search-pop-overlay">' +
-          '<div id="search-loading-icon">' +
-          '<i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>' +
-          '</div>' +
-          '</div>')
-        .css('overflow', 'hidden');
-      $("#search-loading-icon").css('margin', '20% auto 0 auto').css('text-align', 'center');
-
-      $.ajax({
-        url: path,
-        dataType: isXml ? "xml" : "json",
-        async: true,
-        success: function(res) {
-          // get the contents from search data
-          isfetched = true;
-          $('.popup').detach().appendTo('.header-inner');
-          var datas = isXml ? $("entry", res).map(function() {
-            return {
-              title: $("title", this).text(),
-              content: $("content",this).text(),
-              url: $("url" , this).text()
-            };
-          }).get() : res;
-          var input = document.getElementById(search_id);
-          var resultContent = document.getElementById(content_id);
-          var inputEventFunction = function() {
-            var searchText = input.value.trim().toLowerCase();
-            var keywords = searchText.split(/[\s\-]+/);
-            if (keywords.length > 1) {
-              keywords.push(searchText);
-            }
-            var resultItems = [];
-            if (searchText.length > 0) {
-              // perform local searching
-              datas.forEach(function(data) {
-                var isMatch = false;
-                var hitCount = 0;
-                var searchTextCount = 0;
-                var title = data.title.trim();
-                var titleInLowerCase = title.toLowerCase();
-                var content = data.content.trim().replace(/<[^>]+>/g,"");
-                var contentInLowerCase = content.toLowerCase();
-                var articleUrl = decodeURIComponent(data.url);
-                var indexOfTitle = [];
-                var indexOfContent = [];
-                // only match articles with not empty titles
-                if(title != '') {
-                  keywords.forEach(function(keyword) {
-                    function getIndexByWord(word, text, caseSensitive) {
-                      var wordLen = word.length;
-                      if (wordLen === 0) {
-                        return [];
-                      }
-                      var startPosition = 0, position = [], index = [];
-                      if (!caseSensitive) {
-                        text = text.toLowerCase();
-                        word = word.toLowerCase();
-                      }
-                      while ((position = text.indexOf(word, startPosition)) > -1) {
-                        index.push({position: position, word: word});
-                        startPosition = position + wordLen;
-                      }
-                      return index;
-                    }
-
-                    indexOfTitle = indexOfTitle.concat(getIndexByWord(keyword, titleInLowerCase, false));
-                    indexOfContent = indexOfContent.concat(getIndexByWord(keyword, contentInLowerCase, false));
-                  });
-                  if (indexOfTitle.length > 0 || indexOfContent.length > 0) {
-                    isMatch = true;
-                    hitCount = indexOfTitle.length + indexOfContent.length;
-                  }
-                }
-
-                // show search results
-
-                if (isMatch) {
-                  // sort index by position of keyword
-
-                  [indexOfTitle, indexOfContent].forEach(function (index) {
-                    index.sort(function (itemLeft, itemRight) {
-                      if (itemRight.position !== itemLeft.position) {
-                        return itemRight.position - itemLeft.position;
-                      } else {
-                        return itemLeft.word.length - itemRight.word.length;
-                      }
-                    });
-                  });
-
-                  // merge hits into slices
-
-                  function mergeIntoSlice(text, start, end, index) {
-                    var item = index[index.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    var hits = [];
-                    var searchTextCountInSlice = 0;
-                    while (position + word.length <= end && index.length != 0) {
-                      if (word === searchText) {
-                        searchTextCountInSlice++;
-                      }
-                      hits.push({position: position, length: word.length});
-                      var wordEnd = position + word.length;
-
-                      // move to next position of hit
-
-                      index.pop();
-                      while (index.length != 0) {
-                        item = index[index.length - 1];
-                        position = item.position;
-                        word = item.word;
-                        if (wordEnd > position) {
-                          index.pop();
-                        } else {
-                          break;
-                        }
-                      }
-                    }
-                    searchTextCount += searchTextCountInSlice;
-                    return {
-                      hits: hits,
-                      start: start,
-                      end: end,
-                      searchTextCount: searchTextCountInSlice
-                    };
-                  }
-
-                  var slicesOfTitle = [];
-                  if (indexOfTitle.length != 0) {
-                    slicesOfTitle.push(mergeIntoSlice(title, 0, title.length, indexOfTitle));
-                  }
-
-                  var slicesOfContent = [];
-                  while (indexOfContent.length != 0) {
-                    var item = indexOfContent[indexOfContent.length - 1];
-                    var position = item.position;
-                    var word = item.word;
-                    // cut out 100 characters
-                    var start = position - 20;
-                    var end = position + 80;
-                    if(start < 0){
-                      start = 0;
-                    }
-                    if (end < position + word.length) {
-                      end = position + word.length;
-                    }
-                    if(end > content.length){
-                      end = content.length;
-                    }
-                    slicesOfContent.push(mergeIntoSlice(content, start, end, indexOfContent));
-                  }
-
-                  // sort slices in content by search text's count and hits' count
-
-                  slicesOfContent.sort(function (sliceLeft, sliceRight) {
-                    if (sliceLeft.searchTextCount !== sliceRight.searchTextCount) {
-                      return sliceRight.searchTextCount - sliceLeft.searchTextCount;
-                    } else if (sliceLeft.hits.length !== sliceRight.hits.length) {
-                      return sliceRight.hits.length - sliceLeft.hits.length;
-                    } else {
-                      return sliceLeft.start - sliceRight.start;
-                    }
-                  });
-
-                  // select top N slices in content
-
-                  var upperBound = parseInt('1');
-                  if (upperBound >= 0) {
-                    slicesOfContent = slicesOfContent.slice(0, upperBound);
-                  }
-
-                  // highlight title and content
-
-                  function highlightKeyword(text, slice) {
-                    var result = '';
-                    var prevEnd = slice.start;
-                    slice.hits.forEach(function (hit) {
-                      result += text.substring(prevEnd, hit.position);
-                      var end = hit.position + hit.length;
-                      result += '<b class="search-keyword">' + text.substring(hit.position, end) + '</b>';
-                      prevEnd = end;
-                    });
-                    result += text.substring(prevEnd, slice.end);
-                    return result;
-                  }
-
-                  var resultItem = '';
-
-                  if (slicesOfTitle.length != 0) {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + highlightKeyword(title, slicesOfTitle[0]) + "</a>";
-                  } else {
-                    resultItem += "<li><a href='" + articleUrl + "' class='search-result-title'>" + title + "</a>";
-                  }
-
-                  slicesOfContent.forEach(function (slice) {
-                    resultItem += "<a href='" + articleUrl + "'>" +
-                      "<p class=\"search-result\">" + highlightKeyword(content, slice) +
-                      "...</p>" + "</a>";
-                  });
-
-                  resultItem += "</li>";
-                  resultItems.push({
-                    item: resultItem,
-                    searchTextCount: searchTextCount,
-                    hitCount: hitCount,
-                    id: resultItems.length
-                  });
-                }
-              })
-            };
-            if (keywords.length === 1 && keywords[0] === "") {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-search fa-5x" /></div>'
-            } else if (resultItems.length === 0) {
-              resultContent.innerHTML = '<div id="no-result"><i class="fa fa-frown-o fa-5x" /></div>'
-            } else {
-              resultItems.sort(function (resultLeft, resultRight) {
-                if (resultLeft.searchTextCount !== resultRight.searchTextCount) {
-                  return resultRight.searchTextCount - resultLeft.searchTextCount;
-                } else if (resultLeft.hitCount !== resultRight.hitCount) {
-                  return resultRight.hitCount - resultLeft.hitCount;
-                } else {
-                  return resultRight.id - resultLeft.id;
-                }
-              });
-              var searchResultList = '<ul class=\"search-result-list\">';
-              resultItems.forEach(function (result) {
-                searchResultList += result.item;
-              })
-              searchResultList += "</ul>";
-              resultContent.innerHTML = searchResultList;
-            }
-          }
-
-          if ('auto' === 'auto') {
-            input.addEventListener('input', inputEventFunction);
-          } else {
-            $('.search-icon').click(inputEventFunction);
-            input.addEventListener('keypress', function (event) {
-              if (event.keyCode === 13) {
-                inputEventFunction();
-              }
-            });
-          }
-
-          // remove loading animation
-          $(".local-search-pop-overlay").remove();
-          $('body').css('overflow', '');
-
-          proceedsearch();
-        }
-      });
-    }
-
-    // handle and trigger popup window;
-    $('.popup-trigger').click(function(e) {
-      e.stopPropagation();
-      if (isfetched === false) {
-        searchFunc(path, 'local-search-input', 'local-search-result');
-      } else {
-        proceedsearch();
-      };
-    });
-
-    $('.popup-btn-close').click(onPopupClose);
-    $('.popup').click(function(e){
-      e.stopPropagation();
-    });
-    $(document).on('keyup', function (event) {
-      var shouldDismissSearchPopup = event.which === 27 &&
-        $('.search-popup').is(':visible');
-      if (shouldDismissSearchPopup) {
-        onPopupClose();
-      }
-    });
-  </script>
 
 
 
@@ -1662,6 +1458,17 @@
   
   
 
+  
+
+
+  
+  
+
+  
+
+  
+
+  
 
   
 
