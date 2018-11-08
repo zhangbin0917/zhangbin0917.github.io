@@ -637,7 +637,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -658,7 +658,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -713,7 +715,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">21</span>
+                      
+                    
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -763,7 +767,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#目标"><span class="nav-number">1.</span> <span class="nav-text">目标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决方案"><span class="nav-number">2.</span> <span class="nav-text">解决方案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#环境需求"><span class="nav-number">3.</span> <span class="nav-text">环境需求</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实施步骤"><span class="nav-number">4.</span> <span class="nav-text">实施步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-建立-A-机器到-B-机器的反向代理【A-机器上操作】"><span class="nav-number">4.1.</span> <span class="nav-text">1. 建立 A 机器到 B 机器的反向代理【A 机器上操作】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-建立-B-机器上的正向代理，用作本地转发。做这一步是因为绑定后的端口只支持本地访问【B-机器上操作】"><span class="nav-number">4.2.</span> <span class="nav-text">2. 建立 B 机器上的正向代理，用作本地转发。做这一步是因为绑定后的端口只支持本地访问【B 机器上操作】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-现在在-C-机器上可以通过-B-机器-ssh-到-A-机器"><span class="nav-number">4.3.</span> <span class="nav-text">3. 现在在 C 机器上可以通过 B 机器 ssh 到 A 机器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用autossh建立稳定的反向代理"><span class="nav-number">5.</span> <span class="nav-text">用autossh建立稳定的反向代理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#首先在内网机器A上配置ssh秘钥："><span class="nav-number">5.1.</span> <span class="nav-text">首先在内网机器A上配置ssh秘钥：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#然后利用如下命令将A的SSH秘钥添加到B的authorized-keys里面："><span class="nav-number">5.2.</span> <span class="nav-text">然后利用如下命令将A的SSH秘钥添加到B的authorized_keys里面：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#然后在内网A机器的配置："><span class="nav-number">5.3.</span> <span class="nav-text">然后在内网A机器的配置：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#然后执行如下命令即可完成反向-SSH-配置："><span class="nav-number">5.4.</span> <span class="nav-text">然后执行如下命令即可完成反向 SSH 配置：</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#目标"><span class="nav-text">目标</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#解决方案"><span class="nav-text">解决方案</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#环境需求"><span class="nav-text">环境需求</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#实施步骤"><span class="nav-text">实施步骤</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-建立-A-机器到-B-机器的反向代理【A-机器上操作】"><span class="nav-text">1. 建立 A 机器到 B 机器的反向代理【A 机器上操作】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-建立-B-机器上的正向代理，用作本地转发。做这一步是因为绑定后的端口只支持本地访问【B-机器上操作】"><span class="nav-text">2. 建立 B 机器上的正向代理，用作本地转发。做这一步是因为绑定后的端口只支持本地访问【B 机器上操作】</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-现在在-C-机器上可以通过-B-机器-ssh-到-A-机器"><span class="nav-text">3. 现在在 C 机器上可以通过 B 机器 ssh 到 A 机器</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#用autossh建立稳定的反向代理"><span class="nav-text">用autossh建立稳定的反向代理</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#首先在内网机器A上配置ssh秘钥："><span class="nav-text">首先在内网机器A上配置ssh秘钥：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#然后利用如下命令将A的SSH秘钥添加到B的authorized-keys里面："><span class="nav-text">然后利用如下命令将A的SSH秘钥添加到B的authorized_keys里面：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#然后在内网A机器的配置："><span class="nav-text">然后在内网A机器的配置：</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#然后执行如下命令即可完成反向-SSH-配置："><span class="nav-text">然后执行如下命令即可完成反向 SSH 配置：</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -802,7 +806,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">120k</span>
+    <span title="Symbols count total">135k</span>
   
 
   
@@ -811,7 +815,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">1:49</span>
+    <span title="Reading time total">2:03</span>
   
 </div>
 

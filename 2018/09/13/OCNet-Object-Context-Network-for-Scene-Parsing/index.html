@@ -453,7 +453,7 @@
 <li>OCNet在Cityscapes和ADE20K数据集上取得了state-of-the-art的结果</li>
 </ol>
 <h1 id="OverView"><a href="#OverView" class="headerlink" title="OverView"></a>OverView</h1><p><img src="/2018/09/13/OCNet-Object-Context-Network-for-Scene-Parsing/01.png" alt=""><br>OCNet以ResNet-101为backbone(后两个block为dilated convolution，dilation rate分别为2和4)，其后是这篇文章提出的object context module去计算逐像素的object context，最后是1×1的卷积输出预测图。object context module是基于Self Attention Mechanism，作者一共提出了3种不同的object context module: base-OC, Pyramid-OC, ASP-OC。</p>
-<h1 id="Object-Context"><a href="#Object-Context" class="headerlink" title="Object Context"></a>Object Context</h1><p><img src="/2018/09/13/OCNet-Object-Context-Network-for-Scene-Parsing/02.png" alt=""><br>这里大致介绍了Object Context module中的变量和基本原理。<br>X为输入的特征图，P为位置特征图，W为由self-attention得到的逐像素的相似度图，第i行表示所有像素与第i个像素的相关性，C为Object Context module最后得到的逐像素的object context表达。用公式表示为：<br>$$c_{i}=\sum_{j=1}^{N}{w_{i,j}\phi\left ( x_{j} \right )}$$<br>其中W可由以下公式得到：<br>$$w_{i,j}=\Phi \left ( x_{i},x_{j},p_{i},p_{j} \right )$$<br>进一步又可以写成：<br>$$\bar{x}_{i} = x_{i}+p_{i} \quad w_{i,j}=\Phi \left ( \bar{x}_{i},\bar{x}_{j} \right )=\frac{exp\left ( f_{query}\left ( \bar{x}_{i} \right )^{T} f_{key}\left ( \bar{x}_{j} \right )\right )}{\mathbb{C}\left ( \bar{x}_{i} \right )}$$<br>其中$\mathbb{C}\left ( \bar{x}_{i} \right )=\sum_{j=1}^{N}exp\left ( f_{query}\left ( \bar{x}_{i} \right )^{T} f_{key}\left ( \bar{x}_{j} \right )\right )$</p>
+<h1 id="Object-Context"><a href="#Object-Context" class="headerlink" title="Object Context"></a>Object Context</h1><p><img src="/2018/09/13/OCNet-Object-Context-Network-for-Scene-Parsing/02.png" alt=""><br>这里大致介绍了Object Context module中的变量和基本原理。<br>X为输入的特征图，P为位置特征图，W为由self-attention得到的逐像素的相似度图，第i行表示所有像素与第i个像素的相关性，C为Object Context module最后得到的逐像素的object context表达。用公式表示为：<br>$$c_{i}=\sum_{j=1}^{N}{w_{i,j}\phi\left ( x_{j} \right )}$$<br>其中W可由以下公式得到：<br>$$w_{i,j}=\Phi \left ( x_{i},x_{j},p_{i},p_{j} \right )$$<br>进一步又可以写成：<br>$$\bar{x}<em>{i} = x</em>{i}+p_{i} \quad w_{i,j}=\Phi \left ( \bar{x}<em>{i},\bar{x}</em>{j} \right )=\frac{exp\left ( f_{query}\left ( \bar{x}<em>{i} \right )^{T} f</em>{key}\left ( \bar{x}<em>{j} \right )\right )}{\mathbb{C}\left ( \bar{x}</em>{i} \right )}$$<br>其中$\mathbb{C}\left ( \bar{x}<em>{i} \right )=\sum</em>{j=1}^{N}exp\left ( f_{query}\left ( \bar{x}<em>{i} \right )^{T} f</em>{key}\left ( \bar{x}_{j} \right )\right )$</p>
 <h1 id="Object-Context-Module"><a href="#Object-Context-Module" class="headerlink" title="Object Context Module"></a>Object Context Module</h1><p><img src="/2018/09/13/OCNet-Object-Context-Network-for-Scene-Parsing/03.png" alt=""><br>这里介绍了3种不同的object context module: base-OC, Pyramid-OC, ASP-OC。每个object context module都含有3个阶段：(1)计算X；(2)计算C；(3)融合。</p>
 <h2 id="Base-OC"><a href="#Base-OC" class="headerlink" title="Base-OC"></a>Base-OC</h2><p>(1)计算X: 3×3的卷积减少channel从2048到512<br>(2)计算C: 用self-attention模块计算逐像素的attention map和object context<br>(3)融合: concatenate C 和 X<br>进一步用1×1的卷积减少channel维度为512</p>
 <h2 id="Pyramid-OC-受PSPNet的启发"><a href="#Pyramid-OC-受PSPNet的启发" class="headerlink" title="Pyramid-OC(受PSPNet的启发)"></a>Pyramid-OC(受PSPNet的启发)</h2><p>(1)计算X: 3×3的卷积减少channel从2048到512<br>(2)计算C: 在四个分支中分别用self-attention模块计算逐像素的attention map和object context。第一个分支把全部特征图作为输入，第二个分支把特征图分为2×2的子区域，每个子区域应用共享的transform，第三个和第四个分支把输入分为3×3和6×6的子区域，每个子区域的transform不共享。最后concatenate每个分支的结果并用1×1的卷积增加X的维度与object context的维度相等再进行concatenate<br>(3)融合: 进一步用1×1的卷积减少channel维度为512</p>
@@ -583,7 +583,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -604,7 +604,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -659,7 +661,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">21</span>
+                      
+                    
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -709,7 +713,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#OverView"><span class="nav-number">1.</span> <span class="nav-text">OverView</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Object-Context"><span class="nav-number">2.</span> <span class="nav-text">Object Context</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Object-Context-Module"><span class="nav-number">3.</span> <span class="nav-text">Object Context Module</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Base-OC"><span class="nav-number">3.1.</span> <span class="nav-text">Base-OC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pyramid-OC-受PSPNet的启发"><span class="nav-number">3.2.</span> <span class="nav-text">Pyramid-OC(受PSPNet的启发)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ASP-OC-受DeepLAbV3的ASPP启发"><span class="nav-number">3.3.</span> <span class="nav-text">ASP-OC(受DeepLAbV3的ASPP启发)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Experiments"><span class="nav-number">4.</span> <span class="nav-text">Experiments</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Influence-of-the-Positional-Feature"><span class="nav-number">4.1.</span> <span class="nav-text">Influence of the Positional Feature</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Influence-of-the-Key-Query-transform"><span class="nav-number">4.2.</span> <span class="nav-text">Influence of the Key/Query transform</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Influence-of-the-Self-attention-in-ASP-OC"><span class="nav-number">4.3.</span> <span class="nav-text">Influence of the Self-attention in ASP-OC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Influence-of-Auxiliary-loss"><span class="nav-number">4.4.</span> <span class="nav-text">Influence of Auxiliary loss</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Influence-of-the-OHEM-Ms-Flip-Validation-set"><span class="nav-number">4.5.</span> <span class="nav-text">Influence of the OHEM, Ms, Flip, Validation set</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Comparison-with-Baseline"><span class="nav-number">4.6.</span> <span class="nav-text">Comparison with Baseline</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Comparison-with-State-of-the-art"><span class="nav-number">4.7.</span> <span class="nav-text">Comparison with State-of-the-art</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Visualization-of-the-object-context"><span class="nav-number">4.8.</span> <span class="nav-text">Visualization of the object context</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#OverView"><span class="nav-text">OverView</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Object-Context"><span class="nav-text">Object Context</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Object-Context-Module"><span class="nav-text">Object Context Module</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Base-OC"><span class="nav-text">Base-OC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Pyramid-OC-受PSPNet的启发"><span class="nav-text">Pyramid-OC(受PSPNet的启发)</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#ASP-OC-受DeepLAbV3的ASPP启发"><span class="nav-text">ASP-OC(受DeepLAbV3的ASPP启发)</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Experiments"><span class="nav-text">Experiments</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Influence-of-the-Positional-Feature"><span class="nav-text">Influence of the Positional Feature</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Influence-of-the-Key-Query-transform"><span class="nav-text">Influence of the Key/Query transform</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Influence-of-the-Self-attention-in-ASP-OC"><span class="nav-text">Influence of the Self-attention in ASP-OC</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Influence-of-Auxiliary-loss"><span class="nav-text">Influence of Auxiliary loss</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Influence-of-the-OHEM-Ms-Flip-Validation-set"><span class="nav-text">Influence of the OHEM, Ms, Flip, Validation set</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Comparison-with-Baseline"><span class="nav-text">Comparison with Baseline</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Comparison-with-State-of-the-art"><span class="nav-text">Comparison with State-of-the-art</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Visualization-of-the-object-context"><span class="nav-text">Visualization of the object context</span></a></li></ol></li></ol></div>
             
 
           </div>
@@ -748,7 +752,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">120k</span>
+    <span title="Symbols count total">135k</span>
   
 
   
@@ -757,7 +761,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">1:49</span>
+    <span title="Reading time total">2:03</span>
   
 </div>
 

@@ -116,7 +116,7 @@
 <meta property="og:site_name" content="Zhang Bin&#39;s Blog">
 <meta property="og:description" content="Semantic Segmentation论文整理">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-09-20T12:34:15.648Z">
+<meta property="og:updated_time" content="2018-10-11T07:28:39.401Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Semantic Segmentation">
 <meta name="twitter:description" content="Semantic Segmentation论文整理">
@@ -375,7 +375,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-09-20 20:34:15" itemprop="dateModified" datetime="2018-09-20T20:34:15+08:00">2018-09-20</time>
+                <time title="Modified: 2018-10-11 15:28:39" itemprop="dateModified" datetime="2018-10-11T15:28:39+08:00">2018-10-11</time>
               
             
           </span>
@@ -402,7 +402,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">6.4k</span>
+                <span title="Symbols count in article">6.7k</span>
               
 
               
@@ -479,7 +479,7 @@
 <li>[<strong>OCNet</strong>] OCNet: Object Context Network for Scene Parsing <a href="https://arxiv.org/abs/1809.00916" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/PkuRainBow/OCNet" target="_blank" rel="noopener">[code]</a></li>
 <li>[<strong>DAN</strong>] Dual Attention Network for Scene Segmentation <a href="https://arxiv.org/abs/1809.02983" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/junfu1115/DANet" target="_blank" rel="noopener">[code]</a></li>
 </ul>
-<h1 id="Real-Time-Semantic-Segmentation"><a href="#Real-Time-Semantic-Segmentation" class="headerlink" title="Real-Time Semantic Segmentation"></a>Real-Time Semantic Segmentation</h1><ul>
+<h1 id="Real-Time-Semantic-Segmentation"><a href="#Real-Time-Semantic-Segmentation" class="headerlink" title="Real-Time Semantic Segmentation"></a>Real-Time Semantic Segmentation</h1><ol>
 <li>[<strong>ENet</strong>] ENet: A Deep Neural Network Architecture for Real-Time Semantic Segmentation-2016  <a href="https://arxiv.org/abs/1606.02147" target="_blank" rel="noopener">[Paper]</a></li>
 <li>[<strong>ICNet</strong>] [ECCV 2018] ICNet for Real-Time Semantic Segmentation on High-Resolution Images <a href="https://hszhao.github.io/projects/icnet/" target="_blank" rel="noopener">[Project]</a> <a href="https://github.com/hszhao/ICNet" target="_blank" rel="noopener">[Code]</a> <a href="https://arxiv.org/abs/1704.08545" target="_blank" rel="noopener">[Paper]</a> <a href="https://www.youtube.com/watch?v=qWl9idsCuLQ" target="_blank" rel="noopener">[Video]</a> (<strong>Uses deep supervision and runs the input image at different scales, each scale through their own subnetwork and progressively combining the results</strong>)</li>
 <li>[<strong>RTSeg</strong>] RTSeg: Real-time Semantic Segmentation Comparative Study <a href="https://arxiv.org/abs/1803.02758" target="_blank" rel="noopener">[Paper]</a></li>
@@ -489,16 +489,21 @@
 <li>Guided Upsampling Network for Real-Time Semantic Segmentation <a href="http://www.ivl.disco.unimib.it/activities/semantic-segmentation/" target="_blank" rel="noopener">[Project]</a> <a href="https://arxiv.org/abs/1807.07466" target="_blank" rel="noopener">[Paper]</a></li>
 <li>[<strong>BiSeNet</strong>] [ECCV 2018] BiSeNet: Bilateral Segmentation Network for Real-time Semantic Segmentation <a href="https://arxiv.org/abs/1808.00897" target="_blank" rel="noopener">[Paper]</a> (<strong>Has 2 branches: one is deep for getting semantic information, while the other does very little / minor processing on the input image as to preserve the low-level pixel information</strong>)</li>
 <li>Efficient Dense Modules of Asymmetric Convolution for Real-Time Semantic Segmentation <a href="https://arxiv.org/abs/1809.06323" target="_blank" rel="noopener">[Paper]</a></li>
-</ul>
+<li>[BMVC 2018] Light-Weight RefineNet for Real-Time Semantic Segmentation <a href="https://arxiv.org/abs/1810.03272" target="_blank" rel="noopener">[Paper]</a></li>
+</ol>
 <h1 id="Loss-Fuction"><a href="#Loss-Fuction" class="headerlink" title="Loss Fuction"></a>Loss Fuction</h1><ul>
-<li>[CVPR 2017 ] Loss Max-Pooling for Semantic Image Segmentation <a href="https://arxiv.org/abs/1704.02966" target="_blank" rel="noopener">[Paper]</a></li>
-<li>[CVPR 2018] The Lovász-Softmax loss：A tractable surrogate for the optimization of the intersection-over-union measure in neural networks <a href="https://arxiv.org/abs/1705.08790" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/bermanmaxim/LovaszSoftmax" target="_blank" rel="noopener">[Code]</a></li>
+<li><br><font color="red">The Lovász Hinge: A Novel Convex Surrogate for Submodular Losses</font> <a href="https://arxiv.org/abs/1512.07797" target="_blank" rel="noopener">[arxiv]</a> <a href="https://sites.google.com/site/jiaqianyu08/lovaszhinge" target="_blank" rel="noopener">[project]</a></li>
+<li>[CVPR 2017 ] Loss Max-Pooling for Semantic Image Segmentation <a href="http://bmax.im/LovaszSoftmax" target="_blank" rel="noopener">[Project]</a> <a href="https://arxiv.org/abs/1704.02966" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/bermanmaxim/LovaszSoftmax" target="_blank" rel="noopener">[code]</a></li>
+<li>[CVPR 2018] <br><font color="red">The Lovász-Softmax loss：A tractable surrogate for the optimization of the intersection-over-union measure in neural networks</font> <a href="https://arxiv.org/abs/1705.08790" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/bermanmaxim/LovaszSoftmax" target="_blank" rel="noopener">[Code]</a></li>
 <li>Generalised Dice overlap as a deep learning loss function for highly unbalanced segmentations <a href="https://arxiv.org/abs/1707.03237" target="_blank" rel="noopener">[Paper]</a></li>
-<li>[BMVC 2018] NeuroIoU: Learning a Surrogate Loss for Semantic Segmentation <a href="http://cdn.iiit.ac.in/cdn/cvit.iiit.ac.in/images/ConferencePapers/2018/bmvc2018-NeuroIoU.pdf" target="_blank" rel="noopener">[Paper]</a></li>
+<li><br><font color="red">IoU is not submodular</font> <a href="https://arxiv.org/abs/1809.00593" target="_blank" rel="noopener">[arxiv]</a></li>
+<li><br><font color="red">Yes, IoU loss is submodular - as a function of the mispredictions</font> <a href="https://arxiv.org/abs/1809.01845" target="_blank" rel="noopener">[arxiv]</a></li>
+<li>[BMVC 2018] NeuroIoU: Learning a Surrogate Loss for Semantic Segmentation <a href="http://cdn.iiit.ac.in/cdn/cvit.iiit.ac.in/images/ConferencePapers/2018/bmvc2018-NeuroIoU.pdf" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/drsleep/light-weight-refinenet" target="_blank" rel="noopener">[code]</a></li>
 </ul>
 <h1 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h1><ul>
 <li>A Survey of Semantic Segmentation <a href="https://arxiv.org/abs/1602.06541" target="_blank" rel="noopener">[arxiv]</a></li>
 <li>A Review on Deep Learning Techniques Applied to Semantic Segmentation <a href="https://arxiv.org/abs/1704.06857" target="_blank" rel="noopener">[arxiv]</a></li>
+<li>Recent progress in semantic image segmentation <a href="https://arxiv.org/abs/1809.10198" target="_blank" rel="noopener">[arxiv]</a></li>
 </ul>
 
       
@@ -609,7 +614,7 @@
                 
                   <a href="/archives/">
                 
-                    <span class="site-state-item-count">25</span>
+                    <span class="site-state-item-count">26</span>
                     <span class="site-state-item-name">posts</span>
                   </a>
                 </div>
@@ -630,7 +635,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">4</span>
+                      
+                    
+                    <span class="site-state-item-count">5</span>
                     <span class="site-state-item-name">categories</span>
                   </a>
                 </div>
@@ -685,7 +692,9 @@
                     
                       
                     
-                    <span class="site-state-item-count">21</span>
+                      
+                    
+                    <span class="site-state-item-count">22</span>
                     <span class="site-state-item-name">tags</span>
                   </a>
                 </div>
@@ -735,7 +744,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2D-Semantic-Segmentation"><span class="nav-number">1.</span> <span class="nav-text">2D Semantic Segmentation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Real-Time-Semantic-Segmentation"><span class="nav-number">2.</span> <span class="nav-text">Real-Time Semantic Segmentation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Loss-Fuction"><span class="nav-number">3.</span> <span class="nav-text">Loss Fuction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Review"><span class="nav-number">4.</span> <span class="nav-text">Review</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2D-Semantic-Segmentation"><span class="nav-text">2D Semantic Segmentation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Real-Time-Semantic-Segmentation"><span class="nav-text">Real-Time Semantic Segmentation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Loss-Fuction"><span class="nav-text">Loss Fuction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Review"><span class="nav-text">Review</span></a></li></ol></div>
             
 
           </div>
@@ -774,7 +783,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">120k</span>
+    <span title="Symbols count total">135k</span>
   
 
   
@@ -783,7 +792,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">1:49</span>
+    <span title="Reading time total">2:03</span>
   
 </div>
 
