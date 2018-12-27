@@ -494,8 +494,8 @@
 <h2 id="4-3-和其他Cascade-Structures的不同之处"><a href="#4-3-和其他Cascade-Structures的不同之处" class="headerlink" title="4.3 和其他Cascade Structures的不同之处"></a>4.3 和其他Cascade Structures的不同之处</h2><p>其他Cascade Structures都聚焦于融合单尺度或多尺度的输入的不同层的特征，而ICNet则用低分辨率的图像通过主体语义分割分支，再用高分辨率信息进行优化。</p>
 <h1 id="5-Cascade-Feature-Fusion-and-Final-Model"><a href="#5-Cascade-Feature-Fusion-and-Final-Model" class="headerlink" title="5. Cascade Feature Fusion and Final Model"></a>5. Cascade Feature Fusion and Final Model</h1><p><img src="/2018/05/29/ICNet-for-Real-Time-Semantic-Segmentation-on-High-Resolution-Images/04.png" alt="lbxx"></p>
 <p>为了结合不同分辨率的图像，提出了Cascade Feature Fusion(CCF)单元，输入包含3个部分：两个特征图$F_1$和$F_2$，大小为$H_1\times{W_1\times{C_1}}$和$H_2\times{W_2\times{C_2}}$,和一个ground truth label大小为$H_2\times{W_2\times{1}}$。$F_2$的大小是$F_1$的2倍。首先将$F_1$上采样2倍使得与$F_2$大小相同，然后用$3\times3$的卷积核，dilation 1的dilated convolution对上采样的特征图refine。而对于特征图$F_2$用$1\times1$的卷积使得与特征图$F_1$具有相同的通道数。在dilated convolution和$1\times1$的卷积后都使用了Batch normalization。最后两个特征图相加再通过ReLU激活函数，得到融合的特征图F^{‘}_2。除此之外，还对对上采样的特征图$F_1$添加了辅助分类器，辅助分类器损失的权重设为0.4。</p>
-<h2 id="5-1-The-Loss-Function"><a href="#5-1-The-Loss-Function" class="headerlink" title="5.1 The Loss Function"></a>5.1 The Loss Function</h2><p>最终的损失函数由3部分组成：<br>$$L=\lambda_{1}L_1+\lambda_{2}L_2+\lambda_{3}L_3$$</p>
-<h2 id="5-2-Final-Model-Compression"><a href="#5-2-Final-Model-Compression" class="headerlink" title="5.2 Final Model Compression"></a>5.2 Final Model Compression</h2><p>最后为了进一步减少运行时间，对模型进行压缩。作者采取的是渐进式的方式。以压缩率为1/2为例，并没有直接移除一半的卷积核，而是先保存3/4的卷积核再进行fine-tuning。之后再移除更多的卷积核，再fine-tuning直到达到1/2的压缩率。</p>
+<h2 id="5-1-The-Loss-Function"><a href="#5-1-The-Loss-Function" class="headerlink" title="5.1 The Loss Function"></a>5.1 The Loss Function</h2><p>最终的损失函数由3部分组成：</p>
+<script type="math/tex; mode=display">L=\lambda_{1}L_1+\lambda_{2}L_2+\lambda_{3}L_3</script><h2 id="5-2-Final-Model-Compression"><a href="#5-2-Final-Model-Compression" class="headerlink" title="5.2 Final Model Compression"></a>5.2 Final Model Compression</h2><p>最后为了进一步减少运行时间，对模型进行压缩。作者采取的是渐进式的方式。以压缩率为1/2为例，并没有直接移除一半的卷积核，而是先保存3/4的卷积核再进行fine-tuning。之后再移除更多的卷积核，再fine-tuning直到达到1/2的压缩率。</p>
 <p>如何选择哪个卷积核要被移除呢？</p>
 <p>作者通过计算卷积核的L1范数，再根据L1范数进行排序，去掉那些较小的卷积核。这种方式不会剧烈的更新所有参数，因此可以较好地减少网络大小。</p>
 <h1 id="6-Experimental-Evaluation"><a href="#6-Experimental-Evaluation" class="headerlink" title="6. Experimental Evaluation"></a>6. Experimental Evaluation</h1><p>实验平台：caffe CUDA7.5 CUDNN V5</p>
@@ -801,7 +801,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">137k</span>
+    <span title="Symbols count total">138k</span>
   
 
   
@@ -810,7 +810,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">2:04</span>
+    <span title="Reading time total">2:06</span>
   
 </div>
 
@@ -1007,7 +1007,7 @@
         }
     });
 </script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
     
   

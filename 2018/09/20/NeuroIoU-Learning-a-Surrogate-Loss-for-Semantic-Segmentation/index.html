@@ -428,8 +428,12 @@
       
         <p>语义分割问题中评价指标往往为IoU，由于其不可微，使用逐像素的cross entropy并不能直接优化这个指标，而导致网络性能结果较差。因此作者提出在常规语义分割网络后用一个网络来拟合IoU，进而可以进行求导和反向传播优化IoU。<br><a id="more"></a></p>
 <p>在语义分割任务中一般使用cross entropy loss，由于IoU在类别不平衡时可以更好的评价网络性能，所以评价指标往往为IoU。如下图，(c)和(d)分类精度相同，但很明显(d)的分割结果要比(c)好。由于IoU不可微，所以其不能作为损失函数。因此作者提出在现有的分割网络后加一个全连接网络来拟合IoU Loss作为Surrogate IoU Loss，作者称这个Surrogate IoU Loss为NeuroIoU loss。<br><img src="/2018/09/20/NeuroIoU-Learning-a-Surrogate-Loss-for-Semantic-Segmentation/00.png" alt=""></p>
-<h1 id="Surrogate-IoU-Loss"><a href="#Surrogate-IoU-Loss" class="headerlink" title="Surrogate IoU Loss"></a>Surrogate IoU Loss</h1><p>IoU的定义为：<br>$$IoU=\frac{TP}{TP+FP+FN}$$<br>因此IoU loss定义为：<br>$$L_{IoU}=1-IoU=1-\frac{TP}{TP+FP+FN}=\frac{FP+FN}{TP+FP+FN}$$<br>由于IoU loss不可微，所以使用一个代理网络来估计IoU loss</p>
-<h2 id="Defining-the-Surrogate-IoU-Loss-Network"><a href="#Defining-the-Surrogate-IoU-Loss-Network" class="headerlink" title="Defining the Surrogate IoU-Loss Network"></a>Defining the Surrogate IoU-Loss Network</h2><p>首先定义Surrogate IoU-Loss Network的输入,设x为预训练的语义分割网络的输出,设$TP_{pr}$,$FP_{pr}$,$FN_{pr}$的概率个数为分别属于TP，FP，FN的像素个数：<br>$$TP_{pr}=\sum_{x_{i}}{P(x_{i})},where\, x_{i}\in{TP}$$<br>$$FP_{pr}=\sum_{x_{i}}{P(x_{i})},where\, x_{i}\in{FP}$$<br>$$FN_{pr}=\sum_{x_{i}}{P(x_{i})},where\, x_{i}\in{FN}$$<br>Surrogate IoU-Loss Network的输出为$L_{IoU}$。<br>作者设计这个网络为4层100个神经元，将这个网络叫做NeuroIoU,损失为网络的输出和$L_{IoU}$的 Mean-Squared Error loss:<br>$$E(w)=\sum_{i}{[NeuroIoU(TP_{pr_{i}},FP_{pr_{i}},FN_{pr_{i}})-L_{IoU_{i}}]^2}$$<br>但是不同的分割结果可能会有相同的IoU，这会影响估计IoU的性能，为了使估计IoU更鲁棒将$\frac{TP_{pr}}{\left | TP \right |}$,$\frac{FP_{pr}}{\left | FP \right |}$,$\frac{FN_{pr}}{\left | FN \right |}$也作为网络的输入.实验证明输入6个时，更加鲁棒</p>
+<h1 id="Surrogate-IoU-Loss"><a href="#Surrogate-IoU-Loss" class="headerlink" title="Surrogate IoU Loss"></a>Surrogate IoU Loss</h1><p>IoU的定义为：</p>
+<script type="math/tex; mode=display">IoU=\frac{TP}{TP+FP+FN}</script><p>因此IoU loss定义为：</p>
+<script type="math/tex; mode=display">L_{IoU}=1-IoU=1-\frac{TP}{TP+FP+FN}=\frac{FP+FN}{TP+FP+FN}</script><p>由于IoU loss不可微，所以使用一个代理网络来估计IoU loss</p>
+<h2 id="Defining-the-Surrogate-IoU-Loss-Network"><a href="#Defining-the-Surrogate-IoU-Loss-Network" class="headerlink" title="Defining the Surrogate IoU-Loss Network"></a>Defining the Surrogate IoU-Loss Network</h2><p>首先定义Surrogate IoU-Loss Network的输入,设x为预训练的语义分割网络的输出,设$TP_{pr}$,$FP_{pr}$,$FN_{pr}$的概率个数为分别属于TP，FP，FN的像素个数：</p>
+<script type="math/tex; mode=display">TP_{pr}=\sum_{x_{i}}{P(x_{i})},where\, x_{i}\in{TP}</script><script type="math/tex; mode=display">FP_{pr}=\sum_{x_{i}}{P(x_{i})},where\, x_{i}\in{FP}</script><script type="math/tex; mode=display">FN_{pr}=\sum_{x_{i}}{P(x_{i})},where\, x_{i}\in{FN}</script><p>Surrogate IoU-Loss Network的输出为$L_{IoU}$。<br>作者设计这个网络为4层100个神经元，将这个网络叫做NeuroIoU,损失为网络的输出和$L_{IoU}$的 Mean-Squared Error loss:</p>
+<script type="math/tex; mode=display">E(w)=\sum_{i}{[NeuroIoU(TP_{pr_{i}},FP_{pr_{i}},FN_{pr_{i}})-L_{IoU_{i}}]^2}</script><p>但是不同的分割结果可能会有相同的IoU，这会影响估计IoU的性能，为了使估计IoU更鲁棒将$\frac{TP_{pr}}{\left | TP \right |}$,$\frac{FP_{pr}}{\left | FP \right |}$,$\frac{FN_{pr}}{\left | FN \right |}$也作为网络的输入.实验证明输入6个时，更加鲁棒</p>
 <h2 id="Training-Semantic-Segmentation-Models-with-NeuroIoU-Loss"><a href="#Training-Semantic-Segmentation-Models-with-NeuroIoU-Loss" class="headerlink" title="Training Semantic Segmentation Models with NeuroIoU Loss"></a>Training Semantic Segmentation Models with NeuroIoU Loss</h2><p>用训练好的NeuroIoU再去fine-tune语义分割网络<br><img src="/2018/09/20/NeuroIoU-Learning-a-Surrogate-Loss-for-Semantic-Segmentation/01.png" alt=""></p>
 <h2 id="Approximation-using-Prediction-Loss"><a href="#Approximation-using-Prediction-Loss" class="headerlink" title="Approximation using Prediction Loss"></a>Approximation using Prediction Loss</h2><p>也可以使用hinge loss来估计。分别计算属于TP，FP，FN的像素的hinge loss的和。</p>
 <h1 id="Experiments"><a href="#Experiments" class="headerlink" title="Experiments"></a>Experiments</h1><p><img src="/2018/09/20/NeuroIoU-Learning-a-Surrogate-Loss-for-Semantic-Segmentation/02.png" alt=""><br><img src="/2018/09/20/NeuroIoU-Learning-a-Surrogate-Loss-for-Semantic-Segmentation/03.png" alt=""><br><img src="/2018/09/20/NeuroIoU-Learning-a-Surrogate-Loss-for-Semantic-Segmentation/04.png" alt=""><br><img src="/2018/09/20/NeuroIoU-Learning-a-Surrogate-Loss-for-Semantic-Segmentation/05.png" alt=""><br><img src="/2018/09/20/NeuroIoU-Learning-a-Surrogate-Loss-for-Semantic-Segmentation/06.png" alt=""></p>
@@ -478,8 +482,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2018/09/29/SSD-Single-Shot-MultiBox-Detector/" rel="prev" title="SSD: Single Shot MultiBox Detector">
-                SSD: Single Shot MultiBox Detector <i class="fa fa-chevron-right"></i>
+              <a href="/2018/09/29/SSD-Single-Shot-MultiBox-Detector/" rel="prev" title="论文阅读 - SSD: Single Shot MultiBox Detector<ECCV 2016>">
+                论文阅读 - SSD: Single Shot MultiBox Detector<ECCV 2016> <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -719,7 +723,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">137k</span>
+    <span title="Symbols count total">138k</span>
   
 
   
@@ -728,7 +732,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">2:04</span>
+    <span title="Reading time total">2:06</span>
   
 </div>
 
@@ -925,7 +929,7 @@
         }
     });
 </script>
-<script type="text/javascript" src="//cdn.jsdelivr.net/npm/mathjax@2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
     
   

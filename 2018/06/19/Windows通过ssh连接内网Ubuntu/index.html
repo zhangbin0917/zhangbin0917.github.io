@@ -414,7 +414,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">2.9k</span>
+                <span title="Symbols count in article">2.8k</span>
               
 
               
@@ -449,6 +449,7 @@
 
       
         <p>Windows通过ssh反向连接内网Ubuntu<br><a id="more"></a></p>
+<div class="table-container">
 <table>
 <thead>
 <tr>
@@ -479,6 +480,7 @@
 </tr>
 </tbody>
 </table>
+</div>
 <h1 id="目标"><a href="#目标" class="headerlink" title="目标"></a>目标</h1><p>从 C 机器使用 SSH 访问 A</p>
 <h1 id="解决方案"><a href="#解决方案" class="headerlink" title="解决方案"></a>解决方案</h1><p>在 A 机器上做到 B 机器的反向代理；在 B 机器上做正向代理本地端口转发</p>
 <h1 id="环境需求"><a href="#环境需求" class="headerlink" title="环境需求"></a>环境需求</h1><p>每台机器上都需要 SSH 客户端<br>A、B 两台机器上需要 SSH 服务器端。通常是 openssh-server。</p>
@@ -489,8 +491,8 @@
 <li>-C 允许压缩数据</li>
 <li>-N 不执行远程指令</li>
 <li>-R 将远程主机(服务器)的某个端口转发到本地端指定机器的指定端口</li>
-<li>&lt;port_b1&gt;：建立在B机器上，用来代理设备A机器22端口的端口</li>
-<li><a href="mailto:userB@B.B.B.B" target="_blank" rel="noopener">userB@B.B.B.B</a> ：B机器的用户名和IP地址</li>
+<li><port_b1>：建立在B机器上，用来代理设备A机器22端口的端口</port_b1></li>
+<li>userB@B.B.B.B ：B机器的用户名和IP地址</li>
 </ul>
 <p>例如：<br><code>ssh -fCNR  1314:localhost:22 userB@B.B.B.B</code> </p>
 <p>在设备A上可以使用<code>ps aux | grep ssh</code>查看<br>在B设备上可以使用<code>netstat -lntp 1314</code>指令来查看<br>此时B设备上已经可以通过<code>ssh -p 1314 userA@localhost</code>连接到设备A</p>
@@ -498,7 +500,7 @@
 <p>编辑<code>sudo vi /etc/ssh/sshd_config</code>在最后一行添加<code>GatewayPorts yes</code></p>
 <p>重新启动服务<code>sudo service sshd restart</code><br><figure class="highlight elixir"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -fCNL *<span class="symbol">:&lt;port_b2&gt;</span><span class="symbol">:localhost</span><span class="symbol">:&lt;port_b1&gt;</span> localhost</span><br></pre></td></tr></table></figure></p>
 <p>例如：<code>ssh -fCNL  *:1994:localhost:1021 userB@localhost</code></p>
-<p>&lt;port_b2&gt; 为本地转发端口，用以和外网通信，并将数据转发到 &lt;port_b1&gt;，实现可以从其他机器访问。<br>其中的*表示接受来自任意机器的访问。</p>
+<p><port_b2> 为本地转发端口，用以和外网通信，并将数据转发到 <port_b1>，实现可以从其他机器访问。<br>其中的*表示接受来自任意机器的访问。</port_b1></port_b2></p>
 <h2 id="3-现在在-C-机器上可以通过-B-机器-ssh-到-A-机器"><a href="#3-现在在-C-机器上可以通过-B-机器-ssh-到-A-机器" class="headerlink" title="3. 现在在 C 机器上可以通过 B 机器 ssh 到 A 机器"></a>3. 现在在 C 机器上可以通过 B 机器 ssh 到 A 机器</h2><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ssh -<span class="selector-tag">p</span> &lt;portb2&gt; userA@B<span class="selector-class">.B</span><span class="selector-class">.B</span><span class="selector-class">.B</span></span><br></pre></td></tr></table></figure>
 <p>在xshell中不能执行以上命令，而应该配置session，主机为B.B.B.B，端口为<code>&lt;portb2&gt;</code>，用户名密码为A机器</p>
 <h1 id="用autossh建立稳定的反向代理"><a href="#用autossh建立稳定的反向代理" class="headerlink" title="用autossh建立稳定的反向代理"></a>用autossh建立稳定的反向代理</h1><p>不幸的是这种ssh反向连接会因为超时或NAT地址映射的转变而关闭，如果关闭了那从外网连通内网的通道就无法维持了，为此我们需要另外的方法来提供稳定的ssh反向代理隧道。</p>
@@ -510,9 +512,9 @@
 <h2 id="然后在内网A机器的配置："><a href="#然后在内网A机器的配置：" class="headerlink" title="然后在内网A机器的配置："></a>然后在内网A机器的配置：</h2><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-<span class="builtin-name">get</span> install autossh</span><br></pre></td></tr></table></figure>
 <h2 id="然后执行如下命令即可完成反向-SSH-配置："><a href="#然后执行如下命令即可完成反向-SSH-配置：" class="headerlink" title="然后执行如下命令即可完成反向 SSH 配置："></a>然后执行如下命令即可完成反向 SSH 配置：</h2><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">autossh</span> <span class="selector-tag">-M</span> 7043 <span class="selector-tag">-fCNR</span> &lt;<span class="selector-tag">port_b1</span>&gt;<span class="selector-pseudo">:localhost</span><span class="selector-pseudo">:22</span> <span class="selector-tag">userB</span>@<span class="keyword">B</span>.<span class="keyword">B</span>.<span class="keyword">B</span>.<span class="keyword">B</span></span><br></pre></td></tr></table></figure>
 <p>这里 -M 后面任意填写一个可用端口即可，-N 代表只建立连接，不打开shell ，-f 代表建立成功后在后台运行，-R 代表指定端口映射。</p>
-<p>这里是将 A 主机的 22 端口映射到 B 主机的 &lt;port_b1&gt; 端口，这样就完成了配置。<br>我们可以在机器A或机器B上面用如下命令来检查autossh建立的反向代理是否成功：<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -antpul | <span class="keyword">grep</span> <span class="string">':&lt;port_b1&gt;'</span></span><br></pre></td></tr></table></figure></p>
+<p>这里是将 A 主机的 22 端口映射到 B 主机的 <port_b1> 端口，这样就完成了配置。<br>我们可以在机器A或机器B上面用如下命令来检查autossh建立的反向代理是否成功：<br><figure class="highlight gradle"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">netstat -antpul | <span class="keyword">grep</span> <span class="string">':&lt;port_b1&gt;'</span></span><br></pre></td></tr></table></figure></port_b1></p>
 <p>若建立成功则有相应的输出，否则无输出.</p>
-<p>只要我们再访问 B 主机的 &lt;port_b1&gt; 端口，就会自动转发到 A 主机的 22 端口了，即可以公网访问了。</p>
+<p>只要我们再访问 B 主机的 <port_b1> 端口，就会自动转发到 A 主机的 22 端口了，即可以公网访问了。</port_b1></p>
 <p>然后连接我们的公网ip： <code>ssh userB@B.B.B.B  -p &lt;port_b2&gt;</code><br>然后输入密码就可以通过公网连接我们的内网了。<br>最后配置在Linux上配置开机自动启动autossh，免去了重启Linux后要自己启动的autossh的麻烦<br>输入:<br><figure class="highlight awk"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo touch <span class="regexp">/etc/</span>systemd<span class="regexp">/system/</span>remote-autossh.service</span><br><span class="line">sudo gedit <span class="regexp">/etc/</span>systemd<span class="regexp">/system/</span>remote-autossh.service</span><br></pre></td></tr></table></figure></p>
 <p>添加内容:<br><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line"><span class="attribute">Description</span>=Robust SSH Reverse Tunnel <span class="keyword">and</span><span class="built_in"> Port </span>Forward</span><br><span class="line"><span class="attribute">After</span>=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line"><span class="attribute">User</span>=zhangbin</span><br><span class="line"><span class="attribute">ExecStart</span>=/usr/bin/autossh -M 7043 -q -o <span class="string">"ServerAliveInterval 60"</span> -o <span class="string">"ServerAliveCountMax 6"</span> -o <span class="string">"StrictHostKeyChecking no"</span> -fCNR 1314:localhost:22 userB@B.B.B.B </span><br><span class="line"><span class="attribute">KillMode</span>=process</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line"><span class="attribute">WantedBy</span>=multi-user.target</span><br><span class="line"><span class="attribute">Alias</span>=autossh.service</span><br></pre></td></tr></table></figure></p>
 <p>To make it executable:<br><figure class="highlight stylus"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo chmod +x /etc/systemd/system/remote-autossh.service</span><br><span class="line">sudo systemctl enable remote-autossh.service</span><br><span class="line">sudo systemctl start remote-autossh.service</span><br><span class="line">sudo systemctl status remote-autossh.service</span><br></pre></td></tr></table></figure></p>
@@ -806,7 +808,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">137k</span>
+    <span title="Symbols count total">138k</span>
   
 
   
@@ -815,7 +817,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">2:04</span>
+    <span title="Reading time total">2:06</span>
   
 </div>
 
