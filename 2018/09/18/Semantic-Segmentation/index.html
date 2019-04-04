@@ -108,18 +108,18 @@
 
 
 
-  <meta name="description" content="Semantic Segmentation论文整理">
+  <meta name="description" content="network mAP(VOC12) mAP(VOC12 with COCO) mAP(Pascal Context) mAP(CamVid) mAP(Cityscapes) mAP(ADE20K) Published In     FCN-8s 62.2  37.8  65.3  CVPR 2015   DeepLab 71.6      ICLR 2015   CRF-RNN 72.0">
 <meta name="keywords" content="Remote Sensing, Image Processing, Deep learning">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Semantic Segmentation">
 <meta property="og:url" content="http://yoursite.com/2018/09/18/Semantic-Segmentation/index.html">
 <meta property="og:site_name" content="Zhang Bin&#39;s Blog">
-<meta property="og:description" content="Semantic Segmentation论文整理">
+<meta property="og:description" content="network mAP(VOC12) mAP(VOC12 with COCO) mAP(Pascal Context) mAP(CamVid) mAP(Cityscapes) mAP(ADE20K) Published In     FCN-8s 62.2  37.8  65.3  CVPR 2015   DeepLab 71.6      ICLR 2015   CRF-RNN 72.0">
 <meta property="og:locale" content="en">
-<meta property="og:updated_time" content="2018-12-25T08:49:36.662Z">
+<meta property="og:updated_time" content="2019-04-03T06:33:20.388Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Semantic Segmentation">
-<meta name="twitter:description" content="Semantic Segmentation论文整理">
+<meta name="twitter:description" content="network mAP(VOC12) mAP(VOC12 with COCO) mAP(Pascal Context) mAP(CamVid) mAP(Cityscapes) mAP(ADE20K) Published In     FCN-8s 62.2  37.8  65.3  CVPR 2015   DeepLab 71.6      ICLR 2015   CRF-RNN 72.0">
 
 
 
@@ -375,7 +375,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-12-25 16:49:36" itemprop="dateModified" datetime="2018-12-25T16:49:36+08:00">2018-12-25</time>
+                <time title="Modified: 2019-04-03 14:33:20" itemprop="dateModified" datetime="2019-04-03T14:33:20+08:00">2019-04-03</time>
               
             
           </span>
@@ -402,7 +402,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">7.2k</span>
+                <span title="Symbols count in article">9.7k</span>
               
 
               
@@ -416,7 +416,7 @@
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">7 mins.</span>
+                <span title="Reading time">9 mins.</span>
               
             </div>
           
@@ -436,8 +436,356 @@
       
 
       
-        <p>Semantic Segmentation论文整理<br><a id="more"></a></p>
-<h1 id="2D-Semantic-Segmentation"><a href="#2D-Semantic-Segmentation" class="headerlink" title="2D Semantic Segmentation"></a>2D Semantic Segmentation</h1><ul>
+        <div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">network</th>
+<th style="text-align:center">mAP(VOC12)</th>
+<th style="text-align:center">mAP(VOC12 with COCO)</th>
+<th style="text-align:center">mAP(Pascal Context)</th>
+<th style="text-align:center">mAP(CamVid)</th>
+<th style="text-align:center">mAP(Cityscapes)</th>
+<th style="text-align:center">mAP(ADE20K)</th>
+<th style="text-align:center">Published In</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">FCN-8s</td>
+<td style="text-align:center">62.2</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">37.8</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">65.3</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">CVPR 2015</td>
+</tr>
+<tr>
+<td style="text-align:center">DeepLab</td>
+<td style="text-align:center">71.6</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">ICLR 2015</td>
+</tr>
+<tr>
+<td style="text-align:center">CRF-RNN</td>
+<td style="text-align:center">72.0</td>
+<td style="text-align:center">74.7</td>
+<td style="text-align:center">39.3</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">ICCV 2015</td>
+</tr>
+<tr>
+<td style="text-align:center">DeconvNet</td>
+<td style="text-align:center">72.5</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">ICCV 2015</td>
+</tr>
+<tr>
+<td style="text-align:center">DPN</td>
+<td style="text-align:center">74.1</td>
+<td style="text-align:center">77.5</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">ICCV 2015</td>
+</tr>
+<tr>
+<td style="text-align:center">SegNet</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">50.2</td>
+</tr>
+<tr>
+<td style="text-align:center">Dilation8</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">75.3</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Deeplab v2</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">79.7</td>
+<td style="text-align:center">45.7</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">70.4</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">PAMI</td>
+</tr>
+<tr>
+<td style="text-align:center">FRRN B</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">71.8</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">CVPR 2017</td>
+</tr>
+<tr>
+<td style="text-align:center">G-FRNet</td>
+<td style="text-align:center">79.3</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">68.0</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">CVPR 2017</td>
+</tr>
+<tr>
+<td style="text-align:center">GCN</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">82.2</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">76.9</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">CVPR 2017</td>
+</tr>
+<tr>
+<td style="text-align:center">SegModel</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">82.5</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">79.2</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">CVPR 2017</td>
+</tr>
+<tr>
+<td style="text-align:center">RefineNet</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">83.4</td>
+<td style="text-align:center">47.3</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">73.6</td>
+<td style="text-align:center">40.7</td>
+<td style="text-align:center">CVPR 2017</td>
+</tr>
+<tr>
+<td style="text-align:center">PSPNet</td>
+<td style="text-align:center">82.6</td>
+<td style="text-align:center">85.4</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">80.2</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">CVPR 2017</td>
+</tr>
+<tr>
+<td style="text-align:center">DIS</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">86.8</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">ICCV 2017</td>
+</tr>
+<tr>
+<td style="text-align:center">SAC-multiple</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">78.1</td>
+<td style="text-align:center">44.3</td>
+<td style="text-align:center">ICCV 2017</td>
+</tr>
+<tr>
+<td style="text-align:center">DeepLabv3</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">85.7</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">81.3</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">arxiv 1706.05587</td>
+</tr>
+<tr>
+<td style="text-align:center">DUC-HDC</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">80.1</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">WACV2018</td>
+</tr>
+<tr>
+<td style="text-align:center">DDSC</td>
+<td style="text-align:center">81.2</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">47.8</td>
+<td style="text-align:center">70.9</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">CVPR 2018</td>
+</tr>
+<tr>
+<td style="text-align:center">EncNet</td>
+<td style="text-align:center">82.9</td>
+<td style="text-align:center">85.9</td>
+<td style="text-align:center">51.7</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">44.65</td>
+<td style="text-align:center">CVPR 2018</td>
+</tr>
+<tr>
+<td style="text-align:center">DFN</td>
+<td style="text-align:center">82.7</td>
+<td style="text-align:center">86.2</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">80.3</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">CVPR 2018</td>
+</tr>
+<tr>
+<td style="text-align:center">DenseASPP</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">80.6</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">CVPR 2018</td>
+</tr>
+<tr>
+<td style="text-align:center">UperNet</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">42.66</td>
+<td style="text-align:center">ECCV 2018</td>
+</tr>
+<tr>
+<td style="text-align:center">PSANet</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">85.7</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">80.1</td>
+<td style="text-align:center">43.77</td>
+<td style="text-align:center">ECCV 2018</td>
+</tr>
+<tr>
+<td style="text-align:center">DeepLabv3+</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">87.8</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">82.1</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">ECCV 2018</td>
+</tr>
+<tr>
+<td style="text-align:center">ExFuse</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">87.9</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">ECCV 2018</td>
+</tr>
+<tr>
+<td style="text-align:center">OCNet</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">81.2(81.7)</td>
+<td style="text-align:center">45.08(45.45)</td>
+<td style="text-align:center">arxiv 1809.00916</td>
+</tr>
+<tr>
+<td style="text-align:center">DAN</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">52.6</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">78.2</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">CVPR 2019</td>
+</tr>
+<tr>
+<td style="text-align:center">DPC</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">87.9</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">82.7</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">NIPS 2018</td>
+</tr>
+<tr>
+<td style="text-align:center">CCNet</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">81.4</td>
+<td style="text-align:center">45.22</td>
+<td style="text-align:center">arxiv 1811.11721</td>
+</tr>
+<tr>
+<td style="text-align:center">TKCN</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">83.2</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">79.5</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">ICME 2019</td>
+</tr>
+<tr>
+<td style="text-align:center">DUpsampling</td>
+<td style="text-align:center">85.3</td>
+<td style="text-align:center">88.1</td>
+<td style="text-align:center">52.5</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">CVPR 2019</td>
+</tr>
+<tr>
+<td style="text-align:center">FastFCN</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">53.1</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">44.34</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Semantic Segmentation论文整理<br><a id="more"></a></p>
+<h1 id="dataset"><a href="#dataset" class="headerlink" title="dataset"></a>dataset</h1><ul>
+<li>[<strong>NYU2</strong>] [ECCV2012] Indoor segmentation and support inference from rgbd images</li>
+<li>[<strong>SUN RGB-D</strong>] [CVPR2015] SUN RGB-D: A RGB-D scene understanding benchmark suite shuran</li>
+<li>[<strong>Matterport3D</strong>] Matterport3D: Learning from RGB-D Data in Indoor Environments <a href="https://arxiv.org/abs/1709.06158" target="_blank" rel="noopener">[Paper]</a></li>
+</ul>
+<h1 id="2D-Semantic-Segmentation"><a href="#2D-Semantic-Segmentation" class="headerlink" title="2D Semantic Segmentation"></a>2D Semantic Segmentation</h1><ol>
 <li>[<strong>FCN</strong>] Fully Convolutional Networks for Semantic Segmentation <a href="http://arxiv.org/abs/1411.4038" target="_blank" rel="noopener">[Paper1]</a> <a href="http://arxiv.org/abs/1605.06211" target="_blank" rel="noopener">[Paper2]</a> <a href="https://docs.google.com/presentation/d/1VeWFMpZ8XN7OC3URZP4WdXvOGYckoFWGVN7hApoXVnc" target="_blank" rel="noopener">[Slides1]</a> <a href="http://tutorial.caffe.berkeleyvision.org/caffe-cvpr15-pixels.pdf" target="_blank" rel="noopener">[Slides2]</a></li>
 <li>[<strong>DeepLab v1</strong>] Semantic Image Segmentation With Deep Convolutional Nets and Fully Connected CRFs<a href="https://bitbucket.org/deeplab/deeplab-public/" target="_blank" rel="noopener">[Code-Caffe]</a> <a href="http://arxiv.org/abs/1412.7062" target="_blank" rel="noopener">[Paper]</a></li>
 <li>[<strong>CRF as RNN</strong>] Conditional Random Fields as Recurrent Neural Networks <a href="http://www.robots.ox.ac.uk/~szheng/CRFasRNN.html" target="_blank" rel="noopener">[Project]</a> <a href="http://www.robots.ox.ac.uk/~szheng/crfasrnndemo" target="_blank" rel="noopener">[Demo]</a> <a href="http://arxiv.org/abs/1502.03240" target="_blank" rel="noopener">[Paper]</a></li>
@@ -475,12 +823,19 @@
 <li>[<strong>DenseASPP</strong>] [CVPR 2018] DenseASPP for Semantic Segmentation in Street Scenes <a href="http://openaccess.thecvf.com/content_cvpr_2018/html/Yang_DenseASPP_for_Semantic_CVPR_2018_paper.html" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/DeepMotionAIResearch/DenseASPP" target="_blank" rel="noopener">[code]</a> (<strong>Combines dense connections with atrous convolutions</strong>)</li>
 <li>[CVPR 2018] Dense Decoder Shortcut Connections for Single-Pass Semantic Segmentation <a href="http://openaccess.thecvf.com/content_cvpr_2018/html/Bilinski_Dense_Decoder_Shortcut_CVPR_2018_paper.html" target="_blank" rel="noopener">[Paper]</a> (<strong>Use dense connections in the decoding stage for higher accuracy (previously only done during feature extraction / encoding)</strong>)</li>
 <li>Smoothed Dilated Convolutions for Improved Dense Prediction <a href="https://arxiv.org/abs/1808.08931" target="_blank" rel="noopener">[Paper]</a></li>
-<li>[<strong>PSANet</strong>] [ECCV 2018] PSANet: Point-wise Spatial Attention Network for Scene Parsing <a href="http://openaccess.thecvf.com/content_ECCV_2018/html/Hengshuang_Zhao_PSANet_Point-wise_Spatial_ECCV_2018_paper.html" target="_blank" rel="noopener">[Paper]</a> <a href="https://hszhao.github.io/projects/psanet/" target="_blank" rel="noopener">[project]</a> <a href="https://github.com/hszhao/PSANet" target="_blank" rel="noopener">[code]</a> <a href="https://docs.google.com/presentation/d/1_brKNBtv8nVu_jOwFRGwVkEPAq8B8hEngBSQuZCWaZA/edit?usp=sharing" target="_blank" rel="noopener">[slide]</a></li>
-<li>[<strong>OCNet</strong>] OCNet: Object Context Network for Scene Parsing <a href="https://arxiv.org/abs/1809.00916" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/PkuRainBow/OCNet" target="_blank" rel="noopener">[code]</a></li>
-<li>[<strong>DAN</strong>] Dual Attention Network for Scene Segmentation <a href="https://arxiv.org/abs/1809.02983" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/junfu1115/DANet" target="_blank" rel="noopener">[code]</a></li>
-<li>[<strong>CCNet</strong>] CCNet: Criss-Cross Attention for Semantic Segmentation <a href="https://arxiv.org/abs/1811.11721" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/speedinghzl/CCNet" target="_blank" rel="noopener">[code]</a></li>
+<li>[<strong>PSANet</strong>] [ECCV 2018] PSANet: Point-wise Spatial Attention Network for Scene Parsing <a href="http://openaccess.thecvf.com/content_ECCV_2018/html/Hengshuang_Zhao_PSANet_Point-wise_Spatial_ECCV_2018_paper.html" target="_blank" rel="noopener">[Paper]</a> <a href="https://hszhao.github.io/projects/psanet/" target="_blank" rel="noopener">[project]</a> <a href="https://github.com/hszhao/PSANet" target="_blank" rel="noopener">[code]</a> <a href="https://docs.google.com/presentation/d/1_brKNBtv8nVu_jOwFRGwVkEPAq8B8hEngBSQuZCWaZA/edit?usp=sharing" target="_blank" rel="noopener">[slide]</a> (<font color="red">Attention Mechanism</font>)</li>
+<li>[<strong>OCNet</strong>] OCNet: Object Context Network for Scene Parsing <a href="https://arxiv.org/abs/1809.00916" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/PkuRainBow/OCNet" target="_blank" rel="noopener">[code]</a> (<font color="red">Attention Mechanism</font>)</li>
+<li>[<strong>DAN</strong>] [CVPR 2019] Dual Attention Network for Scene Segmentation <a href="https://arxiv.org/abs/1809.02983" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/junfu1115/DANet" target="_blank" rel="noopener">[code]</a> (<font color="red">Attention Mechanism</font>)</li>
+<li>[<strong>CCNet</strong>] CCNet: Criss-Cross Attention for Semantic Segmentation <a href="https://arxiv.org/abs/1811.11721" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/speedinghzl/CCNet" target="_blank" rel="noopener">[code]</a> (<font color="red">Attention Mechanism</font>)</li>
 <li>[<strong>TKCN</strong>] Tree-structured Kronecker Convolutional Networks for Semantic Segmentation <a href="https://arxiv.org/abs/1812.04945" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/wutianyiRosun/TKCN" target="_blank" rel="noopener">[code]</a></li>
-</ul>
+<li>Auto-DeepLab: Hierarchical Neural Architecture Search for Semantic Image Segmentation<a href="https://arxiv.org/abs/1901.02985" target="_blank" rel="noopener">[Paper]</a></li>
+<li>Decoders Matter for Semantic Segmentation: Data-Dependent Decoding Enables Flexible Feature Aggregation <a href="https://arxiv.org/abs/1903.02120" target="_blank" rel="noopener">[Paper]</a></li>
+<li>[<strong>CVPR 2019</strong>] Structured Knowledge Distillation for Semantic Segmentation <a href="https://arxiv.org/abs/1903.04197" target="_blank" rel="noopener">[Paper]</a></li>
+<li>[<strong>CVPR 2019</strong>] Knowledge Adaptation for Efficient Semantic Segmentation <a href="https://arxiv.org/abs/1903.04688" target="_blank" rel="noopener">[Paper]</a></li>
+<li>[<strong>CVPR 2019</strong>] A Cross-Season Correspondence Dataset for Robust Semantic Segmentation <a href="https://arxiv.org/abs/1903.06916" target="_blank" rel="noopener">[Paper]</a></li>
+<li>Efficient Smoothing of Dilated Convolutions for Image Segmentation <a href="https://arxiv.org/abs/1903.07992" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/ThomasZiegler/Efficient-Smoothing-of-Dilated-Convolutions" target="_blank" rel="noopener">[Code]</a></li>
+<li>FastFCN：Rethinking Dilated Convolution in the Backbone for Semantic Segmentation <a href="https://arxiv.org/abs/1903.11816" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/wuhuikai/FastFCN" target="_blank" rel="noopener">[Code]</a></li>
+</ol>
 <h1 id="Real-Time-Semantic-Segmentation"><a href="#Real-Time-Semantic-Segmentation" class="headerlink" title="Real-Time Semantic Segmentation"></a>Real-Time Semantic Segmentation</h1><ol>
 <li>[<strong>ENet</strong>] ENet: A Deep Neural Network Architecture for Real-Time Semantic Segmentation-2016  <a href="https://arxiv.org/abs/1606.02147" target="_blank" rel="noopener">[Paper]</a></li>
 <li>[<strong>ICNet</strong>] [ECCV 2018] ICNet for Real-Time Semantic Segmentation on High-Resolution Images <a href="https://hszhao.github.io/projects/icnet/" target="_blank" rel="noopener">[Project]</a> <a href="https://github.com/hszhao/ICNet" target="_blank" rel="noopener">[Code]</a> <a href="https://arxiv.org/abs/1704.08545" target="_blank" rel="noopener">[Paper]</a> <a href="https://www.youtube.com/watch?v=qWl9idsCuLQ" target="_blank" rel="noopener">[Video]</a> (<strong>Uses deep supervision and runs the input image at different scales, each scale through their own subnetwork and progressively combining the results</strong>)</li>
@@ -491,20 +846,24 @@
 <li>Guided Upsampling Network for Real-Time Semantic Segmentation <a href="http://www.ivl.disco.unimib.it/activities/semantic-segmentation/" target="_blank" rel="noopener">[Project]</a> <a href="https://arxiv.org/abs/1807.07466" target="_blank" rel="noopener">[Paper]</a></li>
 <li>[<strong>BiSeNet</strong>] [ECCV 2018] BiSeNet: Bilateral Segmentation Network for Real-time Semantic Segmentation <a href="https://arxiv.org/abs/1808.00897" target="_blank" rel="noopener">[Paper]</a> (<strong>Has 2 branches: one is deep for getting semantic information, while the other does very little / minor processing on the input image as to preserve the low-level pixel information</strong>)</li>
 <li>Efficient Dense Modules of Asymmetric Convolution for Real-Time Semantic Segmentation <a href="https://arxiv.org/abs/1809.06323" target="_blank" rel="noopener">[Paper]</a></li>
-<li>[BMVC 2018] Light-Weight RefineNet for Real-Time Semantic Segmentation <a href="https://arxiv.org/abs/1810.03272" target="_blank" rel="noopener">[Paper]</a></li>
+<li>[BMVC 2018] Light-Weight RefineNet for Real-Time Semantic Segmentation <a href="https://arxiv.org/abs/1810.03272" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/DrSleep/light-weight-refinenet" target="_blank" rel="noopener">[code]</a></li>
 <li>CGNet: A Light-weight Context Guided Network for Semantic Segmentation <a href="https://arxiv.org/abs/1811.08201" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/wutianyiRosun/CGNet" target="_blank" rel="noopener">[Code]</a> </li>
-<li>ShelfNet for Real-time Semantic Segmentation <a href="https://arxiv.org/abs/1811.11254" target="_blank" rel="noopener">[Paper]</a></li>
-<li>ESPNetv2: A Light-weight, Power Efficient, and General Purpose Convolutional Neural Network <a href="https://arxiv.org/abs/1811.11431" target="_blank" rel="noopener">[Paper]</a></li>
+<li><del>ShelfNet for Real-time Semantic Segmentation <a href="https://arxiv.org/abs/1811.11254" target="_blank" rel="noopener">[Paper]</a></del></li>
+<li>ESPNetv2: A Light-weight, Power Efficient, and General Purpose Convolutional Neural Network <a href="https://arxiv.org/abs/1811.11431" target="_blank" rel="noopener">[Paper]</a><a href="https://github.com/sacmehta/ESPNetv2" target="_blank" rel="noopener">[Code]</a> </li>
+<li>Real time backbone for semantic segmentation <a href="https://arxiv.org/abs/1903.06922" target="_blank" rel="noopener">[Paper]</a></li>
+<li>DSNet for Real-Time Driving Scene Semantic Segmentation <a href="https://arxiv.org/abs/1812.07049" target="_blank" rel="noopener">[Paper]</a></li>
+<li>In Defense of Pre-trained ImageNet Architectures for Real-time Semantic Segmentation of Road-driving Images <a href="https://arxiv.org/abs/1903.08469" target="_blank" rel="noopener">[Paper]</a></li>
+<li>Residual Pyramid Learning for Single-Shot Semantic Segmentation <a href="https://arxiv.org/abs/1903.09746" target="_blank" rel="noopener">[Paper]</a></li>
 </ol>
-<h1 id="Loss-Fuction"><a href="#Loss-Fuction" class="headerlink" title="Loss Fuction"></a>Loss Fuction</h1><ul>
-<li><br><font color="red">The Lovász Hinge: A Novel Convex Surrogate for Submodular Losses</font> <a href="https://arxiv.org/abs/1512.07797" target="_blank" rel="noopener">[arxiv]</a> <a href="https://sites.google.com/site/jiaqianyu08/lovaszhinge" target="_blank" rel="noopener">[project]</a></li>
+<h1 id="Loss-Fuction"><a href="#Loss-Fuction" class="headerlink" title="Loss Fuction"></a>Loss Fuction</h1><ol>
+<li><font color="red">The Lovász Hinge: A Novel Convex Surrogate for Submodular Losses</font> <a href="https://arxiv.org/abs/1512.07797" target="_blank" rel="noopener">[arxiv]</a> <a href="https://sites.google.com/site/jiaqianyu08/lovaszhinge" target="_blank" rel="noopener">[project]</a></li>
 <li>[CVPR 2017 ] Loss Max-Pooling for Semantic Image Segmentation <a href="https://arxiv.org/abs/1704.02966" target="_blank" rel="noopener">[Paper]</a></li>
-<li>[CVPR 2018] <br><font color="red">The Lovász-Softmax loss：A tractable surrogate for the optimization of the intersection-over-union measure in neural networks</font> <a href="http://bmax.im/LovaszSoftmax" target="_blank" rel="noopener">[Project]</a> <a href="https://arxiv.org/abs/1705.08790" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/bermanmaxim/LovaszSoftmax" target="_blank" rel="noopener">[Code]</a></li>
+<li>[CVPR 2018] <font color="red">The Lovász-Softmax loss：A tractable surrogate for the optimization of the intersection-over-union measure in neural networks</font> <a href="http://bmax.im/LovaszSoftmax" target="_blank" rel="noopener">[Project]</a> <a href="https://arxiv.org/abs/1705.08790" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/bermanmaxim/LovaszSoftmax" target="_blank" rel="noopener">[Code]</a></li>
 <li>Generalised Dice overlap as a deep learning loss function for highly unbalanced segmentations <a href="https://arxiv.org/abs/1707.03237" target="_blank" rel="noopener">[Paper]</a></li>
-<li><br><font color="red">IoU is not submodular</font> <a href="https://arxiv.org/abs/1809.00593" target="_blank" rel="noopener">[arxiv]</a></li>
-<li><br><font color="red">Yes, IoU loss is submodular - as a function of the mispredictions</font> <a href="https://arxiv.org/abs/1809.01845" target="_blank" rel="noopener">[arxiv]</a></li>
+<li><font color="red">IoU is not submodular</font> <a href="https://arxiv.org/abs/1809.00593" target="_blank" rel="noopener">[arxiv]</a></li>
+<li><font color="red">Yes, IoU loss is submodular - as a function of the mispredictions</font> <a href="https://arxiv.org/abs/1809.01845" target="_blank" rel="noopener">[arxiv]</a></li>
 <li>[BMVC 2018] NeuroIoU: Learning a Surrogate Loss for Semantic Segmentation <a href="http://cdn.iiit.ac.in/cdn/cvit.iiit.ac.in/images/ConferencePapers/2018/bmvc2018-NeuroIoU.pdf" target="_blank" rel="noopener">[Paper]</a> <a href="https://github.com/drsleep/light-weight-refinenet" target="_blank" rel="noopener">[code]</a></li>
-</ul>
+</ol>
 <h1 id="Review"><a href="#Review" class="headerlink" title="Review"></a>Review</h1><ul>
 <li>A Survey of Semantic Segmentation <a href="https://arxiv.org/abs/1602.06541" target="_blank" rel="noopener">[arxiv]</a></li>
 <li>A Review on Deep Learning Techniques Applied to Semantic Segmentation <a href="https://arxiv.org/abs/1704.06857" target="_blank" rel="noopener">[arxiv]</a></li>
@@ -749,7 +1108,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#2D-Semantic-Segmentation"><span class="nav-text">2D Semantic Segmentation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Real-Time-Semantic-Segmentation"><span class="nav-text">Real-Time Semantic Segmentation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Loss-Fuction"><span class="nav-text">Loss Fuction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Review"><span class="nav-text">Review</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#dataset"><span class="nav-text">dataset</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#2D-Semantic-Segmentation"><span class="nav-text">2D Semantic Segmentation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Real-Time-Semantic-Segmentation"><span class="nav-text">Real-Time Semantic Segmentation</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Loss-Fuction"><span class="nav-text">Loss Fuction</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Review"><span class="nav-text">Review</span></a></li></ol></div>
             
 
           </div>
@@ -776,7 +1135,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -788,7 +1147,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">138k</span>
+    <span title="Symbols count total">154k</span>
   
 
   
@@ -797,7 +1156,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">2:06</span>
+    <span title="Reading time total">2:20</span>
   
 </div>
 

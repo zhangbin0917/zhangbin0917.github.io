@@ -379,7 +379,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-12-27 20:31:43" itemprop="dateModified" datetime="2018-12-27T20:31:43+08:00">2018-12-27</time>
+                <time title="Modified: 2019-04-02 11:07:16" itemprop="dateModified" datetime="2019-04-02T11:07:16+08:00">2019-04-02</time>
               
             
           </span>
@@ -424,7 +424,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">74k</span>
+                <span title="Symbols count in article">87k</span>
               
 
               
@@ -438,7 +438,7 @@
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">1:07</span>
+                <span title="Reading time">1:19</span>
               
             </div>
           
@@ -588,7 +588,7 @@
                 
                   <span class="post-meta-item-text">Edited on</span>
                 
-                <time title="Modified: 2018-12-25 16:49:36" itemprop="dateModified" datetime="2018-12-25T16:49:36+08:00">2018-12-25</time>
+                <time title="Modified: 2019-04-03 14:33:20" itemprop="dateModified" datetime="2019-04-03T14:33:20+08:00">2019-04-03</time>
               
             
           </span>
@@ -615,7 +615,7 @@
                 
                   <span class="post-meta-item-text">Symbols count in article: </span>
                 
-                <span title="Symbols count in article">7.2k</span>
+                <span title="Symbols count in article">9.7k</span>
               
 
               
@@ -629,7 +629,7 @@
                 
                   <span class="post-meta-item-text">Reading time &asymp;</span>
                 
-                <span title="Reading time">7 mins.</span>
+                <span title="Reading time">9 mins.</span>
               
             </div>
           
@@ -650,7 +650,350 @@
 
       
         
-          <p>Semantic Segmentation论文整理<br></p>
+          <div class="table-container">
+<table>
+<thead>
+<tr>
+<th style="text-align:center">network</th>
+<th style="text-align:center">mAP(VOC12)</th>
+<th style="text-align:center">mAP(VOC12 with COCO)</th>
+<th style="text-align:center">mAP(Pascal Context)</th>
+<th style="text-align:center">mAP(CamVid)</th>
+<th style="text-align:center">mAP(Cityscapes)</th>
+<th style="text-align:center">mAP(ADE20K)</th>
+<th style="text-align:center">Published In</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align:center">FCN-8s</td>
+<td style="text-align:center">62.2</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">37.8</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">65.3</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">CVPR 2015</td>
+</tr>
+<tr>
+<td style="text-align:center">DeepLab</td>
+<td style="text-align:center">71.6</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">ICLR 2015</td>
+</tr>
+<tr>
+<td style="text-align:center">CRF-RNN</td>
+<td style="text-align:center">72.0</td>
+<td style="text-align:center">74.7</td>
+<td style="text-align:center">39.3</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">ICCV 2015</td>
+</tr>
+<tr>
+<td style="text-align:center">DeconvNet</td>
+<td style="text-align:center">72.5</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">ICCV 2015</td>
+</tr>
+<tr>
+<td style="text-align:center">DPN</td>
+<td style="text-align:center">74.1</td>
+<td style="text-align:center">77.5</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">ICCV 2015</td>
+</tr>
+<tr>
+<td style="text-align:center">SegNet</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">50.2</td>
+</tr>
+<tr>
+<td style="text-align:center">Dilation8</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">75.3</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+</tr>
+<tr>
+<td style="text-align:center">Deeplab v2</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">79.7</td>
+<td style="text-align:center">45.7</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">70.4</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">PAMI</td>
+</tr>
+<tr>
+<td style="text-align:center">FRRN B</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">71.8</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">CVPR 2017</td>
+</tr>
+<tr>
+<td style="text-align:center">G-FRNet</td>
+<td style="text-align:center">79.3</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">68.0</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">CVPR 2017</td>
+</tr>
+<tr>
+<td style="text-align:center">GCN</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">82.2</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">76.9</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">CVPR 2017</td>
+</tr>
+<tr>
+<td style="text-align:center">SegModel</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">82.5</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">79.2</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">CVPR 2017</td>
+</tr>
+<tr>
+<td style="text-align:center">RefineNet</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">83.4</td>
+<td style="text-align:center">47.3</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">73.6</td>
+<td style="text-align:center">40.7</td>
+<td style="text-align:center">CVPR 2017</td>
+</tr>
+<tr>
+<td style="text-align:center">PSPNet</td>
+<td style="text-align:center">82.6</td>
+<td style="text-align:center">85.4</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">80.2</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">CVPR 2017</td>
+</tr>
+<tr>
+<td style="text-align:center">DIS</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">86.8</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">ICCV 2017</td>
+</tr>
+<tr>
+<td style="text-align:center">SAC-multiple</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">78.1</td>
+<td style="text-align:center">44.3</td>
+<td style="text-align:center">ICCV 2017</td>
+</tr>
+<tr>
+<td style="text-align:center">DeepLabv3</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">85.7</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">81.3</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">arxiv 1706.05587</td>
+</tr>
+<tr>
+<td style="text-align:center">DUC-HDC</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">80.1</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">WACV2018</td>
+</tr>
+<tr>
+<td style="text-align:center">DDSC</td>
+<td style="text-align:center">81.2</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">47.8</td>
+<td style="text-align:center">70.9</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">CVPR 2018</td>
+</tr>
+<tr>
+<td style="text-align:center">EncNet</td>
+<td style="text-align:center">82.9</td>
+<td style="text-align:center">85.9</td>
+<td style="text-align:center">51.7</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">44.65</td>
+<td style="text-align:center">CVPR 2018</td>
+</tr>
+<tr>
+<td style="text-align:center">DFN</td>
+<td style="text-align:center">82.7</td>
+<td style="text-align:center">86.2</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">80.3</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">CVPR 2018</td>
+</tr>
+<tr>
+<td style="text-align:center">DenseASPP</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">80.6</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">CVPR 2018</td>
+</tr>
+<tr>
+<td style="text-align:center">UperNet</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">42.66</td>
+<td style="text-align:center">ECCV 2018</td>
+</tr>
+<tr>
+<td style="text-align:center">PSANet</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">85.7</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">80.1</td>
+<td style="text-align:center">43.77</td>
+<td style="text-align:center">ECCV 2018</td>
+</tr>
+<tr>
+<td style="text-align:center">DeepLabv3+</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">87.8</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">82.1</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">ECCV 2018</td>
+</tr>
+<tr>
+<td style="text-align:center">ExFuse</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">87.9</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">ECCV 2018</td>
+</tr>
+<tr>
+<td style="text-align:center">OCNet</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">81.2(81.7)</td>
+<td style="text-align:center">45.08(45.45)</td>
+<td style="text-align:center">arxiv 1809.00916</td>
+</tr>
+<tr>
+<td style="text-align:center">DAN</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">52.6</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">78.2</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">CVPR 2019</td>
+</tr>
+<tr>
+<td style="text-align:center">DPC</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">87.9</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">82.7</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">NIPS 2018</td>
+</tr>
+<tr>
+<td style="text-align:center">CCNet</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">81.4</td>
+<td style="text-align:center">45.22</td>
+<td style="text-align:center">arxiv 1811.11721</td>
+</tr>
+<tr>
+<td style="text-align:center">TKCN</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">83.2</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">79.5</td>
+<td style="text-align:center"></td>
+<td style="text-align:center">ICME 2019</td>
+</tr>
+<tr>
+<td style="text-align:center">DUpsampling</td>
+<td style="text-align:center">85.3</td>
+<td style="text-align:center">88.1</td>
+<td style="text-align:center">52.5</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">CVPR 2019</td>
+</tr>
+<tr>
+<td style="text-align:center">FastFCN</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">53.1</td>
+<td style="text-align:center"></td>
+<td style="text-align:center"></td>
+<td style="text-align:center">44.34</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>Semantic Segmentation论文整理<br></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2018/09/18/Semantic-Segmentation/#more" rel="contents">
@@ -2399,7 +2742,7 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2018</span>
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2019</span>
   <span class="with-love" id="animate">
     <i class="fa fa-user"></i>
   </span>
@@ -2411,7 +2754,7 @@
       <i class="fa fa-area-chart"></i>
     </span>
     
-    <span title="Symbols count total">138k</span>
+    <span title="Symbols count total">154k</span>
   
 
   
@@ -2420,7 +2763,7 @@
       <i class="fa fa-coffee"></i>
     </span>
     
-    <span title="Reading time total">2:06</span>
+    <span title="Reading time total">2:20</span>
   
 </div>
 
